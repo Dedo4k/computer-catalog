@@ -1,23 +1,34 @@
 package iipu.shop.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Data
+@Entity
+@NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class MotherBoard {
+@Table(name = "mother_board")
+@EqualsAndHashCode(callSuper = true)
+public class MotherBoard extends Component{
 
+       @Column(name = "socket", nullable = false)
        private String socket;
 
+       @Column(name = "form_factor", nullable = false)
        private String formFactor;
 
+       @Column(name = "memory_type", nullable = false)
        private String memoryType;
 
+       @Column(name = "memory_slots", nullable = false)
        private int memorySlots;
 
-       private int versionOfPCI;
+       @Column(name = "pci_version", nullable = false)
+       private String PCIVersion;
 
-       private int m2;
+       @Column(name = "m_two", nullable = false)
+       private int mTwo;
 }
