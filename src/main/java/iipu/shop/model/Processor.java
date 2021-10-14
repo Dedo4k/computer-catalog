@@ -1,0 +1,35 @@
+package iipu.shop.model;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "processor")
+@EqualsAndHashCode(callSuper = true)
+public class Processor extends Component  {
+
+    @Column(name = "model", nullable = false)
+    private String model;
+
+    @Column(name = "core", nullable = false)
+    private String core;
+
+    @Column(name = "socket", nullable = false)
+    private String socket;
+
+    @Column(name = "minFreq", nullable = false)
+    private double minFreq;
+
+    @Column(name = "maxFreq", nullable = false)
+    private double maxFreq;
+}
