@@ -32,7 +32,6 @@ public class Ssd extends Component{
     @Column(name = "reading_speed", nullable = false)
     private int readingSpeed;
 
-
     @Column(name = "writing_speed", nullable = false)
     private int writingSpeed;
 }

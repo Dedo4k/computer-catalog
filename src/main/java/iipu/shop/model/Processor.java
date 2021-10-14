@@ -18,9 +18,6 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 public class Processor extends Component  {
 
-    @Column(name = "model", nullable = false)
-    private String model;
-
     @Column(name = "core", nullable = false)
     private String core;
 

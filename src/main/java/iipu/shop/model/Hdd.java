@@ -26,8 +26,8 @@ public class Hdd extends Component{
     @Column(name = "hdd_interface", nullable = false)
     private String hddInterface;
 
-    @Column(name = "size_of_buffer", nullable = false)
-    private int sizeOfBuffer;
+    @Column(name = "buffer_size", nullable = false)
+    private int bufferSize;
 
     @Column(name = "rotation_speed", nullable = false)
     private int rotationSpeed;

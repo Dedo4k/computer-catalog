@@ -15,7 +15,7 @@ public abstract class Component {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column(name = "producer", nullable = false)
     private String producer;
