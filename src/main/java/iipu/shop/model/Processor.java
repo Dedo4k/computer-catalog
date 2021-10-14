@@ -27,9 +27,9 @@ public class Processor extends Component  {
     @Column(name = "socket", nullable = false)
     private String socket;
 
-    @Column(name = "minFreq", nullable = false)
+    @Column(name = "min_freq", nullable = false)
     private double minFreq;
 
-    @Column(name = "maxFreq", nullable = false)
+    @Column(name = "max_freq", nullable = false)
     private double maxFreq;
 }
