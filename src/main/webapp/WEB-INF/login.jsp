@@ -1,29 +1,24 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vlad Lailo
-  Date: 28.10.2021
-  Time: 14:16
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Sign in</title>
 </head>
 <body>
-<form id="login" action="/login" method="post">
+<form id="sign-in" action="<c:url value="/sign-in"/>" method="post">
+    <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
     <label>
-        <input type="text" name="username" placeholder="username">
+        <input type="email" name="email" placeholder="Email">
     </label>
     <label>
-        <input type="password" name="password" placeholder="password">
+        <input type="password" name="password" placeholder="Password">
     </label>
 </form>
-<buttons>
-    <input type="submit" form="login" value="Login">
-    <a href="/registration">
-        <input type="button" value="Registration">
+<div>
+    <input type="submit" form="sign-in" value="Sign in">
+    <a href="<c:url value="/sign-up"/>">
+        <input type="button" value="Sign up">
     </a>
-</buttons>
+</div>
 </body>
 </html>
