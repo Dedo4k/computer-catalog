@@ -1,6 +1,6 @@
 package iipu.shop.repository;
 
-import iipu.shop.model.Hdd;
+import iipu.shop.model.component.Hdd;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

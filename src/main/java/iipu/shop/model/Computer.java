@@ -1,5 +1,6 @@
 package iipu.shop.model;
 
+import iipu.shop.model.component.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,6 +1,6 @@
 package iipu.shop.repository;
 
-import iipu.shop.model.MotherBoard;
+import iipu.shop.model.component.MotherBoard;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

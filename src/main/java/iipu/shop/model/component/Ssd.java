@@ -1,4 +1,4 @@
-package iipu.shop.model;
+package iipu.shop.model.component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,9 +13,9 @@ import javax.persistence.Table;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "hdd")
+@Table(name = "ssd")
 @EqualsAndHashCode(callSuper = true)
-public class Hdd extends Component{
+public class Ssd extends Component{
 
     @Column(name = "capacity", nullable = false)
     private int capacity;
@@ -23,12 +23,15 @@ public class Hdd extends Component{
     @Column(name = "form_factor", nullable = false)
     private String formFactor;
 
-    @Column(name = "hdd_interface", nullable = false)
-    private String hddInterface;
+    @Column(name = "ssd_interface", nullable = false)
+    private String ssdInterface;
 
-    @Column(name = "buffer_size", nullable = false)
-    private int bufferSize;
+    @Column(name = "controller", nullable = false)
+    private String controller;
 
-    @Column(name = "rotation_speed", nullable = false)
-    private int rotationSpeed;
+    @Column(name = "reading_speed", nullable = false)
+    private int readingSpeed;
+
+    @Column(name = "writing_speed", nullable = false)
+    private int writingSpeed;
 }

@@ -1,4 +1,4 @@
-package iipu.shop.model;
+package iipu.shop.model.component;
 
 import lombok.*;
 
