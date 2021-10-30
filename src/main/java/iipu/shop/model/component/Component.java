@@ -1,14 +1,18 @@
 package iipu.shop.model.component;
 
+import iipu.shop.model.Review;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
-@MappedSuperclass
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Component {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Component {
 
     @Id
     @Column(name = "id", nullable = false)
@@ -23,4 +27,22 @@ public abstract class Component {
 
     @Column(name = "price", nullable = false)
     private double price;
+
+    @OneToMany(mappedBy = "component", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
+
+    @Override
+    public String toString() {
+        return "Component{" +
+                "id=" + id +
+                ", producer='" + producer + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                ", reviews=" + reviews +
+                '}';
+    }
 }
