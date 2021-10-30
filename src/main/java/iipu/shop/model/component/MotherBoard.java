@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "mother_board")
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class MotherBoard extends Component{
 

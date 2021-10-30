@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "computer_case")
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class ComputerCase extends Component{
 

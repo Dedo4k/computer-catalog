@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "processor")
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Processor extends Component  {
 

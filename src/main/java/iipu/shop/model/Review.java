@@ -1,5 +1,6 @@
 package iipu.shop.model;
 
+import iipu.shop.model.component.Component;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,4 +23,24 @@ public class Review {
 
     @Column(name = "text", nullable = false)
     private String text;
+
+    @ManyToOne
+    private Component component;
+
+    @ManyToOne
+    private User user;
+
+    @PreRemove
+    private void removeReviewFromComponent() {
+        component.getReviews().remove(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", user='" + user.getEmail() + '\'' +
+                '}';
+    }
 }
