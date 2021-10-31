@@ -33,58 +33,58 @@ public class TestController {
 
     @GetMapping("/add")
     public String add(@AuthenticationPrincipal User user) {
-        Processor processor = new Processor();
-        processor.setModel("intel");
-        processor.setCore("core-i7");
-        processor.setMaxFreq(4.4);
-        processor.setMinFreq(3.0);
-        processor.setSocket("sata");
-        processor.setProducer("qwewqe");
-        processor.setPrice(20.3);
-
-        Review review1 = new Review();
-        review1.setText("Cool");
-        review1.setComponent(processor);
-        review1.setUser(user);
-        processor.addReview(review1);
-        Review review2 = new Review();
-        review2.setText("NIce");
-        review2.setComponent(processor);
-        review2.setUser(user);
-        processor.addReview(review2);
-
-        componentRepository.save(processor);
-
-        GraphicsCard graphicsCard = new GraphicsCard();
-        graphicsCard.setModel("nvidea");
-        graphicsCard.setVideoMemory(8);
-        graphicsCard.setGpuModel("asd");
-        graphicsCard.setGpuProducer("sasda");
-        graphicsCard.setVideoMemoryType("sss");
-        graphicsCard.setProducer("sss");
-        graphicsCard.setPrice(14.6);
-        Review review3 = new Review();
-        review3.setText("Insane");
-        review3.setComponent(graphicsCard);
-        review3.setUser(user);
-        graphicsCard.addReview(review3);
-
-        componentRepository.save(graphicsCard);
-
-        Processor processor1 = new Processor();
-        processor1.setModel("amd");
-        processor1.setCore("ryzen-7");
-        processor1.setSocket("nmve");
-        processor1.setProducer("ssasaas");
-        processor1.setMinFreq(2.0);
-        processor1.setMaxFreq(5.0);
-        processor1.setPrice(43);
-        Review review4 = new Review();
-        review4.setText("Bad");
-        review4.setComponent(processor1);
-        review4.setUser(user);
-        processor1.addReview(review4);
-        componentRepository.save(processor1);
+//        Processor processor = new Processor();
+//        processor.setModel("intel");
+//        processor.setCore("core-i7");
+//        processor.setMaxFreq(4.4);
+//        processor.setMinFreq(3.0);
+//        processor.setSocket("sata");
+//        processor.setProducer("qwewqe");
+//        processor.setPrice(20.3);
+//
+//        Review review1 = new Review();
+//        review1.setText("Cool");
+//        review1.setComponent(processor);
+//        review1.setUser(user);
+//        processor.addReview(review1);
+//        Review review2 = new Review();
+//        review2.setText("NIce");
+//        review2.setComponent(processor);
+//        review2.setUser(user);
+//        processor.addReview(review2);
+//
+//        componentRepository.save(processor);
+//
+//        GraphicsCard graphicsCard = new GraphicsCard();
+//        graphicsCard.setModel("nvidea");
+//        graphicsCard.setVideoMemory(8);
+//        graphicsCard.setGpuModel("asd");
+//        graphicsCard.setGpuProducer("sasda");
+//        graphicsCard.setVideoMemoryType("sss");
+//        graphicsCard.setProducer("sss");
+//        graphicsCard.setPrice(14.6);
+//        Review review3 = new Review();
+//        review3.setText("Insane");
+//        review3.setComponent(graphicsCard);
+//        review3.setUser(user);
+//        graphicsCard.addReview(review3);
+//
+//        componentRepository.save(graphicsCard);
+//
+//        Processor processor1 = new Processor();
+//        processor1.setModel("amd");
+//        processor1.setCore("ryzen-7");
+//        processor1.setSocket("nmve");
+//        processor1.setProducer("ssasaas");
+//        processor1.setMinFreq(2.0);
+//        processor1.setMaxFreq(5.0);
+//        processor1.setPrice(43);
+//        Review review4 = new Review();
+//        review4.setText("Bad");
+//        review4.setComponent(processor1);
+//        review4.setUser(user);
+//        processor1.addReview(review4);
+//        componentRepository.save(processor1);
 
         List<Component> components = componentRepository.findAll();
         components.forEach(System.out::println);
