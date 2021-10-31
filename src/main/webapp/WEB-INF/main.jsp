@@ -1,53 +1,66 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Computer shop</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>VVAA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="<c:url value="/css/styles.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>">
+    <script src="<c:url value="/js/bootstrap.js"/>"></script>
+    <script src="<c:url value="/js/script.js"/>"></script>
 </head>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="<c:url value="/main"/>">Main Page</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<c:url value="/main"/>">VVAA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+                aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/main"/>">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item active"><a class="nav-link" href="<c:url value="/main"/>"><spring:message
+                        code="label.page.home"/></a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/catalog"/>"><spring:message
+                        code="label.page.catalog"/></a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/config"/>"><spring:message
+                        code="label.page.config"/></a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/?lang=en"/>"><spring:message
+                        code="label.lang.en"/></a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/?lang=ru"/>"><spring:message
+                        code="label.lang.ru"/></a></li>
+                <li class="nav-item dropdown" id="myDropdown">
+                    <c:if test="${user != null}">
+                        <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
+                           style="float: right">${user.firstName} ${user.lastName}</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
+                                    code="label.page.account"/></a></li>
+                            <li>
+                                <form action="<c:url value="/logout"/>" method="post">
+                                    <a class="dropdown-item" href="<c:url value="/logout"/>"><spring:message
+                                            code="label.auth.signout"/></a>
+                                </form>
+                            </li>
+                        </ul>
+                    </c:if>
+                    <c:if test="${user == null}">
+                        <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
+                           style="float: right"><spring:message code="label.page.profile"/></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<c:url value="/sign-in"/>"><spring:message
+                                    code="label.auth.signin"/></a></li>
+                            <li><a class="dropdown-item" href="<c:url value="/sign-up"/>"><spring:message
+                                    code="label.auth.signup"/></a></li>
+                        </ul>
+                    </c:if>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/config"/>">Configurator</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/catalog"/>">Catalog</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Profile
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<c:url value="/sign-in"/>">Login</a>
-                        <a class="dropdown-item" href="#">My profile</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li><a href="?lang=en"><spring:message code="label.lang.en" /></a></li>
-                <li><a href="?lang=ru"><spring:message code="label.lang.ru" /></a></li>
             </ul>
         </div>
-    </nav>
-</header>
-<body>
-    <h1><spring:message code="label.welcome"/></h1>
-    <h1>Русский</h1>
-</body>
-<footer>
+    </div>
+</nav>
 
-</footer>
+</body>
 </html>
