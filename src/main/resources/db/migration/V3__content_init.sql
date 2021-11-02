@@ -32,20 +32,3 @@ insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_t
 insert into component (id, model, producer, price) values (10, 'OC Edition', 'ASUS TUF Gaming', 5990.00);
 insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, id)
        values ('GeForce RTX 3080 Ti', 'NVIDEA', 12, 'GDDR6X', 10);
-
-
-
-/*insert into component (id, model, producer, price) values (31, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (32, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (33, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (34, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (35, 'Ventus XS OC', 'MSI', 2050.00);
-
-insert into component (id, model, producer, price) values (36, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (37, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (38, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (39, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (40, 'Ventus XS OC', 'MSI', 2050.00);
-
-insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, id)
-values ('GeForce GTX 1660 Super', 'NVIDEA', 6, 'GDDR6', 9);*/
