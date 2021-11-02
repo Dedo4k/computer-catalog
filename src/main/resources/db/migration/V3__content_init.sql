@@ -48,8 +48,6 @@ values (10, 'TUF Gaming OC Edition', 'ASUS', 5990.00);
 insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, id)
     values ('GeForce RTX 3080 Ti', 'NVIDEA', 12, 'GDDR6X', 10);
 
-
-
 insert into component (id, model, producer, price)
 values (11, 'B450M S2H', 'Gigabyte', 166.02);
 insert into mother_board (pci_version, form_factor, m_two, memory_slots, memory_type, socket, id)
