@@ -79,9 +79,34 @@ insert into computer_case (case_type, colour, material, section_number, id)
        values ('Mid Tower', 'white/белый', 'metal/метал', 6, 16);
 
 insert into component (id, model, producer, price)
+       values (31, 'FURY Beast', 'Kingston', 218.40);
+insert into ram (capacity, freq, type, id)
+       values (16, 3200.0, 'DDR4 DIMM', 31);
+
+insert into component (id, model, producer, price)
+       values (32, 'Ballistix', 'Crucial', 238.0);
+insert into ram (capacity, freq, type, id)
+       values (16, 3200.0, 'DDR4 DIMM', 32);
+
+insert into component (id, model, producer, price)
+       values (33, 'Fury', 'HyperX', 280.58);
+insert into ram (capacity, freq, type, id)
+       values (16, 3200.0, 'DDR4 DIMM', 33);
+
+insert into component (id, model, producer, price)
+       values (34, 'Viper', 'Patriot', 201.73);
+insert into ram (capacity, freq, type, id)
+       values (16, 1600.0, 'DDR3 DIMM', 34);
+
+insert into component (id, model, producer, price)
        values (17, 'MATREXX 55 V3', 'DeepCool', 186.03);
 insert into computer_case (case_type, colour, material, section_number, id)
        values ('Mid Tower', 'white/белый', 'metal/метал', 6, 17);
+
+insert into component (id, model, producer, price)
+       values (35, 'Aegis', 'G.Skill', 110.66);
+insert into ram (capacity, freq, type, id)
+       values (8, 3200.0, 'DDR4 DIMM', 35);
 
 insert into component (id, model, producer, price)
        values (18, 'Silent Base 802 Window', 'be quiet!', 474.60);
@@ -102,3 +127,28 @@ insert into component (id, model, producer, price)
        values (21, 'i3', 'Zalman', 139.28);
 insert into computer_case (case_type, colour, material, section_number, id)
        values ('Mid Tower', 'black/черный', 'steel/сталь', 5, 21);
+
+insert into component (id, model, producer, price)
+       values (36, 'Proton', 'Chieftec', 201.00);
+insert into power_unit (sertificate, power, id)
+       values ('bronze', 850.0, 36);
+
+insert into component (id, model, producer, price)
+       values (37, 'GigaMax', 'Zalman', 166.23);
+insert into power_unit (sertificate, power, id)
+       values ('bronze', 750.0, 37);
+
+insert into component (id, model, producer, price)
+       values (38, 'ECO', 'AeroCool', 60.00);
+insert into power_unit (sertificate, power, id)
+       values ('-', 500.0, 38);
+
+insert into component (id, model, producer, price)
+       values (39, 'System Power', 'be quiet!', 150.27);
+insert into power_unit (sertificate, power, id)
+       values ('bronze', 600.0, 39);
+
+insert into component (id, model, producer, price)
+       values (40, 'MVE', 'Cooler Master', 139.80);
+insert into power_unit (sertificate, power, id)
+       values ('basic', 600.0, 40);
