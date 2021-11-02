@@ -34,6 +34,9 @@ public class Computer {
     private Hdd hdd;
 
     @OneToOne(cascade = CascadeType.ALL)
+    private Ram ram;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Ssd ssd;
 
     @OneToOne(cascade = CascadeType.ALL)
