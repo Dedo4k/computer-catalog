@@ -35,17 +35,42 @@ insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_t
 
 
 
-/*insert into component (id, model, producer, price) values (31, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (32, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (33, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (34, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (35, 'Ventus XS OC', 'MSI', 2050.00);
+insert into component (id, model, producer, price) values (31, 'FURY Beast', 'Kingston', 218.40);
+insert into ram (capacity, freq, type, id)
+       values (16, 3200.0, 'DDR4 DIMM', 31);
 
-insert into component (id, model, producer, price) values (36, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (37, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (38, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (39, 'Ventus XS OC', 'MSI', 2050.00);
-insert into component (id, model, producer, price) values (40, 'Ventus XS OC', 'MSI', 2050.00);
+insert into component (id, model, producer, price) values (32, 'Ballistix', 'Crucial', 238.0);
+insert into ram (capacity, freq, type, id)
+       values (16, 3200.0, 'DDR4 DIMM', 32);
 
-insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, id)
-values ('GeForce GTX 1660 Super', 'NVIDEA', 6, 'GDDR6', 9);*/
+insert into component (id, model, producer, price) values (33, 'Fury', 'HyperX', 280.58);
+insert into ram (capacity, freq, type, id)
+       values (16, 3200.0, 'DDR4 DIMM', 33);
+
+insert into component (id, model, producer, price) values (34, 'Viper', 'Patriot', 201.73);
+insert into ram (capacity, freq, type, id)
+       values (16, 1600.0, 'DDR3 DIMM', 34);
+
+insert into component (id, model, producer, price) values (35, 'Aegis', 'G.Skill', 110.66);
+insert into ram (capacity, freq, type, id)
+       values (8, 3200.0, 'DDR4 DIMM', 35);
+
+insert into component (id, model, producer, price) values (36, 'Proton', 'Chieftec', 201.00);
+insert into power_unit (sertificate, power, id)
+       values ('bronze', 850.0, 36);
+
+insert into component (id, model, producer, price) values (37, 'GigaMax', 'Zalman', 166.23);
+insert into power_unit (sertificate, power, id)
+       values ('bronze', 750.0, 37);
+
+insert into component (id, model, producer, price) values (38, 'ECO', 'AeroCool', 60.00);
+insert into power_unit (sertificate, power, id)
+       values ('-', 500.0, 38);
+
+insert into component (id, model, producer, price) values (39, 'System Power', 'be quiet!', 150.27);
+insert into power_unit (sertificate, power, id)
+       values ('bronze', 600.0, 39);
+
+insert into component (id, model, producer, price) values (40, 'MVE', 'Cooler Master', 139.80);
+insert into power_unit (sertificate, power, id)
+       values ('basic', 600.0, 40);
