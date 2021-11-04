@@ -3,6 +3,7 @@ package iipu.shop.enumeration;
 public enum ExceptionMessage {
     USER_NOT_FOUND_BY_EMAIL("User with email %s not found"),
     MAIL_IS_TAKEN("Mail %s is already taken"),
+    INVALID_CONFIRM_PASSWORD("Passwords don\'t match."),
     ;
 
     private final String message;

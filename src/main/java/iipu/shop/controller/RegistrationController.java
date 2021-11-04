@@ -7,8 +7,10 @@ import iipu.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RegistrationController {
@@ -23,14 +25,24 @@ public class RegistrationController {
     }
 
     @GetMapping("/sign-up")
-    public String signUp() {
+    public String signUp(Model model) {
         return "registration";
     }
 
     @PostMapping("/sign-up")
-    public String createUser(User user) {
+    public String createUser(User user, String confirm, Model model) {
         if (userRepository.findUserByEmail(user.getEmail()).isPresent()) {
-            throw new IllegalStateException(String.format(ExceptionMessage.MAIL_IS_TAKEN.toString(), user.getEmail()));
+            model.addAttribute("error",
+                    String.format(ExceptionMessage.MAIL_IS_TAKEN.toString(), user.getEmail()));
+            model.addAttribute("user", user);
+            return "registration";
+        }
+
+        if (!user.getPassword().equals(confirm)) {
+            model.addAttribute("error",
+                    String.format(ExceptionMessage.INVALID_CONFIRM_PASSWORD.toString(), user.getEmail()));
+            model.addAttribute("user", user);
+            return "registration";
         }
 
         user.setActive(true);
