@@ -27,9 +27,9 @@
                         code="label.page.catalog"/></a></li>
                 <li class="nav-item"><a class="nav-link" href="<c:url value="/config"/>"><spring:message
                         code="label.page.config"/></a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="/?lang=en"/>"><spring:message
+                <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=en"/>"><spring:message
                         code="label.lang.en"/></a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="/?lang=ru"/>"><spring:message
+                <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=ru"/>"><spring:message
                         code="label.lang.ru"/></a></li>
                 <li class="nav-item dropdown" id="myDropdown">
                     <c:if test="${user != null}">

@@ -130,25 +130,25 @@ insert into computer_case (case_type, colour, material, section_number, id)
 
 insert into component (id, model, producer, price)
        values (36, 'Proton', 'Chieftec', 201.00);
-insert into power_unit (sertificate, power, id)
+insert into power_unit (certificate, power, id)
        values ('bronze', 850.0, 36);
 
 insert into component (id, model, producer, price)
        values (37, 'GigaMax', 'Zalman', 166.23);
-insert into power_unit (sertificate, power, id)
+insert into power_unit (certificate, power, id)
        values ('bronze', 750.0, 37);
 
 insert into component (id, model, producer, price)
        values (38, 'ECO', 'AeroCool', 60.00);
-insert into power_unit (sertificate, power, id)
+insert into power_unit (certificate, power, id)
        values ('-', 500.0, 38);
 
 insert into component (id, model, producer, price)
        values (39, 'System Power', 'be quiet!', 150.27);
-insert into power_unit (sertificate, power, id)
+insert into power_unit (certificate, power, id)
        values ('bronze', 600.0, 39);
 
 insert into component (id, model, producer, price)
        values (40, 'MVE', 'Cooler Master', 139.80);
-insert into power_unit (sertificate, power, id)
+insert into power_unit (certificate, power, id)
        values ('basic', 600.0, 40);
