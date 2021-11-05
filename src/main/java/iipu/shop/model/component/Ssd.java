@@ -32,4 +32,14 @@ public class Ssd extends Component{
 
     @Column(name = "writing_speed", nullable = false)
     private int writingSpeed;
+
+    @Override
+    public String toString() {
+        return getProducer() + " " + getModel() + " " + capacity + "Gb";
+    }
+
+    @Override
+    public String info() {
+        return formFactor + ", " + ssdInterface + ", " + controller + ", " + readingSpeed + "/" + writingSpeed;
+    }
 }

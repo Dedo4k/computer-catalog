@@ -27,4 +27,14 @@ public class Processor extends Component  {
 
     @Column(name = "max_freq", nullable = false)
     private double maxFreq;
+
+    @Override
+    public String toString() {
+        return getProducer() + " " + core + "-" + getModel();
+    }
+
+    @Override
+    public String info() {
+        return socket + ", " + minFreq + "/" + maxFreq + "MHz";
+    }
 }

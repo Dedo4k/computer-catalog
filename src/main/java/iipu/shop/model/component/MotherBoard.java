@@ -32,4 +32,14 @@ public class MotherBoard extends Component{
 
        @Column(name = "m_two", nullable = false)
        private int mTwo;
+
+       @Override
+       public String toString() {
+              return getProducer() + " " + getModel();
+       }
+
+       @Override
+       public String info() {
+              return socket + ", " + formFactor + ", " + memoryType + ", " + memorySlots + ", " + PCIVersion + ", " + mTwo;
+       }
 }

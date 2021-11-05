@@ -26,4 +26,14 @@ public class GraphicsCard extends Component{
 
     @Column(name = "video_memory_type", nullable = false)
     private String videoMemoryType;
+
+    @Override
+    public String toString() {
+        return getProducer() + " " + gpuProducer + " " + gpuModel + " " + getModel();
+    }
+
+    @Override
+    public String info() {
+        return videoMemory + ", " + videoMemoryType;
+    }
 }
