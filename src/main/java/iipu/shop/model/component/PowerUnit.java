@@ -20,4 +20,14 @@ public class PowerUnit extends Component {
 
     @Column(name = "certificate")
     private String certificate;
+
+    @Override
+    public String toString() {
+        return getProducer() + " " + getModel();
+    }
+
+    @Override
+    public String info() {
+        return power + ", " + certificate;
+    }
 }

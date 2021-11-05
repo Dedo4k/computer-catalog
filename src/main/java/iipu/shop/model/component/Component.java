@@ -35,14 +35,7 @@ public class Component {
         reviews.add(review);
     }
 
-    @Override
-    public String toString() {
-        return "Component{" +
-                "id=" + id +
-                ", producer='" + producer + '\'' +
-                ", model='" + model + '\'' +
-                ", price=" + price +
-                ", reviews=" + reviews +
-                '}';
+    public String info() {
+        return null;
     }
 }

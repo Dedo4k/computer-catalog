@@ -29,4 +29,14 @@ public class Hdd extends Component{
 
     @Column(name = "rotation_speed", nullable = false)
     private int rotationSpeed;
+
+    @Override
+    public String toString() {
+        return getProducer() + " " + getModel() + capacity + "Gb";
+    }
+
+    @Override
+    public String info() {
+        return formFactor + ", " + hddInterface + ", " + bufferSize + "Mb, " + rotationSpeed;
+    }
 }

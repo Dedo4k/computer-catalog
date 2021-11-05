@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>VVAA</title>
@@ -12,7 +13,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="<c:url value="/main"/>">VVAA</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
@@ -32,12 +33,17 @@
                 <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=ru"/>"><spring:message
                         code="label.lang.ru"/></a></li>
                 <li class="nav-item dropdown" id="myDropdown">
-                    <c:if test="${user != null}">
+                    <sec:authorize access="isAuthenticated()">
                         <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
-                           style="float: right">${user.firstName} ${user.lastName}</a>
+                           style="float: right"><sec:authentication property="principal.firstName"/> <sec:authentication
+                                property="principal.lastName"/></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
                                     code="label.page.account"/></a></li>
+                            <sec:authorize access="hasAuthority('ADMIN')">
+                                <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
+                                        code="label.page.settings"/></a></li>
+                            </sec:authorize>
                             <li>
                                 <form action="<c:url value="/logout"/>" method="post">
                                     <a class="dropdown-item" href="<c:url value="/logout"/>"><spring:message
@@ -45,8 +51,8 @@
                                 </form>
                             </li>
                         </ul>
-                    </c:if>
-                    <c:if test="${user == null}">
+                    </sec:authorize>
+                    <sec:authorize access="!isAuthenticated()">
                         <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
                            style="float: right"><spring:message code="label.page.profile"/></a>
                         <ul class="dropdown-menu">
@@ -55,12 +61,16 @@
                             <li><a class="dropdown-item" href="<c:url value="/sign-up"/>"><spring:message
                                     code="label.auth.signup"/></a></li>
                         </ul>
-                    </c:if>
+                    </sec:authorize>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<div class="container mt-5">
+    <img class="w-100 h-100" src="<c:url value="/img/vanya.png"/>" alt="vanya">
+</div>
 
 </body>
 </html>

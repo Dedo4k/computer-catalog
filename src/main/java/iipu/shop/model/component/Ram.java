@@ -23,4 +23,14 @@ public class Ram extends Component{
 
     @Column(name = "freq", nullable = false)
     private double freq;
+
+    @Override
+    public String toString() {
+        return getProducer() + " " + getModel() + " " + capacity + "Gb";
+    }
+
+    @Override
+    public String info() {
+        return type + ", " + freq + "MHz";
+    }
 }

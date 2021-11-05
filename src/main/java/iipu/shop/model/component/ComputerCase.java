@@ -26,4 +26,14 @@ public class ComputerCase extends Component{
 
     @Column(name = "section_number", nullable = false)
     private int sectionNumber;
+
+    @Override
+    public String toString() {
+        return getProducer() + " " + getModel();
+    }
+
+    @Override
+    public String info() {
+        return caseType + ", " + colour + ", " + material + ", " + sectionNumber;
+    }
 }
