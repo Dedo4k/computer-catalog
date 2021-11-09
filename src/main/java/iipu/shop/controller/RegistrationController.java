@@ -37,20 +37,17 @@ public class RegistrationController {
     @PostMapping("/sign-up")
     public String createUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, String confirm, Model model) {
         if (bindingResult.hasErrors()) {
-            // model.addAttribute("user", user);
             return "registration";
         }
 
         if (userRepository.findUserByEmail(user.getEmail()).isPresent()) {
             model.addAttribute("error",
                     String.format(ExceptionMessage.MAIL_IS_TAKEN.toString(), user.getEmail()));
-            // model.addAttribute("user", user);
             return "registration";
         }
 
         if (!user.getPassword().equals(confirm)) {
             model.addAttribute("error", ExceptionMessage.INVALID_CONFIRM_PASSWORD.toString());
-            // model.addAttribute("user", user);
             return "registration";
         }
 
