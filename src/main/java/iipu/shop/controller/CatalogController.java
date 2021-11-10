@@ -1,14 +1,17 @@
 package iipu.shop.controller;
 
+import iipu.shop.enumeration.ExceptionMessage;
+import iipu.shop.model.Review;
 import iipu.shop.model.User;
-import iipu.shop.model.component.Component;
 import iipu.shop.repository.*;
+import iipu.shop.service.ComponentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CatalogController {
@@ -22,6 +25,8 @@ public class CatalogController {
     private final HddRepository hddRepository;
     private final PowerUnitRepository powerUnitRepository;
     private final ComputerCaseRepository computerCaseRepository;
+    private final ComponentServiceImpl componentService;
+    private final ReviewRepository reviewRepository;
 
     @Autowired
     public CatalogController(ComponentRepository componentRepository, ProcessorRepository processorRepository,
@@ -31,7 +36,8 @@ public class CatalogController {
                              SsdRepository ssdRepository,
                              HddRepository hddRepository,
                              PowerUnitRepository powerUnitRepository,
-                             ComputerCaseRepository computerCaseRepository) {
+                             ComputerCaseRepository computerCaseRepository,
+                             ComponentServiceImpl componentService, ReviewRepository reviewRepository) {
         this.componentRepository = componentRepository;
         this.processorRepository = processorRepository;
         this.graphicsCardRepository = graphicsCardRepository;
@@ -41,6 +47,8 @@ public class CatalogController {
         this.hddRepository = hddRepository;
         this.powerUnitRepository = powerUnitRepository;
         this.computerCaseRepository = computerCaseRepository;
+        this.componentService = componentService;
+        this.reviewRepository = reviewRepository;
     }
 
     @GetMapping("/catalog")
@@ -51,57 +59,28 @@ public class CatalogController {
 
     @GetMapping("/catalog/{component}")
     public String componentsList(@PathVariable String component, Model model) {
-        switch (component) {
-            case "processors" : {
-                model.addAttribute("title", "label.components.processors");
-                model.addAttribute("components", processorRepository.findAll());
-                break;
-            }
-            case "graphics_cards" : {
-                model.addAttribute("title", "label.components.graphiccards");
-                model.addAttribute("components", graphicsCardRepository.findAll());
-                break;
-            }
-            case "mother_boards" : {
-                model.addAttribute("title", "label.components.motherboards");
-                model.addAttribute("components", motherBoardRepository.findAll());
-                break;
-            }
-            case "rams" : {
-                model.addAttribute("title", "label.components.rams");
-                model.addAttribute("components", ramRepository.findAll());
-                break;
-            }
-            case "hdds" : {
-                model.addAttribute("title", "label.components.hdds");
-                model.addAttribute("components", hddRepository.findAll());
-                break;
-            }
-            case "ssds" : {
-                model.addAttribute("title", "label.components.ssds");
-                model.addAttribute("components", ssdRepository.findAll());
-                break;
-            }
-            case "power_units" : {
-                model.addAttribute("title", "label.components.powerunits");
-                model.addAttribute("components", powerUnitRepository.findAll());
-                break;
-            }
-            case "cases" : {
-                model.addAttribute("title", "label.components.cases");
-                model.addAttribute("components", computerCaseRepository.findAll());
-                break;
-            } default: {
-                return "redirect:/catalog";
-            }
-        }
-        return "components";
+        return componentService.getViewForComponents(component, model);
     }
 
-    @GetMapping("/catalog/**/{id}")
-    public String componentInfo(@PathVariable Long id, Model model) {
-        Component component = componentRepository.findById(id).get();
-        model.addAttribute("component", component);
-        return "component/perspage";
+    @GetMapping("/catalog/{component}/{id}")
+    public String componentInfo(@PathVariable String component, @PathVariable Long id, Model model) {
+        return componentService.getViewForComponentById(component, id, model);
+    }
+
+    @PostMapping("/catalog/{component}/{id}/comment")
+    public String saveComment(@PathVariable String component, @PathVariable Long id, String message, Model model, @AuthenticationPrincipal User user) {
+        if (message.isEmpty()) {
+            model.addAttribute("error", ExceptionMessage.MESSAGE_IS_EMPTY.toString());
+            return componentService.getViewForComponentById(component, id, model);
+        }
+
+        Review review = new Review();
+        review.setText(message);
+        review.setComponent(componentRepository.findById(id).get());
+        review.setUser(user);
+
+        reviewRepository.save(review);
+
+        return "redirect:/catalog/" + component + "/" + id;
     }
 }

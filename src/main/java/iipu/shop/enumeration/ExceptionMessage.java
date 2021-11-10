@@ -5,6 +5,7 @@ public enum ExceptionMessage {
     MAIL_IS_TAKEN("Mail %s is already taken"),
     INVALID_CONFIRM_PASSWORD("Passwords don\'t match."),
     EMPTY_FIELDS("Fields must not be empty."),
+    MESSAGE_IS_EMPTY("Comment must be not empty."),
     ;
 
     private final String message;
