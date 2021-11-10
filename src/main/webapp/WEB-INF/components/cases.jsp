@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>${title}</title>
+    <title><spring:message code="label.components.cases"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="<c:url value="/css/styles.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>">
@@ -54,18 +54,18 @@
 </nav>
 
 <div class="container align-items-center mt-5">
-    <c:forEach items="${components}" var="component">
+    <c:forEach items="${cases}" var="ccase">
         <div class="row">
             <div class="card m-4">
                 <div class="row">
                     <div class="col-3">
-                        <img class="card-img-top" src="<c:url value="/img/processors.jpg"/>" alt="processor">
+                        <img class="card-img-top" src="<c:url value="/img/case.jpg"/>" alt="processor">
                     </div>
                     <div class="col-9">
                         <div class="card-body">
-                            <a href="/catalog/component/${component.id}" class="text-decoration-none"><h5 class="card-title">${component.toString()}</h5></a>
-                            <p class="card-text">${component.info()}</p>
-                            <h5 class="btn btn-warning">${component.price} <spring:message code="label.currency.byn"/> </h5>
+                            <a href="/catalog/ccase/${ccase.id}" class="text-decoration-none"><h5 class="card-title">${ccase.toString()}</h5></a>
+                            <p class="card-text">${ccase.info()}</p>
+                            <h5 class="btn btn-warning">${ccase.price} <spring:message code="label.currency.byn"/> </h5>
                         </div>
                     </div>
                 </div>
