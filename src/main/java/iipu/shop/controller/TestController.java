@@ -15,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 @Controller
 @RequestMapping("/test")
@@ -35,8 +37,11 @@ public class TestController {
     }
 
     @GetMapping("/add")
-    public String add(@AuthenticationPrincipal User user, Model model) {
+    public String add(@AuthenticationPrincipal User user, HttpServletRequest request, Model model) {
         model.addAttribute("mother", motherBoardRepository.findAll());
+        boolean cookie = Arrays.stream(request.getCookies()).anyMatch(cookies -> cookies.getValue().equals("ru"));
+        Collection<Cookie> cookies = new ArrayList<>();
+        cookies.forEach(Cookie::getValue);
 //        Processor processor = new Processor();
 //        processor.setModel("intel");
 //        processor.setCore("core-i7");

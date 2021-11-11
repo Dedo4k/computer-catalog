@@ -125,6 +125,15 @@ create table ram
     primary key (id)
 ) engine=InnoDB;
 
+create table component_source
+(
+    id           bigint       not null auto_increment,
+    name         varchar(255) not null,
+    link         varchar(255) not null,
+    component_id bigint,
+    primary key (id)
+) engine = InnoDB;
+
 alter table `user`
     add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email);
 alter table computer
@@ -159,6 +168,8 @@ alter table review
     add constraint FK3eyewefbogyvtiubue9sbo24 foreign key (component_id) references component (id);
 alter table review
     add constraint FKdaoj96idm5vlb3qcon1sfn8c4 foreign key (`user_id`) references `user` (id);
+alter table component_source
+    add constraint FKlcmnfbffexuvvod0f51hcycfx foreign key (component_id) references component (id);
 alter table ssd
     add constraint FKdj06kge05plpeoskwatby6htf foreign key (id) references component (id);
 alter table ram

@@ -1,4 +1,3 @@
-<%@ page import="iipu.shop.model.component.Processor" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -65,7 +64,7 @@
             <img src="<c:url value="/img/case.jpg"/>" class="w-100" alt="mother_board">
         </div>
         <div class="col-8">
-            <p>${ccase.producer} ${ccase.model}</p>
+            <h2>${ccase.producer} ${ccase.model}</h2>
             <p>${ccase.caseType}, ${ccase.colour}, ${ccase.material}, ${ccase.sectionNumber}</p>
             <h5 class="btn btn-warning">${ccase.price} <spring:message code="label.currency.byn"/></h5>
         </div>
@@ -99,6 +98,18 @@
         </tr>
         </tbody>
     </table>
+
+    <table class="table table-bordered align-middle mt-5">
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
+        <tbody>
+        <c:forEach items="${ccase.sources}" var="source">
+            <tr>
+                <td class="w-25">${source.name}</td>
+                <td class="w-75"><a href="${source.link}">${source.link}</a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 <div class="container align-items-center mt-5">
@@ -129,6 +140,12 @@
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <sec:authorize access="hasAuthority('ADMIN')">
                                 <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                            </sec:authorize>
+                            <sec:authorize access="hasAuthority('USER')">
+                                <sec:authentication property="principal.id" var="user_id"/>
+                                <c:if test="${review.user.id eq user_id}">
+                                    <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                                </c:if>
                             </sec:authorize>
                         </form>
                     </div>
