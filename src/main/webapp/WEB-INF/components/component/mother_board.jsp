@@ -65,7 +65,7 @@
             <img src="<c:url value="/img/mother_board.jpg"/>" class="w-100" alt="mother_board">
         </div>
         <div class="col-8">
-            <p>${mother_board.producer} ${mother_board.model}</p>
+            <h2>${mother_board.producer} ${mother_board.model}</h2>
             <p>${mother_board.PCIVersion}, ${mother_board.formFactor}, ${mother_board.MTwo}, ${mother_board.memorySlots}, ${mother_board.memoryType}, ${mother_board.socket}</p>
             <h5 class="btn btn-warning">${mother_board.price} <spring:message code="label.currency.byn"/></h5>
         </div>
@@ -105,6 +105,18 @@
             <td><spring:message code="label.motherboard.socket"/></td>
             <td>${mother_board.socket}</td>
         </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered align-middle mt-5">
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
+        <tbody>
+        <c:forEach items="${mother_board.sources}" var="source">
+            <tr>
+                <td class="w-25">${source.name}</td>
+                <td class="w-75"><a href="${source.link}">${source.link}</a></td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

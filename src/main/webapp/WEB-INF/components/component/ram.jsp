@@ -65,7 +65,7 @@
             <img src="<c:url value="/img/ram.jpg"/>" class="w-100" alt="mother_board">
         </div>
         <div class="col-8">
-            <p>${ram.producer} ${ram.model}</p>
+            <h2>${ram.producer} ${ram.model}</h2>
             <p>${ram.capacity}, ${ram.freq}, ${ram.type}</p>
             <h5 class="btn btn-warning">${ram.price} <spring:message code="label.currency.byn"/></h5>
         </div>
@@ -93,6 +93,18 @@
             <td><spring:message code="label.ram.type"/></td>
             <td>${ram.type}</td>
         </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered align-middle mt-5">
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
+        <tbody>
+        <c:forEach items="${ram.sources}" var="source">
+            <tr>
+                <td class="w-25">${source.name}</td>
+                <td class="w-75"><a href="${source.link}">${source.link}</a></td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

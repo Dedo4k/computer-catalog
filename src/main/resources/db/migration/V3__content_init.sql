@@ -3,6 +3,18 @@ insert into component (id, model, producer, price)
 insert into processor (core, max_freq, min_freq, socket, id)
        values ('Core i9', 5.3, 3.5, 'LGA1200', 1);
 
+insert into component_source (id, component_id, name, link)
+       values (1, 1, 'Onliner.by', 'https://catalog.onliner.by/cpu/intel/corei911900k');
+
+insert into component_source (id, component_id, name, link)
+       values (2, 1, 'FK.by', 'https://fk.by/processor-intel-core-i9-11900k-157460');
+
+insert into component_source (id, component_id, name, link)
+       values (3, 1, 'AMD.by', 'https://www.amd.by/processory/intel-core-i9-11900k/');
+
+insert into component_source (id, component_id, name, link)
+       values (4, 1, 'Socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/protsessory/protsessor-intel-core-i9-11900k-3-5ghz-socket-1200-box/');
+
 insert into component (id, model, producer, price)
        values (2, '3600', 'AMD', 569.31);
 insert into processor (core, max_freq, min_freq, socket, id)

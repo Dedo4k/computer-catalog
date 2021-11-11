@@ -1,7 +1,10 @@
 package iipu.shop.model.component;
 
+import iipu.shop.model.ComponentSource;
 import iipu.shop.model.Review;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -30,6 +33,10 @@ public class Component {
 
     @OneToMany(mappedBy = "component", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "component", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SUBSELECT)
+    private List<ComponentSource> sources = new ArrayList<>();
 
     public void addReview(Review review) {
         reviews.add(review);

@@ -65,7 +65,7 @@
             <img src="<c:url value="/img/graphics.jpg"/>" class="w-100" alt="graphics">
         </div>
         <div class="col-8">
-            <p>${graphics_card.producer} ${graphics_card.gpuProducer} ${graphics_card.gpuModel} ${graphics_card.model}</p>
+            <h2>${graphics_card.producer} ${graphics_card.gpuProducer} ${graphics_card.gpuModel} ${graphics_card.model}</h2>
             <p>${graphics_card.videoMemory}, ${graphics_card.videoMemoryType}</p>
             <h5 class="btn btn-warning">${graphics_card.price} <spring:message code="label.currency.byn"/></h5>
         </div>
@@ -97,6 +97,18 @@
             <td><spring:message code="label.graphics.videomemorytype"/></td>
             <td>${graphics_card.videoMemoryType}</td>
         </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered align-middle mt-5">
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
+        <tbody>
+        <c:forEach items="${graphics_card.sources}" var="source">
+            <tr>
+                <td class="w-25">${source.name}</td>
+                <td class="w-75"><a href="${source.link}">${source.link}</a></td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

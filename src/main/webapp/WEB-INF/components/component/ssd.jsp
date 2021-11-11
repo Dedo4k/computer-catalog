@@ -65,7 +65,7 @@
             <img src="<c:url value="/img/ssd.jpg"/>" class="w-100" alt="mother_board">
         </div>
         <div class="col-8">
-            <p>${ssd.producer} ${ssd.model}</p>
+            <h2>${ssd.producer} ${ssd.model}</h2>
             <p>${ssd.capacity}, ${ssd.controller}, ${ssd.formFactor}, ${ssd.readingSpeed}/${ssd.writingSpeed}, ${ssd.ssdInterface}</p>
             <h5 class="btn btn-warning">${ssd.price} <spring:message code="label.currency.byn"/></h5>
         </div>
@@ -105,6 +105,18 @@
             <td><spring:message code="label.ssd.interface"/></td>
             <td>${ssd.ssdInterface}</td>
         </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered align-middle mt-5">
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
+        <tbody>
+        <c:forEach items="${ssd.sources}" var="source">
+            <tr>
+                <td class="w-25">${source.name}</td>
+                <td class="w-75"><a href="${source.link}">${source.link}</a></td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

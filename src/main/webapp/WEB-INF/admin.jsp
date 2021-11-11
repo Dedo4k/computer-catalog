@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>VVAA</title>
+    <title>VVAA (ADMIN)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="<c:url value="/css/styles.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>">
@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<c:url value="/main"/>">VVAA</a>
+        <a class="navbar-brand" href="<c:url value="/main"/>">VVAA (ADMIN)</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
                             <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
                                     code="label.page.account"/></a></li>
                             <sec:authorize access="hasAuthority('ADMIN')">
-                                <li><a class="dropdown-item" href="<c:url value="/admin"/>"><spring:message
+                                <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
                                         code="label.page.settings"/></a></li>
                             </sec:authorize>
                             <li>
@@ -68,11 +68,6 @@
     </div>
 </nav>
 
-<%--<c:if test="${cookie['org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE'].value eq 'ru'}">--%>
-<%--    <h1 class="mt-5">Russian</h1>--%>
-<%--</c:if>--%>
-<%--<c:if test="${cookie['org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE'].value eq 'en'}">--%>
-<%--    <h1 class="mt-5">English</h1>--%>
-<%--</c:if>--%>
+
 </body>
 </html>

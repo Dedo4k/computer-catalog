@@ -64,11 +64,12 @@
             <img src="<c:url value="/img/processors.jpg"/>" alt="processor">
         </div>
         <div class="col-8">
-            <p>${processor.producer} ${processor.core}-${processor.model}</p>
+            <h2>${processor.producer} ${processor.core}-${processor.model}</h2>
             <p>${processor.socket}, ${processor.minFreq}/${processor.maxFreq}</p>
             <h5 class="btn btn-warning">${processor.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
+
     <table class="table table-bordered align-middle mt-5">
         <caption class="caption-top text-center"><h3><spring:message code="label.component.description"/></h3></caption>
         <tbody>
@@ -92,6 +93,18 @@
             <td><spring:message code="label.processor.maxfreq"/></td>
             <td>${processor.maxFreq}</td>
         </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered align-middle mt-5">
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
+        <tbody>
+            <c:forEach items="${processor.sources}" var="source">
+                <tr>
+                    <td class="w-25">${source.name}</td>
+                    <td class="w-75"><a href="${source.link}">${source.link}</a></td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>

@@ -65,7 +65,7 @@
             <img src="<c:url value="/img/hdd.jpg"/>" class="w-100" alt="mother_board">
         </div>
         <div class="col-8">
-            <p>${hdd.producer} ${hdd.model}</p>
+            <h2>${hdd.producer} ${hdd.model}</h2>
             <p>${hdd.bufferSize}, ${hdd.capacity}, ${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed}</p>
             <h5 class="btn btn-warning">${hdd.price} <spring:message code="label.currency.byn"/></h5>
         </div>
@@ -101,6 +101,18 @@
             <td><spring:message code="label.hdd.rotationspeed"/></td>
             <td>${hdd.rotationSpeed}</td>
         </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered align-middle mt-5">
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
+        <tbody>
+        <c:forEach items="${hdd.sources}" var="source">
+            <tr>
+                <td class="w-25">${source.name}</td>
+                <td class="w-75"><a href="${source.link}">${source.link}</a></td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
