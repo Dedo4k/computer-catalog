@@ -32,7 +32,7 @@ public class Hdd extends Component{
 
     @Override
     public String toString() {
-        return getProducer() + " " + getModel() + capacity + "Gb";
+        return getProducer() + " " + getModel() + " " + capacity + "Gb";
     }
 
     @Override

@@ -69,14 +69,84 @@ insert into mother_board (pci_version, form_factor, m_two, memory_slots, memory_
        values ('4.0 and 3.0', 'ATX', 2, 4, 'DDR4', 'AM4', 14);
 
 insert into component (id, model, producer, price)
-       values (15, 'MAG B550 Tomahawk', 'MSI', 467.00);
+       values (15, 'Z690 Gaming X', 'Gigabyte', 763.15);
 insert into mother_board (pci_version, form_factor, m_two, memory_slots, memory_type, socket, id)
-       values ('4.0 and 3.0', 'ATX', 2, 4, 'DDR4', 'AM4', 15);
+       values ('5.0', 'ATX', 4, 4, 'DDR4', 'LGA1700', 15);
 
 insert into component (id, model, producer, price)
        values (16, 'Pure Base 500 BG035', 'be quiet!', 195.03);
 insert into computer_case (case_type, colour, material, section_number, id)
        values ('Mid Tower', 'white/белый', 'metal/метал', 6, 16);
+
+insert into component (id, model, producer, price)
+       values (17, 'MATREXX 55 V3', 'DeepCool', 186.03);
+insert into computer_case (case_type, colour, material, section_number, id)
+       values ('Mid Tower', 'white/белый', 'metal/метал', 6, 17);
+
+insert into component (id, model, producer, price)
+       values (18, 'Silent Base 802 Window', 'be quiet!', 474.60);
+insert into computer_case (case_type, colour, material, section_number, id)
+       values ('Mid Tower', 'black/черный', 'steel/сталь', 6, 18);
+
+insert into component (id, model, producer, price)
+       values (19, 'N5 MF', 'Zalman', 100.20);
+insert into computer_case (case_type, colour, material, section_number, id)
+       values ('Mid Tower', 'black/черный', 'plastic/пластик', 5, 19);
+
+insert into component (id, model, producer, price)
+       values (20, 'FireBase X2', '1stPlayer', 94.99);
+insert into computer_case (case_type, colour, material, section_number, id)
+       values ('Mid Tower', 'black/черный', 'steel/сталь', 7, 20);
+
+insert into component (id, model, producer, price)
+       values (21, 'P2', 'Crucial', 245.84);
+insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface, writing_speed, id)
+       values (1000, 'Phison PS5013-E13T', 'M.2', 2400, 'PCI Express 3.0 x4  (NVMe)', 1800, 21);
+
+insert into component (id, model, producer, price)
+       values (22, '870 Evo', 'Samsung', 224.85);
+insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface, writing_speed, id)
+       values (500, 'Samsung MKX', '2.5"', 560, 'SATA 3.0', 530, 22);
+
+insert into component (id, model, producer, price)
+       values (23, 'NV1', 'Kingston', 141.80);
+insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface, writing_speed, id)
+       values (500, '-', 'M.2', 2000, 'PCI Express 3.0 x4', 1700, 23);
+
+insert into component (id, model, producer, price)
+       values (24, 'Radeon R5', 'AMD', 142.04);
+insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface, writing_speed, id)
+       values (512, 'Silicon Motion SM2258XT', '2.5"', 540, 'SATA 3.0', 460, 24);
+
+insert into component (id, model, producer, price)
+       values (25, '870 QVO', 'Samsung', 275.00);
+insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface, writing_speed, id)
+       values (1000, 'Samsung MKX', '2.5"', 560, 'SATA 3.0', 530, 25);
+
+insert into component (id, model, producer, price)
+       values (26, 'L200', 'Toshiba', 107.63);
+insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interface, id)
+       values (128, 1000, '2.5"', 5400, 'SATA 3.0 (6Gbps)', 26);
+
+insert into component (id, model, producer, price)
+       values (27, 'Red Plus', 'WD', 560.00);
+insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interface, id)
+       values (256, 8000, '3.5"', 7200, 'SATA 3.0 (6Gbps)', 27);
+
+insert into component (id, model, producer, price)
+       values (28, 'Purple', 'WD', 302.41);
+insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interface, id)
+       values (64, 4000, '3.5"', 5400, 'SATA 3.0 (6Gbps)', 28);
+
+insert into component (id, model, producer, price)
+       values (29, 'IronWolf', 'Seagate', 445.00);
+insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interface, id)
+       values (256, 8000, '3.5"', 7200, 'SATA 3.0 (6Gbps)', 29);
+
+insert into component (id, model, producer, price)
+       values (30, 'Exos X16', 'Seagate', 967.12);
+insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interface, id)
+       values (256, 16000, '3.5"', 7200, 'SATA 3.0 (6Gbps)', 30);
 
 insert into component (id, model, producer, price)
        values (31, 'FURY Beast', 'Kingston', 218.40);
@@ -99,34 +169,9 @@ insert into ram (capacity, freq, type, id)
        values (16, 1600.0, 'DDR3 DIMM', 34);
 
 insert into component (id, model, producer, price)
-       values (17, 'MATREXX 55 V3', 'DeepCool', 186.03);
-insert into computer_case (case_type, colour, material, section_number, id)
-       values ('Mid Tower', 'white/белый', 'metal/метал', 6, 17);
-
-insert into component (id, model, producer, price)
        values (35, 'Aegis', 'G.Skill', 110.66);
 insert into ram (capacity, freq, type, id)
        values (8, 3200.0, 'DDR4 DIMM', 35);
-
-insert into component (id, model, producer, price)
-       values (18, 'Silent Base 802 Window', 'be quiet!', 474.60);
-insert into computer_case (case_type, colour, material, section_number, id)
-       values ('Mid Tower', 'black/черный', 'steel/сталь', 6, 18);
-
-insert into component (id, model, producer, price)
-       values (19, 'N5 MF', 'Zalman', 100.20);
-insert into computer_case (case_type, colour, material, section_number, id)
-       values ('Mid Tower', 'black/черный', 'plastic/пластик', 5, 19);
-
-insert into component (id, model, producer, price)
-       values (20, 'FireBase X2', '1stPlayer', 94.99);
-insert into computer_case (case_type, colour, material, section_number, id)
-       values ('Mid Tower', 'black/черный', 'steel/сталь', 7, 20);
-
-insert into component (id, model, producer, price)
-       values (21, 'i3', 'Zalman', 139.28);
-insert into computer_case (case_type, colour, material, section_number, id)
-       values ('Mid Tower', 'black/черный', 'steel/сталь', 5, 21);
 
 insert into component (id, model, producer, price)
        values (36, 'Proton', 'Chieftec', 201.00);
