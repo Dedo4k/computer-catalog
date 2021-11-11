@@ -1,16 +1,17 @@
 package iipu.shop.controller;
 
-import iipu.shop.model.Review;
 import iipu.shop.model.User;
 import iipu.shop.model.component.Component;
 import iipu.shop.model.component.GraphicsCard;
 import iipu.shop.model.component.Processor;
 import iipu.shop.repository.ComponentRepository;
 import iipu.shop.repository.GraphicsCardRepository;
+import iipu.shop.repository.MotherBoardRepository;
 import iipu.shop.repository.ProcessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,16 +24,19 @@ public class TestController {
     private final ComponentRepository componentRepository;
     private final ProcessorRepository processorRepository;
     private final GraphicsCardRepository graphicsCardRepository;
+    private final MotherBoardRepository motherBoardRepository;
 
     @Autowired
-    public TestController(ComponentRepository componentRepository, ProcessorRepository processorRepository, GraphicsCardRepository graphicsCardRepository) {
+    public TestController(ComponentRepository componentRepository, ProcessorRepository processorRepository, GraphicsCardRepository graphicsCardRepository, MotherBoardRepository motherBoardRepository) {
         this.componentRepository = componentRepository;
         this.processorRepository = processorRepository;
         this.graphicsCardRepository = graphicsCardRepository;
+        this.motherBoardRepository = motherBoardRepository;
     }
 
     @GetMapping("/add")
-    public String add(@AuthenticationPrincipal User user) {
+    public String add(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("mother", motherBoardRepository.findAll());
 //        Processor processor = new Processor();
 //        processor.setModel("intel");
 //        processor.setCore("core-i7");
@@ -95,6 +99,6 @@ public class TestController {
         List<GraphicsCard> graphicsCards = graphicsCardRepository.findAll();
         graphicsCards.forEach(System.out::println);
 
-        return "main";
+        return "test";
     }
 }

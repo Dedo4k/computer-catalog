@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -81,6 +82,12 @@ public class CatalogController {
 
         reviewRepository.save(review);
 
+        return "redirect:/catalog/" + component + "/" + id;
+    }
+
+    @PostMapping("/catalog/{component}/{id}/comment/{commentId}")
+    public String deleteComment(@PathVariable String component, @PathVariable Long id, @PathVariable Long commentId, Model model) {
+        reviewRepository.deleteById(commentId);
         return "redirect:/catalog/" + component + "/" + id;
     }
 }

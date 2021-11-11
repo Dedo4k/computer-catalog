@@ -26,6 +26,9 @@
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav">
                 <li class="nav-item active"><a class="nav-link"
+                                               href="<c:url value="/catalog"/>"><spring:message
+                        code="label.page.catalog"/></a></li>
+                <li class="nav-item"><a class="nav-link"
                                                href="<c:url value="/catalog/processors"/>"><spring:message
                         code="label.components.processors"/></a></li>
                 <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=en"/>"><spring:message
@@ -68,28 +71,28 @@
         </div>
     </div>
     <table class="table table-bordered align-middle mt-5">
-        <caption class="caption-top text-center"><spring:message code="label.component.description"/></caption>
+        <caption class="caption-top text-center"><h3><spring:message code="label.component.description"/></h3></caption>
         <tbody>
-            <tr>
-                <td class="w-50"><spring:message code="label.component.producer"/></td>
-                <td class="w-50">${processor.producer}</td>
-            </tr>
-            <tr>
-                <td><spring:message code="label.processor.core"/></td>
-                <td>${processor.core}</td>
-            </tr>
-            <tr>
-                <td><spring:message code="label.processor.socket"/></td>
-                <td>${processor.socket}</td>
-            </tr>
-            <tr>
-                <td><spring:message code="label.processor.minfreq"/></td>
-                <td>${processor.minFreq}</td>
-            </tr>
-            <tr>
-                <td><spring:message code="label.processor.maxfreq"/></td>
-                <td>${processor.maxFreq}</td>
-            </tr>
+        <tr>
+            <td class="w-50"><spring:message code="label.component.producer"/></td>
+            <td class="w-50">${processor.producer}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.processor.core"/></td>
+            <td>${processor.core}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.processor.socket"/></td>
+            <td>${processor.socket}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.processor.minfreq"/></td>
+            <td>${processor.minFreq}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.processor.maxfreq"/></td>
+            <td>${processor.maxFreq}</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -101,15 +104,30 @@
             <label for="exampleFormControlTextarea1" class="form-label">Leave your comment</label>
             <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Comment</button>
+        <div class="row px-2 align-items-center">
+            <button class="btn btn-primary btn-lg btn-block col-2" type="submit">Comment</button>
+            <c:if test="${error != null}">
+                <h5 class="col-10" style="color: #b02a37">${error}</h5>
+            </c:if>
+        </div>
     </form>
 
     <hr class="w-100">
 
     <c:if test="${!processor.reviews.isEmpty()}">
         <c:forEach items="${processor.reviews}" var="review">
-            <div class="card">
-                <h3 class="card-header">${review.user.firstName} ${review.user.lastName}</h3>
+            <div class="card mt-1">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="col-11">${review.user.firstName} ${review.user.lastName}</h3>
+                        <form action="/catalog/processor/${processor.id}/comment/${review.id}" method="post" class="col-1">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <sec:authorize access="hasAuthority('ADMIN')">
+                                <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                            </sec:authorize>
+                        </form>
+                    </div>
+                </div>
                 <div class="card-body">
                     <p>${review.text}</p>
                 </div>
