@@ -122,6 +122,12 @@
                             <sec:authorize access="hasAuthority('ADMIN')">
                                 <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
                             </sec:authorize>
+                            <sec:authorize access="hasAuthority('USER')">
+                                <sec:authentication property="principal.id" var="user_id"/>
+                                <c:if test="${review.user.id eq user_id}">
+                                    <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                                </c:if>
+                            </sec:authorize>
                         </form>
                     </div>
                 </div>

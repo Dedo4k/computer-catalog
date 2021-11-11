@@ -1,4 +1,3 @@
-<%@ page import="iipu.shop.model.component.Processor" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -124,6 +123,12 @@
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <sec:authorize access="hasAuthority('ADMIN')">
                                 <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                            </sec:authorize>
+                            <sec:authorize access="hasAuthority('USER')">
+                                <sec:authentication property="principal.id" var="user_id"/>
+                                <c:if test="${review.user.id eq user_id}">
+                                    <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                                </c:if>
                             </sec:authorize>
                         </form>
                     </div>
