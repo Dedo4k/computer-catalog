@@ -33,7 +33,8 @@
                        style="float: right"><sec:authentication property="principal.firstName"/> <sec:authentication
                             property="principal.lastName"/></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
+                        <sec:authentication property="principal.id" var="user_id"/>
+                        <li><a class="dropdown-item" href="<c:url value="/user/${user_id}"/>"><spring:message
                                 code="label.page.account"/></a></li>
                         <sec:authorize access="hasAuthority('ADMIN')">
                             <li><a class="dropdown-item" href="<c:url value="/admin"/>"><spring:message
@@ -57,7 +58,7 @@
         <div class="card col-3 m-4">
             <img class="card-img-top" src="<c:url value="/img/processors.jpg"/>" alt="processors">
             <div class="card-body">
-                <a href="<c:url value="/catalog/processors"/>" class="btn btn-primary"><spring:message
+                <a href="<c:url value="/catalog/processors"/>" class="btn btn-primary align-bottom"><spring:message
                         code="label.components.processors"/></a>
             </div>
         </div>
