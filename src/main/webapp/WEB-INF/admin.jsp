@@ -68,6 +68,70 @@
     </div>
 </nav>
 
-
+<div class="container align-items-center mt-5">
+    <table class="table table-bordered table-striped table-hover align-middle mt-5">
+        <caption class="caption-top text-center"><h1>Admins</h1></caption>
+        <a href="<c:url value="/admin/add"/>" class="btn btn-primary">New admin</a>
+        <thead>
+            <tr>
+                <td><spring:message code="label.user.id"/></td>
+                <td><spring:message code="label.user.firstname"/></td>
+                <td><spring:message code="label.user.lastname"/></td>
+                <td><spring:message code="label.user.email"/></td>
+                <td><spring:message code="label.user.role"/></td>
+                <td><spring:message code="label.user.status"/></td>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${admins}" var="admin">
+                <tr>
+                    <td>${admin.id}</td>
+                    <td>${admin.firstName}</td>
+                    <td>${admin.lastName}</td>
+                    <td>${admin.email}</td>
+                    <td>${admin.role}</td>
+                    <td>${admin.active}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <table class="table table-bordered table-striped table-hover align-middle mt-5">
+        <caption class="caption-top text-center"><h1>Users</h1></caption>
+        <thead>
+            <tr>
+                <td><spring:message code="label.user.id"/></td>
+                <td><spring:message code="label.user.firstname"/></td>
+                <td><spring:message code="label.user.lastname"/></td>
+                <td><spring:message code="label.user.email"/></td>
+                <td><spring:message code="label.user.role"/></td>
+                <td><spring:message code="label.user.status"/></td>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${users}" var="user">
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.email}</td>
+                    <td>${user.role}</td>
+                    <td>
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                ${user.active}
+                            </div>
+                            <div class="col-auto">
+                                <form action="<c:url value="/admin/change_status/${user.id}"/>" method="post">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                    <button class="btn btn-primary" type="submit">Change</button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

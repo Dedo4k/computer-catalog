@@ -43,7 +43,7 @@
                         <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
                                 code="label.page.account"/></a></li>
                         <sec:authorize access="hasAuthority('ADMIN')">
-                            <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
+                            <li><a class="dropdown-item" href="<c:url value="/admin"/>"><spring:message
                                     code="label.page.settings"/></a></li>
                         </sec:authorize>
                         <li>
