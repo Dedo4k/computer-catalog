@@ -322,6 +322,12 @@ insert into component (id, model, producer, price)
 insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface, writing_speed, id)
        values (512, 'Silicon Motion SM2258XT', '2.5"', 540, 'SATA 3.0', 460, 24);
 
+insert into component_source (id, component_id, name, link)
+values (69, 24, 'shop.by', 'https://shop.by/zhestkie_diski/amd_radeon_r5_nvme_r5mp512g8/#shop');
+
+insert into component_source (id, component_id, name, link)
+values (70, 24, '234.by', 'https://234.by/ssd-amd-radeon-r5-nvme-512gb-r5mp512g8.html?utm_source=shop_by');
+
 insert into component (id, model, producer, price)
        values (25, '870 QVO', 'Samsung', 275.00);
 insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface, writing_speed, id)
