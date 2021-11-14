@@ -75,5 +75,65 @@
 <%--<c:if test="${cookie['org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE'].value eq 'en'}">--%>
 <%--    <h1 class="mt-5">English</h1>--%>
 <%--</c:if>--%>
+<div class="container align-items-center mt-5">
+    <table class="table table-bordered table-striped table-hover align-middle">
+        <caption class="caption-top text-center mt-5"><h2>User information</h2></caption>
+        <tbody>
+        <tr>
+            <td><spring:message code="label.user.firstname"/></td>
+            <td>${user.firstName}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.user.lastname"/></td>
+            <td>${user.lastName}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.user.email"/></td>
+            <td>${user.email}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.user.role"/></td>
+            <td>${user.role}</td>
+        </tr>
+        </tbody>
+    </table>
+    <c:if test="${user.id eq user_id}">
+        <form action="/user/${user.id}/edit" method="get">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <button class="btn btn-primary" type="submit"><spring:message code="label.actions.edit"/></button>
+        </form>
+    </c:if>
+</div>
+
+<div class="container align-items-center mt-5">
+    <c:if test="${!user.reviews.isEmpty()}">
+        <c:forEach items="${user.reviews}" var="review">
+            <div class="card mt-1">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="col-11">${review.component.toString()}</h3>
+                        <form action="/catalog/ccase/${ccase.id}/comment/${review.id}" method="post"
+                              class="col-1">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <sec:authorize access="hasAuthority('ADMIN')">
+                                <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                            </sec:authorize>
+                            <sec:authorize access="hasAuthority('USER')">
+                                <sec:authentication property="principal.id" var="user_id"/>
+                                <c:if test="${review.user.id eq user_id}">
+                                    <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                                </c:if>
+                            </sec:authorize>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>${review.text}</p>
+                </div>
+            </div>
+        </c:forEach>
+    </c:if>
+</div>
+
 </body>
 </html>

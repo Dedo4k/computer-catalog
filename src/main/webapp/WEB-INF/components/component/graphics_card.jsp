@@ -40,10 +40,11 @@
                        style="float: right"><sec:authentication property="principal.firstName"/> <sec:authentication
                             property="principal.lastName"/></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
+                        <sec:authentication property="principal.id" var="user_id"/>
+                        <li><a class="dropdown-item" href="<c:url value="/user/${user_id}"/>"><spring:message
                                 code="label.page.account"/></a></li>
                         <sec:authorize access="hasAuthority('ADMIN')">
-                            <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
+                            <li><a class="dropdown-item" href="<c:url value="/admin"/>"><spring:message
                                     code="label.page.settings"/></a></li>
                         </sec:authorize>
                         <li>

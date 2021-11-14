@@ -14,8 +14,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Data
 @Entity
@@ -54,6 +56,9 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     @Size(min = 5, message = "Password size must be more than 5")
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
