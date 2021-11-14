@@ -55,24 +55,86 @@
 </nav>
 
 <div class="container align-items-center mt-5">
-    <c:forEach items="${processors}" var="processor">
-        <div class="row">
+    <div class="row">
+        <div class="filter col-3">
             <div class="card m-4">
-                <div class="row">
-                    <div class="col-3">
-                        <img class="card-img-top" src="<c:url value="/img/processors.jpg"/>" alt="processor">
-                    </div>
-                    <div class="col-9">
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title"><spring:message code="label.component.producer"/></h6>
+                    </header>
+                    <div class="filter-content">
                         <div class="card-body">
-                            <a href="/catalog/processor/${processor.id}" class="text-decoration-none"><h5 class="card-title">${processor.toString()}</h5></a>
-                            <p class="card-text">${processor.info()}</p>
-                            <h5 class="btn btn-warning">${processor.price} <spring:message code="label.currency.byn"/> </h5>
+                            <form action="/catalog/processors/filter" method="get">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="producer" value="intel">
+                                    <span class="form-check-label">
+				                        Intel
+				                    </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="producer" value="amd">
+                                    <span class="form-check-label">
+				                        AMD
+				                    </span>
+                                </label>
+                                <button type="submit" class="btn btn-primary p-0">Find</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title">Choose type </h6>
+                    </header>
+                    <div class="filter-content">
+                        <div class="card-body">
+                            <label class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                <span class="form-check-label">
+			    First hand items
+			  </span>
+                            </label>
+                            <label class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                <span class="form-check-label">
+			    Brand new items
+			  </span>
+                            </label>
+                            <label class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                <span class="form-check-label">
+			    Some other option
+			  </span>
+                            </label>
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- card-group-item.// -->
+            </div>
+        </div>
+        <div class="list col-9">
+            <c:forEach items="${processors}" var="processor">
+                <div class="row">
+                    <div class="card m-4">
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="card-img-top" src="<c:url value="/img/processors.jpg"/>" alt="processor">
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <a href="/catalog/processor/${processor.id}" class="text-decoration-none"><h5
+                                            class="card-title">${processor.toString()}</h5></a>
+                                    <p class="card-text">${processor.info()}</p>
+                                    <h5 class="btn btn-warning">${processor.price} <spring:message
+                                            code="label.currency.byn"/></h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
+    </div>
 </div>
 
 </body>

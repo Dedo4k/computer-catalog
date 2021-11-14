@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+
 @Controller
 public class CatalogController {
 
@@ -61,6 +64,11 @@ public class CatalogController {
     @GetMapping("/catalog/{component}")
     public String componentsList(@PathVariable String component, Model model) {
         return componentService.getViewForComponents(component, model);
+    }
+
+    @GetMapping("/catalog/{component}/filter")
+    public String filter(@PathVariable String component, HttpServletRequest httpServletRequest) {
+        return component;
     }
 
     @GetMapping("/catalog/{component}/{id}")
