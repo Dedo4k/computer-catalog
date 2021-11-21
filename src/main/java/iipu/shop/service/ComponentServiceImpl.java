@@ -1,11 +1,15 @@
 package iipu.shop.service;
 
+import iipu.shop.model.component.Component;
+import iipu.shop.model.component.Processor;
 import iipu.shop.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import javax.transaction.Transactional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ComponentServiceImpl implements ComponentService {
@@ -45,7 +49,13 @@ public class ComponentServiceImpl implements ComponentService {
     public String getViewForComponents(String component, Model model) {
         switch (component) {
             case "processors": {
+                Set<String> producers = processorRepository.findAll().stream().map(Component::getProducer).collect(Collectors.toSet());
+                Set<String> cores = processorRepository.findAll().stream().map(Processor::getCore).collect(Collectors.toSet());
+                Set<String> sockets = processorRepository.findAll().stream().map(Processor::getSocket).collect(Collectors.toSet());
                 model.addAttribute("processors", processorRepository.findAll());
+                model.addAttribute("producers_set", producers);
+                model.addAttribute("cores_set", cores);
+                model.addAttribute("sockets_set", sockets);
                 break;
             }
             case "graphics_cards": {
@@ -123,5 +133,61 @@ public class ComponentServiceImpl implements ComponentService {
             }
         }
         return "components/component/" + component;
+    }
+
+    public String filter(String component, Map<String, String[]> map, Model model) {
+        Set<String> keys = map.keySet();
+        List<Component> filteredComponent = new ArrayList<>();
+        switch (component) {
+            case "processors": {
+                if (keys.isEmpty()) {
+                    return getViewForComponents(component, model);
+                }
+                filteredComponent.addAll(processorRepository.findAll());
+                for (String key : keys) {
+                    switch (key) {
+                        case "producer":
+                            final List<Component> temp = new ArrayList<>(filteredComponent);
+                            filteredComponent.clear();
+                            Arrays.asList(map.get(key)).forEach(filteredValue -> {
+                                List<Component> components = temp.stream()
+                                        .filter(component1 -> component1.getProducer().equals(filteredValue))
+                                        .collect(Collectors.toList());
+                                filteredComponent.addAll(components);
+                            });
+                            break;
+                        case "core":
+                            final List<Component> temp1 = new ArrayList<>(filteredComponent);
+                            filteredComponent.clear();
+                            Arrays.asList(map.get(key)).forEach(filteredValue -> {
+                                List<Component> components = temp1.stream()
+                                        .filter(component1 -> ((Processor) component1).getCore().equals(filteredValue))
+                                        .collect(Collectors.toList());
+                                filteredComponent.addAll(components);
+                            });
+                            break;
+                        case "socket":
+                            final List<Component> temp2 = new ArrayList<>(filteredComponent);
+                            filteredComponent.clear();
+                            Arrays.asList(map.get(key)).forEach(filteredValue -> {
+                                List<Component> components = temp2.stream()
+                                        .filter(component1 -> ((Processor) component1).getSocket().equals(filteredValue))
+                                        .collect(Collectors.toList());
+                                filteredComponent.addAll(components);
+                            });
+                            break;
+                    }
+                }
+                Set<String> producers = processorRepository.findAll().stream().map(Component::getProducer).collect(Collectors.toSet());
+                Set<String> cores = processorRepository.findAll().stream().map(Processor::getCore).collect(Collectors.toSet());
+                Set<String> sockets = processorRepository.findAll().stream().map(Processor::getSocket).collect(Collectors.toSet());
+                model.addAttribute("processors", filteredComponent);
+                model.addAttribute("producers_set", producers);
+                model.addAttribute("cores_set", cores);
+                model.addAttribute("sockets_set", sockets);
+                break;
+            }
+        }
+        return "components/" + component;
     }
 }

@@ -3,6 +3,7 @@ package iipu.shop.controller;
 import iipu.shop.enumeration.ExceptionMessage;
 import iipu.shop.model.Review;
 import iipu.shop.model.User;
+import iipu.shop.model.component.Component;
 import iipu.shop.repository.*;
 import iipu.shop.service.ComponentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -67,8 +70,9 @@ public class CatalogController {
     }
 
     @GetMapping("/catalog/{component}/filter")
-    public String filter(@PathVariable String component, HttpServletRequest httpServletRequest) {
-        return component;
+    public String filter(@PathVariable String component, HttpServletRequest httpServletRequest, Model model) {
+        Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
+        return componentService.filter(component, parameterMap, model);
     }
 
     @GetMapping("/catalog/{component}/{id}")
