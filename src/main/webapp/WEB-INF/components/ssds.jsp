@@ -1,3 +1,4 @@
+<%@ page import="java.util.Arrays" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -53,26 +54,244 @@
         </div>
     </div>
 </nav>
-
+<%
+    String[] prod = request.getParameterValues("producer");
+    String[] form_fct = request.getParameterValues("form_factor");
+    String[] cap = request.getParameterValues("capacity");
+    String[] ssd_int = request.getParameterValues("ssd_interface");
+    String[] minWrSs = request.getParameterValues("min_writing_speed");
+    String[] maxWrSs = request.getParameterValues("max_writing_speed");
+    String minWrS = null;
+    String maxWrS = null;
+    String[] minRSs = request.getParameterValues("min_reading_speed");
+    String[] maxRSs = request.getParameterValues("max_reading_speed");
+    String minRS = null;
+    String maxRS = null;
+    if (prod != null) {
+        pageContext.setAttribute("prod", Arrays.asList(prod));
+    }
+    if (form_fct != null) {
+        pageContext.setAttribute("form_fct", Arrays.asList(form_fct));
+    }
+    if (cap != null) {
+        pageContext.setAttribute("cap", Arrays.asList(cap));
+    }
+    if (ssd_int != null) {
+        pageContext.setAttribute("ssd_int", Arrays.asList(ssd_int));
+    }
+    if (minWrSs == null || minWrSs[0].equals("")) {
+        minWrS = "";
+    } else {
+        minWrS = minWrSs[0];
+    }
+    if (maxWrSs == null || maxWrSs[0].equals("")) {
+        maxWrS = "";
+    } else {
+        maxWrS = maxWrSs[0];
+    }
+    pageContext.setAttribute("minWrS", minWrS);
+    pageContext.setAttribute("maxWrS", maxWrS);
+    if (minRSs == null || minRSs[0].equals("")) {
+        minRS = "";
+    } else {
+        minRS = minRSs[0];
+    }
+    if (maxRSs == null || maxRSs[0].equals("")) {
+        maxRS = "";
+    } else {
+        maxRS = maxRSs[0];
+    }
+    pageContext.setAttribute("minRS", minRS);
+    pageContext.setAttribute("maxRS", maxRS);
+%>
 <div class="container align-items-center mt-5">
-    <c:forEach items="${ssds}" var="ssd">
-        <div class="row">
+    <div class="row">
+        <div class="filter col-3">
             <div class="card m-4">
-                <div class="row">
-                    <div class="col-3">
-                        <img class="card-img-top" src="<c:url value="/img/ssd.jpg"/>" alt="processor">
+                <form action="/catalog/ssds/filter" method="get">
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.component.producer"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${producers_set}" var="producer">
+                                    <label class="form-check">
+                                        <c:if test="${prod.contains(producer)}">
+                                            <input class="form-check-input" type="checkbox" name="producer"
+                                                   value="${producer}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!prod.contains(producer)}">
+                                            <input class="form-check-input" type="checkbox" name="producer"
+                                                   value="${producer}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${producer}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ssd.formfactor"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${form_factors_set}" var="form_factor">
+                                    <label class="form-check">
+                                        <c:if test="${form_fct.contains(form_factor.replace('\"',''))}">
+                                            <input class="form-check-input" type="checkbox" name="form_factor"
+                                                   value="${form_factor}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!form_fct.contains(form_factor.replace('\"',''))}">
+                                            <input class="form-check-input" type="checkbox" name="form_factor"
+                                                   value="${form_factor}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${form_factor}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ssd.interface"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${ssd_interfaces_set}" var="ssd_interface">
+                                    <label class="form-check">
+                                        <c:if test="${ssd_int.contains(ssd_interface)}">
+                                            <input class="form-check-input" type="checkbox" name="ssd_interface"
+                                                   value="${ssd_interface}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!ssd_int.contains(ssd_interface)}">
+                                            <input class="form-check-input" type="checkbox" name="ssd_interface"
+                                                   value="${ssd_interface}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${ssd_interface}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ram.capacity"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${capacity_set}" var="capacity">
+                                    <label class="form-check">
+                                        <c:if test="${cap.contains(capacity.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="capacity"
+                                                   value="${capacity}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!cap.contains(capacity.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="capacity"
+                                                   value="${capacity}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${capacity}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ssd.readingspeed"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_reading_speed" placeholder="Min" class="w-100" value="${minRS}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_reading_speed" placeholder="Max" class="w-100" value="${maxRS}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ssd.writingspeed"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_writing_speed" placeholder="Min" class="w-100" value="${minWrS}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_writing_speed" placeholder="Max" class="w-100" value="${maxWrS}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="container align-items-center align-middle justify-content-center">
+                        <button type="submit" class="btn btn-primary w-100 p-0 m-0">Find</button>
                     </div>
-                    <div class="col-9">
-                        <div class="card-body">
-                            <a href="/catalog/ssd/${ssd.id}" class="text-decoration-none"><h5 class="card-title">${ssd.toString()}</h5></a>
-                            <p class="card-text">${ssd.info()}</p>
-                            <h5 class="btn btn-warning">${ssd.price} <spring:message code="label.currency.byn"/> </h5>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <c:forEach items="${ssds}" var="ssd">
+                <div class="row">
+                    <div class="card m-4">
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="card-img-top" src="<c:url value="/img/ssd.jpg"/>" alt="processor">
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <a href="/catalog/ssd/${ssd.id}" class="text-decoration-none"><h5
+                                            class="card-title">${ssd.toString()}</h5></a>
+                                    <p class="card-text">${ssd.info()}</p>
+                                    <h5 class="btn btn-warning">${ssd.price} <spring:message
+                                            code="label.currency.byn"/></h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
+    </div>
 </div>
 
 </body>

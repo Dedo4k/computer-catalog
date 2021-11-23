@@ -1,3 +1,4 @@
+<%@ page import="java.util.Arrays" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -53,26 +54,174 @@
         </div>
     </div>
 </nav>
-
+<%
+    String[] prod = request.getParameterValues("producer");
+    String[] mem_type = request.getParameterValues("memory_type");
+    String[] cap = request.getParameterValues("capacity");
+    String[] minFreqs = request.getParameterValues("minFreq");
+    String[] maxFreqs = request.getParameterValues("maxFreq");
+    String minFreq = null;
+    String maxFreq = null;
+    if (prod != null) {
+        pageContext.setAttribute("prod", Arrays.asList(prod));
+    }
+    if (mem_type != null) {
+        pageContext.setAttribute("mem_type", Arrays.asList(mem_type));
+    }
+    if (cap != null) {
+        pageContext.setAttribute("cap", Arrays.asList(cap));
+    }
+    if (minFreqs == null || minFreqs[0].equals("")) {
+        minFreq = "";
+    } else {
+        minFreq = minFreqs[0];
+    }
+    if (maxFreqs == null || maxFreqs[0].equals("")) {
+        maxFreq = "";
+    } else {
+        maxFreq = maxFreqs[0];
+    }
+    pageContext.setAttribute("minFreq", minFreq);
+    pageContext.setAttribute("maxFreq", maxFreq);
+%>
 <div class="container align-items-center mt-5">
-    <c:forEach items="${rams}" var="ram">
-        <div class="row">
+    <div class="row">
+        <div class="filter col-3">
             <div class="card m-4">
-                <div class="row">
-                    <div class="col-3">
-                        <img class="card-img-top" src="<c:url value="/img/ram.jpg"/>" alt="processor">
+                <form action="/catalog/rams/filter" method="get">
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.component.producer"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${producers_set}" var="producer">
+                                    <label class="form-check">
+                                        <c:if test="${prod.contains(producer)}">
+                                            <input class="form-check-input" type="checkbox" name="producer"
+                                                   value="${producer}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!prod.contains(producer)}">
+                                            <input class="form-check-input" type="checkbox" name="producer"
+                                                   value="${producer}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${producer}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ram.type"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${memory_types_set}" var="memory_type">
+                                    <label class="form-check">
+                                        <c:if test="${mem_type.contains(memory_type)}">
+                                            <input class="form-check-input" type="checkbox" name="memory_type"
+                                                   value="${memory_type}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!mem_type.contains(memory_type)}">
+                                            <input class="form-check-input" type="checkbox" name="memory_type"
+                                                   value="${memory_type}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${memory_type}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ram.capacity"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${capacity_set}" var="capacity">
+                                    <label class="form-check">
+                                        <c:if test="${cap.contains(capacity.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="capacity"
+                                                   value="${capacity}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!cap.contains(capacity.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="capacity"
+                                                   value="${capacity}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${capacity}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ram.freq"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="minFreq" placeholder="Min" class="w-100" value="${minFreq}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="maxFreq" placeholder="Max" class="w-100" value="${maxFreq}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="container align-items-center align-middle justify-content-center">
+                        <button type="submit" class="btn btn-primary w-100 p-0 m-0">Find</button>
                     </div>
-                    <div class="col-9">
-                        <div class="card-body">
-                            <a href="/catalog/ram/${ram.id}" class="text-decoration-none"><h5 class="card-title">${ram.toString()}</h5></a>
-                            <p class="card-text">${ram.info()}</p>
-                            <h5 class="btn btn-warning">${ram.price} <spring:message code="label.currency.byn"/> </h5>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <c:forEach items="${rams}" var="ram">
+                <div class="row">
+                    <div class="card m-4">
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="card-img-top" src="<c:url value="/img/ram.jpg"/>" alt="processor">
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <a href="/catalog/ram/${ram.id}" class="text-decoration-none"><h5
+                                            class="card-title">${ram.toString()}</h5></a>
+                                    <p class="card-text">${ram.info()}</p>
+                                    <h5 class="btn btn-warning">${ram.price} <spring:message
+                                            code="label.currency.byn"/></h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
+    </div>
 </div>
 
 </body>

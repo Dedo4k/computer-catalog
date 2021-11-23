@@ -6,6 +6,7 @@ public enum ExceptionMessage {
     INVALID_CONFIRM_PASSWORD("Passwords don\'t match."),
     EMPTY_FIELDS("Fields must not be empty."),
     MESSAGE_IS_EMPTY("Comment must be not empty."),
+    NOT_DOUBLE_INPUT("Input must be integer or double.")
     ;
 
     private final String message;

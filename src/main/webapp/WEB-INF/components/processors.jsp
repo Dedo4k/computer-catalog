@@ -60,12 +60,31 @@
     String[] prod = request.getParameterValues("producer");
     String[] cor = request.getParameterValues("core");
     String[] sock = request.getParameterValues("socket");
-    if (prod != null)
+    String[] minFreqs = request.getParameterValues("minFreq");
+    String[] maxFreqs = request.getParameterValues("maxFreq");
+    String minFreq = null;
+    String maxFreq = null;
+    if (prod != null) {
         pageContext.setAttribute("prod", Arrays.asList(prod));
-    if (cor != null)
+    }
+    if (cor != null) {
         pageContext.setAttribute("cor", Arrays.asList(cor));
-    if (sock != null)
+    }
+    if (sock != null) {
         pageContext.setAttribute("sock", Arrays.asList(sock));
+    }
+    if (minFreqs == null || minFreqs[0].equals("")) {
+        minFreq = "";
+    } else {
+        minFreq = minFreqs[0];
+    }
+    if (maxFreqs == null || maxFreqs[0].equals("")) {
+        maxFreq = "";
+    } else {
+        maxFreq = maxFreqs[0];
+    }
+    pageContext.setAttribute("minFreq", Arrays.asList(minFreq));
+    pageContext.setAttribute("maxFreq", Arrays.asList(maxFreq));
 %>
 <div class="container align-items-center mt-5">
     <div class="row">
@@ -132,17 +151,43 @@
                                 <c:forEach items="${sockets_set}" var="socket">
                                     <label class="form-check">
                                         <c:if test="${sock.contains(socket)}">
-                                            <input class="form-check-input" type="checkbox" name="socket" value="${socket}"
+                                            <input class="form-check-input" type="checkbox" name="socket"
+                                                   value="${socket}"
                                                    checked>
                                         </c:if>
                                         <c:if test="${!sock.contains(socket)}">
-                                            <input class="form-check-input" type="checkbox" name="socket" value="${socket}">
+                                            <input class="form-check-input" type="checkbox" name="socket"
+                                                   value="${socket}">
                                         </c:if>
                                         <span class="form-check-label">
                                                 ${socket}
                                         </span>
                                     </label>
                                 </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.processor.freq"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="minFreq" placeholder="Min" class="w-100" value="<%=minFreq%>">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="maxFreq" placeholder="Max" class="w-100" value="<%=maxFreq%>">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
                             </div>
                         </div>
                     </article>
