@@ -33,10 +33,14 @@ public class Ssd extends Component{
     @Column(name = "writing_speed", nullable = false)
     private int writingSpeed;
 
+    @Column(name = "microchip_type", nullable = false)
+    private String microchipType;
+
+    @Column(name = "recording_resource", nullable = false)
+    private int recordingResource;
+
     @Override
-    public String toString() {
-        return getProducer() + " " + getModel() + " " + capacity + "Gb";
-    }
+    public String toString() { return getProducer() + " " + getModel() + " " + capacity + "Gb"; }
 
     @Override
     public String info() {

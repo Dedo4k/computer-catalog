@@ -24,6 +24,9 @@ public class Ram extends Component{
     @Column(name = "freq", nullable = false)
     private double freq;
 
+    @Column(name = "module_set", nullable = false)
+    private int moduleSet;
+
     @Override
     public String toString() {
         return getProducer() + " " + getModel() + " " + capacity + "Gb";
