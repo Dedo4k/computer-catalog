@@ -1,3 +1,4 @@
+<%@ page import="java.util.Arrays" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,10 +26,16 @@
             <ul class="navbar-nav">
                 <li class="nav-item active"><a class="nav-link" href="<c:url value="/catalog"/>"><spring:message
                         code="label.page.catalog"/></a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=en"/>"><spring:message
-                        code="label.lang.en"/></a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=ru"/>"><spring:message
-                        code="label.lang.ru"/></a></li>
+                <li class="nav-item dropdown" id="myDropdown1">
+                    <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
+                       style="float: right"><spring:message code="label.lang"/></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<c:url value="?lang=en"/>"><spring:message
+                                code="label.lang.en"/></a></li>
+                        <li><a class="dropdown-item" href="<c:url value="?lang=ru"/>"><spring:message
+                                code="label.lang.ru"/></a></li>
+                    </ul>
+                </li>
                 <li class="nav-item dropdown" id="myDropdown">
                     <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
                        style="float: right"><sec:authentication property="principal.firstName"/> <sec:authentication
@@ -53,26 +60,195 @@
         </div>
     </div>
 </nav>
+<%
+    String[] prod = request.getParameterValues("producer");
+    String[] gpu_mdl = request.getParameterValues("gpu_model");
+    String[] gpu_prod = request.getParameterValues("gpu_producer");
+    String[] video_mem = request.getParameterValues("video_memory");
+    String[] video_mem_type = request.getParameterValues("video_memory_type");
 
+    if (prod != null) {
+        pageContext.setAttribute("prod", Arrays.asList(prod));
+    }
+    if (gpu_mdl != null) {
+        pageContext.setAttribute("gpu_mdl", Arrays.asList(gpu_mdl));
+    }
+    if (gpu_prod != null) {
+        pageContext.setAttribute("gpu_prod", Arrays.asList(gpu_prod));
+    }
+    if (video_mem != null) {
+        pageContext.setAttribute("video_mem", Arrays.asList(video_mem));
+    }
+    if (video_mem_type != null) {
+        pageContext.setAttribute("video_mem_type", Arrays.asList(video_mem_type));
+    }
+%>
 <div class="container align-items-center mt-5">
-    <c:forEach items="${graphics_cards}" var="graphics_card">
-        <div class="row">
+
+    <div class="row">
+        <div class="filter col-3">
             <div class="card m-4">
-                <div class="row">
-                    <div class="col-3">
-                        <img class="card-img-top" src="<c:url value="/img/graphics.jpg"/>" alt="processor">
+                <form action="/catalog/graphics_cards/filter" method="get">
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.component.producer"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${producers_set}" var="producer">
+                                    <label class="form-check">
+                                        <c:if test="${prod.contains(producer)}">
+                                            <input class="form-check-input" type="checkbox" name="producer"
+                                                   value="${producer}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!prod.contains(producer)}">
+                                            <input class="form-check-input" type="checkbox" name="producer"
+                                                   value="${producer}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${producer}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.graphics.gpumodel"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${gpu_models_set}" var="gpu_model">
+                                    <label class="form-check">
+                                        <c:if test="${gpu_mdl.contains(gpu_model)}">
+                                            <input class="form-check-input" type="checkbox" name="gpu_model" value="${gpu_model}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!gpu_mdl.contains(gpu_model)}">
+                                            <input class="form-check-input" type="checkbox" name="gpu_model" value="${gpu_model}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${gpu_model}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.graphics.gpuproducer"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${gpu_producers_set}" var="gpu_producer">
+                                    <label class="form-check">
+                                        <c:if test="${gpu_prod.contains(gpu_producer)}">
+                                            <input class="form-check-input" type="checkbox" name="gpu_producer"
+                                                   value="${gpu_producer}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!gpu_prod.contains(gpu_producer)}">
+                                            <input class="form-check-input" type="checkbox" name="gpu_producer"
+                                                   value="${gpu_producer}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${gpu_producer}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.graphics.videomemory"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${video_memories_set}" var="video_memory">
+                                    <label class="form-check">
+                                        <c:if test="${video_mem.contains(video_memory.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="video_memory"
+                                                   value="${video_memory}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!video_mem.contains(video_memory.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="video_memory"
+                                                   value="${video_memory}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${video_memory}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.graphics.videomemorytype"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${video_memories_types_set}" var="video_memory_type">
+                                    <label class="form-check">
+                                        <c:if test="${video_mem_type.contains(video_memory_type)}">
+                                            <input class="form-check-input" type="checkbox" name="video_memory_type"
+                                                   value="${video_memory_type}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!video_mem_type.contains(video_memory_type)}">
+                                            <input class="form-check-input" type="checkbox" name="video_memory_type"
+                                                   value="${video_memory_type}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${video_memory_type}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="container align-items-center align-middle justify-content-center">
+                        <button type="submit" class="btn btn-primary w-100 p-0 m-0">Find</button>
                     </div>
-                    <div class="col-9">
-                        <div class="card-body">
-                            <a href="/catalog/graphics_card/${graphics_card.id}" class="text-decoration-none"><h5 class="card-title">${graphics_card.toString()}</h5></a>
-                            <p class="card-text">${graphics_card.info()}</p>
-                            <h5 class="btn btn-warning">${graphics_card.price} <spring:message code="label.currency.byn"/> </h5>
+                </form>
+            </div>
+        </div>
+
+        <div class="list col-9">
+            <c:forEach items="${graphics_cards}" var="graphics_card">
+                <div class="row">
+                    <div class="card m-4">
+                        <div class="row">
+                            <div class="col-3">
+                                <img class="card-img-top" src="<c:url value="/img/graphics.jpg"/>" alt="processor">
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <a href="/catalog/graphics_card/${graphics_card.id}" class="text-decoration-none">
+                                        <h5
+                                                class="card-title">${graphics_card.toString()}</h5></a>
+                                    <p class="card-text">${graphics_card.info()}</p>
+                                    <h5 class="btn btn-warning">${graphics_card.price} <spring:message
+                                            code="label.currency.byn"/></h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
+    </div>
 </div>
 
 </body>

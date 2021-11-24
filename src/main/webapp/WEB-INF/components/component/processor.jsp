@@ -30,10 +30,16 @@
                 <li class="nav-item"><a class="nav-link"
                                                href="<c:url value="/catalog/processors"/>"><spring:message
                         code="label.components.processors"/></a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=en"/>"><spring:message
-                        code="label.lang.en"/></a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="?lang=ru"/>"><spring:message
-                        code="label.lang.ru"/></a></li>
+                <li class="nav-item dropdown" id="myDropdown1">
+                    <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
+                       style="float: right"><spring:message code="label.lang"/></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<c:url value="?lang=en"/>"><spring:message
+                                code="label.lang.en"/></a></li>
+                        <li><a class="dropdown-item" href="<c:url value="?lang=ru"/>"><spring:message
+                                code="label.lang.ru"/></a></li>
+                    </ul>
+                </li>
                 <li class="nav-item dropdown" id="myDropdown">
                     <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
                        style="float: right"><sec:authentication property="principal.firstName"/> <sec:authentication
