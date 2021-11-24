@@ -40,6 +40,6 @@ public class Hdd extends Component{
 
     @Override
     public String info() {
-        return formFactor + ", " + hddInterface + ", " + bufferSize + "Mb, " + rotationSpeed+ " " + thickness;
+        return formFactor + ", " + hddInterface + ", " + bufferSize + "Mb, " + rotationSpeed+ ", " + thickness;
     }
 }

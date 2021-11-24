@@ -18,25 +18,25 @@ public class PowerUnit extends Component {
     @Column(name = "power", nullable = false)
     private double power;
 
-    @Column(name = "certificate")
+    @Column(name = "certificate", nullable = false)
     private String certificate;
 
-    @Column(name = "pfc")
+    @Column(name = "pfc", nullable = false)
     private String pfc;
 
-    @Column(name = "efficiency")
+    @Column(name = "efficiency", nullable = false)
     private String efficiency;
 
-    @Column(name = " standard")
+    @Column(name = " standard", nullable = false)
     private String standard;
 
-    @Column(name = "height")
+    @Column(name = "height", nullable = false)
     private String height;
 
-    @Column(name = "width")
+    @Column(name = "width", nullable = false)
     private String width;
 
-    @Column(name = "depth")
+    @Column(name = "depth", nullable = false)
     private String depth;
 
     @Override
