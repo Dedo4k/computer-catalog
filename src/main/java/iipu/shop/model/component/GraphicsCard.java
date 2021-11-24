@@ -27,6 +27,18 @@ public class GraphicsCard extends Component{
     @Column(name = "video_memory_type", nullable = false)
     private String videoMemoryType;
 
+    @Column(name = "gpu_interface", nullable = false)
+    private String gpuInterface;
+
+    @Column(name = "recommented_power", nullable = false)
+    private double recommendedPower;
+
+    @Column(name = "length", nullable = false)
+    private int length;
+
+    @Column(name = "height", nullable = false)
+    private int height;
+
     @Override
     public String toString() {
         return getProducer() + " " + gpuProducer + " " + gpuModel + " " + getModel();
@@ -34,6 +46,6 @@ public class GraphicsCard extends Component{
 
     @Override
     public String info() {
-        return videoMemory + ", " + videoMemoryType;
+        return videoMemory + ", " + videoMemoryType + ", " + gpuInterface + ", " + recommendedPower + ", " + length + "/" + height;
     }
 }
