@@ -8,8 +8,8 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: validate
-    generate-ddl: false
+      ddl-auto: create-drop
+    generate-ddl: true
 
   datasource:
     url: jdbc:mysql://localhost:3306/computer_shop?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC

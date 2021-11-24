@@ -30,10 +30,10 @@ public class ComputerCase extends Component{
     @Column(name = "compatible_motherboards", nullable = false)
     private String compatible_motherboards;
 
-    @Column(name = "max_power_unit_width")
+    @Column(name = "max_power_unit_width", nullable = false)
     private int maxPowerUnitWidth;
 
-    @Column(name = "max_graphics_card_width")
+    @Column(name = "max_graphics_card_width", nullable = false)
     private int maxGraphicsCardWidth;
 
     @Column(name = "height", nullable = false)

@@ -24,21 +24,32 @@ create table computer
 
 create table computer_case
 (
-    case_type      varchar(255) not null,
-    colour         varchar(255) not null,
-    material       varchar(255) not null,
-    section_number integer      not null,
-    id             bigint       not null,
+    case_type                   varchar(255)        not null,
+    colour                      varchar(255)        not null,
+    compatible_motherboards     varchar(255)        not null,
+    depth                       integer             not null,
+    height                      integer             not null,
+    material                    varchar(255)        not null,
+    max_graphics_card_width     integer             not null,
+    max_power_unit_width        integer             not null,
+    section_number              integer             not null,
+    weight                      double precision    not null,
+    width                       integer             not null,
+    id                          bigint              not null,
     primary key (id)
 ) engine=InnoDB;
 
 create table graphics_card
 (
-    gpu_model         varchar(255) not null,
-    gpu_producer      varchar(255) not null,
-    video_memory      integer      not null,
-    video_memory_type varchar(255) not null,
-    id                bigint       not null,
+    gpu_interface       varchar(255)        not null,
+    gpu_model           varchar(255)        not null,
+    gpu_producer        varchar(255)        not null,
+    height              integer             not null,
+    length              integer             not null,
+    recommented_power   double precision    not null,
+    video_memory        integer             not null,
+    video_memory_type   varchar(255)        not null,
+    id                  bigint              not null,
     primary key (id)
 ) engine=InnoDB;
 
