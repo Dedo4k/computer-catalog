@@ -30,6 +30,9 @@ public class Hdd extends Component{
     @Column(name = "rotation_speed", nullable = false)
     private int rotationSpeed;
 
+    @Column(name = "thickness", nullable = false)
+    private int thickness;
+
     @Override
     public String toString() {
         return getProducer() + " " + getModel() + " " + capacity + "Gb";
@@ -37,6 +40,6 @@ public class Hdd extends Component{
 
     @Override
     public String info() {
-        return formFactor + ", " + hddInterface + ", " + bufferSize + "Mb, " + rotationSpeed;
+        return formFactor + ", " + hddInterface + ", " + bufferSize + "Mb, " + rotationSpeed+ ", " + thickness;
     }
 }

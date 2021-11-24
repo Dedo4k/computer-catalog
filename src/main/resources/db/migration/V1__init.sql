@@ -24,52 +24,73 @@ create table computer
 
 create table computer_case
 (
-    case_type      varchar(255) not null,
-    colour         varchar(255) not null,
-    material       varchar(255) not null,
-    section_number integer      not null,
-    id             bigint       not null,
+    case_type                   varchar(255)        not null,
+    colour                      varchar(255)        not null,
+    compatible_motherboards     varchar(255)        not null,
+    depth                       integer             not null,
+    height                      integer             not null,
+    material                    varchar(255)        not null,
+    max_graphics_card_width     integer             not null,
+    max_power_unit_width        integer             not null,
+    section_number              integer             not null,
+    weight                      double precision    not null,
+    width                       integer             not null,
+    id                          bigint              not null,
     primary key (id)
 ) engine=InnoDB;
 
 create table graphics_card
 (
-    gpu_model         varchar(255) not null,
-    gpu_producer      varchar(255) not null,
-    video_memory      integer      not null,
+    gpu_interface varchar(255) not null,
+    gpu_model varchar(255) not null,
+    gpu_producer varchar(255) not null,
+    height integer not null,
+    length integer not null,
+    recommented_power double precision not null,
+    video_memory integer not null,
     video_memory_type varchar(255) not null,
-    id                bigint       not null,
+    id bigint not null,
     primary key (id)
 ) engine=InnoDB;
 
 create table hdd
 (
-    buffer_size    integer      not null,
-    capacity       integer      not null,
-    form_factor    varchar(255) not null,
-    hdd_interface  varchar(255) not null,
-    rotation_speed integer      not null,
-    id             bigint       not null,
+    buffer_size integer not null,
+    capacity integer not null,
+    form_factor varchar(255) not null,
+    hdd_interface varchar(255) not null,
+    rotation_speed integer not null,
+    thickness integer not null,
+    id bigint not null,
     primary key (id)
 ) engine=InnoDB;
 
 create table mother_board
 (
-    pci_version  varchar(255) not null,
-    form_factor  varchar(255) not null,
-    m_two        integer      not null,
-    memory_slots integer      not null,
-    memory_type  varchar(255) not null,
-    socket       varchar(255) not null,
-    id           bigint       not null,
+    pci_version varchar(255) not null,
+    chipset integer not null,
+    form_factor varchar(255) not null,
+    length integer not null,
+    m_two integer not null,
+    memory_slots integer not null,
+    memory_type varchar(255) not null,
+    socket varchar(255) not null,
+    width integer not null,
+    id bigint not null,
     primary key (id)
 ) engine=InnoDB;
 
 create table power_unit
 (
-    certificate varchar(255),
-    power       double precision not null,
-    id          bigint           not null,
+    certificate varchar(255) not null,
+    depth varchar(255) not null,
+    efficiency varchar(255) not null,
+    height varchar(255) not null,
+    pfc varchar(255) not null,
+    power double precision not null,
+    standard varchar(255) not null,
+    width varchar(255) not null,
+    id bigint not null,
     primary key (id)
 ) engine=InnoDB;
 
