@@ -21,6 +21,24 @@ public class PowerUnit extends Component {
     @Column(name = "certificate")
     private String certificate;
 
+    @Column(name = "pfc")
+    private String pfc;
+
+    @Column(name = "efficiency")
+    private String efficiency;
+
+    @Column(name = " standard")
+    private String standard;
+
+    @Column(name = "height")
+    private String height;
+
+    @Column(name = "width")
+    private String width;
+
+    @Column(name = "depth")
+    private String depth;
+
     @Override
     public String toString() {
         return getProducer() + " " + getModel();
@@ -28,6 +46,7 @@ public class PowerUnit extends Component {
 
     @Override
     public String info() {
-        return power + ", " + certificate;
+        return power + ", " + certificate + ", " + pfc +", " +efficiency
+                +", " +standard+", " +height+", " +width+", " +depth;
     }
 }

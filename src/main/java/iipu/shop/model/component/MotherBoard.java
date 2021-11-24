@@ -33,6 +33,15 @@ public class MotherBoard extends Component{
        @Column(name = "m_two", nullable = false)
        private int mTwo;
 
+       @Column(name = "chipset", nullable = false)
+       private int chipset;
+
+       @Column(name = "length", nullable = false)
+       private int length;
+
+       @Column(name = "width", nullable = false)
+       private int width;
+
        @Override
        public String toString() {
               return getProducer() + " " + getModel();
@@ -40,6 +49,7 @@ public class MotherBoard extends Component{
 
        @Override
        public String info() {
-              return socket + ", " + formFactor + ", " + memoryType + ", " + memorySlots + ", " + PCIVersion + ", " + mTwo;
+              return socket + ", " + formFactor + ", " + memoryType + ", " + memorySlots + ", "
+                      + PCIVersion + ", " + mTwo+ ", " +chipset+ ", " +length+ ", " +width;
        }
 }
