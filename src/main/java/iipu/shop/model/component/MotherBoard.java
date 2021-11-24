@@ -34,7 +34,7 @@ public class MotherBoard extends Component {
     private int mTwo;
 
     @Column(name = "chipset", nullable = false)
-    private int chipset;
+    private String chipset;
 
     @Column(name = "length", nullable = false)
     private int length;

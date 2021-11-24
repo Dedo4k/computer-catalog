@@ -68,7 +68,7 @@ create table hdd
 create table mother_board
 (
     pci_version  varchar(255) not null,
-    chipset      integer      not null,
+    chipset      varchar(255) not null,
     form_factor  varchar(255) not null,
     length       integer      not null,
     m_two        integer      not null,
