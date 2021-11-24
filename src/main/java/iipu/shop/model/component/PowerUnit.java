@@ -46,7 +46,7 @@ public class PowerUnit extends Component {
 
     @Override
     public String info() {
-        return power + ", " + certificate + ", " + pfc +", " +efficiency
-                +", " +standard+", " +height+", " +width+", " +depth;
+        return power + ", " + certificate + ", " + pfc + ", " + efficiency
+                + ", " + standard + ", " + height + ", " + width + ", " + depth;
     }
 }

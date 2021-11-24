@@ -44,6 +44,6 @@ public class Ssd extends Component{
 
     @Override
     public String info() {
-        return formFactor + ", " + ssdInterface + ", " + controller + ", " + readingSpeed + "/" + writingSpeed;
+        return formFactor + ", " + ssdInterface + ", " + controller + ", " + readingSpeed + "/" + writingSpeed + ", " + microchipType + ", " + recordingResource;
     }
 }

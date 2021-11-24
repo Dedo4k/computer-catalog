@@ -45,6 +45,6 @@ public class Processor extends Component  {
 
     @Override
     public String info() {
-        return socket + ", " + minFreq + "/" + maxFreq + "MHz";
+        return socket + ", " + minFreq + "/" + maxFreq + "MHz" + ", " + coreNumber + ", " + crystalName + ", " + thermalPower;
     }
 }

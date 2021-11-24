@@ -34,6 +34,6 @@ public class Ram extends Component{
 
     @Override
     public String info() {
-        return type + ", " + freq + "MHz";
+        return type + ", " + freq + "MHz" + ", " + moduleSet;
     }
 }

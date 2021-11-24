@@ -5,7 +5,7 @@ create table component
     price    double precision not null,
     producer varchar(255)     not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table computer
 (
@@ -20,38 +20,38 @@ create table computer
     ssd_id           bigint,
     ram_id           bigint,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table computer_case
 (
-    case_type                   varchar(255)        not null,
-    colour                      varchar(255)        not null,
-    compatible_motherboards     varchar(255)        not null,
-    depth                       integer             not null,
-    height                      integer             not null,
-    material                    varchar(255)        not null,
-    max_graphics_card_width     integer             not null,
-    max_power_unit_width        integer             not null,
-    section_number              integer             not null,
-    weight                      double precision    not null,
-    width                       integer             not null,
-    id                          bigint              not null,
+    case_type               varchar(255)     not null,
+    colour                  varchar(255)     not null,
+    compatible_motherboards varchar(255)     not null,
+    depth                   integer          not null,
+    height                  integer          not null,
+    material                varchar(255)     not null,
+    max_graphics_card_width integer          not null,
+    max_power_unit_width    integer          not null,
+    section_number          integer          not null,
+    weight                  double precision not null,
+    width                   integer          not null,
+    id                      bigint           not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table graphics_card
 (
-    gpu_interface       varchar(255)        not null,
-    gpu_model           varchar(255)        not null,
-    gpu_producer        varchar(255)        not null,
-    height              integer             not null,
-    length              integer             not null,
-    recommented_power   double precision    not null,
-    video_memory        integer             not null,
-    video_memory_type   varchar(255)        not null,
-    id                  bigint              not null,
+    gpu_interface     varchar(255)     not null,
+    gpu_model         varchar(255)     not null,
+    gpu_producer      varchar(255)     not null,
+    height            integer          not null,
+    length            integer          not null,
+    recommented_power double precision not null,
+    video_memory      integer          not null,
+    video_memory_type varchar(255)     not null,
+    id                bigint           not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table hdd
 (
@@ -60,39 +60,52 @@ create table hdd
     form_factor    varchar(255) not null,
     hdd_interface  varchar(255) not null,
     rotation_speed integer      not null,
+    thickness      integer      not null,
     id             bigint       not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table mother_board
 (
     pci_version  varchar(255) not null,
+    chipset      integer      not null,
     form_factor  varchar(255) not null,
+    length       integer      not null,
     m_two        integer      not null,
     memory_slots integer      not null,
     memory_type  varchar(255) not null,
     socket       varchar(255) not null,
+    width        integer      not null,
     id           bigint       not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table power_unit
 (
-    certificate varchar(255),
+    certificate varchar(255)     not null,
+    depth       varchar(255)     not null,
+    efficiency  varchar(255)     not null,
+    height      varchar(255)     not null,
+    pfc         varchar(255)     not null,
     power       double precision not null,
+    standard    varchar(255)     not null,
+    width       varchar(255)     not null,
     id          bigint           not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table processor
 (
-    core     varchar(255)     not null,
-    max_freq double precision not null,
-    min_freq double precision not null,
-    socket   varchar(255)     not null,
-    id       bigint           not null,
+    core          varchar(255)     not null,
+    core_number   integer          not null,
+    crystal_name  varchar(255)     not null,
+    max_freq      double precision not null,
+    min_freq      double precision not null,
+    socket        varchar(255)     not null,
+    thermal_power integer          not null,
+    id            bigint           not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table review
 (
@@ -101,19 +114,21 @@ create table review
     component_id bigint,
     `user_id`    bigint,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table ssd
 (
-    capacity      integer      not null,
-    controller    varchar(255) not null,
-    form_factor   varchar(255) not null,
-    reading_speed integer      not null,
-    ssd_interface varchar(255) not null,
-    writing_speed integer      not null,
-    id            bigint       not null,
+    capacity           integer      not null,
+    controller         varchar(255) not null,
+    form_factor        varchar(255) not null,
+    microchip_type     varchar(255) not null,
+    reading_speed      integer      not null,
+    recording_resource integer      not null,
+    ssd_interface      varchar(255) not null,
+    writing_speed      integer      not null,
+    id                 bigint       not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table `user`
 (
@@ -125,16 +140,17 @@ create table `user`
     password   varchar(255) not null,
     role       varchar(255),
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table ram
 (
-    capacity integer          not null,
-    freq     double precision not null,
-    type     varchar(255)     not null,
-    id       bigint           not null,
+    capacity   integer          not null,
+    freq       double precision not null,
+    module_set integer          not null,
+    type       varchar(255)     not null,
+    id         bigint           not null,
     primary key (id)
-) engine=InnoDB;
+) engine = InnoDB;
 
 create table component_source
 (
@@ -185,4 +201,3 @@ alter table ssd
     add constraint FKdj06kge05plpeoskwatby6htf foreign key (id) references component (id);
 alter table ram
     add constraint FKkagsjjneygn75kia2fvx3b0dc foreign key (id) references component (id);
-
