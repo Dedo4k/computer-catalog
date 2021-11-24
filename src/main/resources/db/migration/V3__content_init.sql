@@ -334,13 +334,13 @@ insert into ssd (capacity, controller, form_factor, reading_speed, ssd_interface
        values (1000, 'Samsung MKX', '2.5"', 560, 'SATA 3.0', 530, 25);
 
 insert into component_source (id, component_id, name, link)
-values (71, 25, 'shop.by', 'https://shop.by/zhestkie_diski/samsung_870_qvo_mz_77q1t0bw/#shop');
+       values (71, 25, 'shop.by', 'https://shop.by/zhestkie_diski/samsung_870_qvo_mz_77q1t0bw/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (72, 25, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/tvyerdotelnye-nakopiteli-ssd/ssd-nakopitel-2-5-samsung-870-qvo-1000gb-mz-77q1t0b/');
+       values (72, 25, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/tvyerdotelnye-nakopiteli-ssd/ssd-nakopitel-2-5-samsung-870-qvo-1000gb-mz-77q1t0b/');
 
 insert into component_source (id, component_id, name, link)
-values (73, 25, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/Zhestkie_diski_SSD/id-221198/');
+       values (73, 25, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/Zhestkie_diski_SSD/id-221198/');
 
 insert into component (id, model, producer, price)
        values (26, 'L200', 'Toshiba', 107.63);
@@ -348,13 +348,13 @@ insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interfa
        values (128, 1000, '2.5"', 5400, 'SATA 3.0 (6Gbps)', 26);
 
 insert into component_source (id, component_id, name, link)
-values (74, 26, 'shop.by', 'hhttps://shop.by/zhestkie_diski/toshiba_l200_hdwl110uzsva/#shop');
+       values (74, 26, 'shop.by', 'hhttps://shop.by/zhestkie_diski/toshiba_l200_hdwl110uzsva/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (75, 26, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-toshiba-l200-slim-1000gb-hdwl110uzsva/');
+       values (75, 26, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-toshiba-l200-slim-1000gb-hdwl110uzsva/');
 
 insert into component_source (id, component_id, name, link)
-values (76, 26, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/zh_stkie_diski/id-129658/');
+       values (76, 26, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/zh_stkie_diski/id-129658/');
 
 insert into component (id, model, producer, price)
        values (27, 'Red Plus', 'WD', 560.00);
@@ -362,13 +362,13 @@ insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interfa
        values (256, 8000, '3.5"', 7200, 'SATA 3.0 (6Gbps)', 27);
 
 insert into component_source (id, component_id, name, link)
-values (77, 27, 'shop.by', 'https://shop.by/zhestkie_diski/western_digital_red_plus_8tb_wd80efbx/#shop');
+       values (77, 27, 'shop.by', 'https://shop.by/zhestkie_diski/western_digital_red_plus_8tb_wd80efbx/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (78, 27, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-western-digital-red-8000gb-wd80efbx/');
+       values (78, 27, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-western-digital-red-8000gb-wd80efbx/');
 
 insert into component_source (id, component_id, name, link)
-values (79, 27, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/zh_stkie_diski/zhestkiy-disk-8tb-western-digital-red-wd80efbx/');
+       values (79, 27, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/zh_stkie_diski/zhestkiy-disk-8tb-western-digital-red-wd80efbx/');
 
 insert into component (id, model, producer, price)
        values (28, 'Purple', 'WD', 302.41);
@@ -376,13 +376,13 @@ insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interfa
        values (64, 4000, '3.5"', 5400, 'SATA 3.0 (6Gbps)', 28);
 
 insert into component_source (id, component_id, name, link)
-values (80, 28, 'shop.by', 'https://shop.by/zhestkie_diski/western_digital_purple_4tb_wd40purx/#shop');
+       values (80, 28, 'shop.by', 'https://shop.by/zhestkie_diski/western_digital_purple_4tb_wd40purx/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (81, 28, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-western-digital-purple-4000gb-wd40purx/');
+       values (81, 28, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-western-digital-purple-4000gb-wd40purx/');
 
 insert into component_source (id, component_id, name, link)
-values (82, 28, 'uni.by', 'https://uni.by/shop/w/Item/18359/');
+       values (82, 28, 'uni.by', 'https://uni.by/shop/w/Item/18359/');
 
 insert into component (id, model, producer, price)
        values (29, 'IronWolf', 'Seagate', 445.00);
@@ -390,13 +390,13 @@ insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interfa
        values (256, 8000, '3.5"', 7200, 'SATA 3.0 (6Gbps)', 29);
 
 insert into component_source (id, component_id, name, link)
-values (83, 29, 'shop.by', 'https://shop.by/zhestkie_diski/seagate_ironwolf_st1000vn002/#shop');
+       values (83, 29, 'shop.by', 'https://shop.by/zhestkie_diski/seagate_ironwolf_st1000vn002/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (84, 29, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-dlya-servera-3-5-sata-seagate-ironwolf-nas-1tb-st1000vn002/');
+       values (84, 29, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-dlya-servera-3-5-sata-seagate-ironwolf-nas-1tb-st1000vn002/');
 
 insert into component_source (id, component_id, name, link)
-values (85, 29, 'shop.by', 'https://shop.by/zhestkie_diski/seagate_ironwolf_st1000vn002/#shop');
+       values (85, 29, 'shop.by', 'https://shop.by/zhestkie_diski/seagate_ironwolf_st1000vn002/#shop');
 
 insert into component (id, model, producer, price)
        values (30, 'Exos X16', 'Seagate', 967.12);
@@ -404,13 +404,13 @@ insert into hdd (buffer_size, capacity, form_factor, rotation_speed, hdd_interfa
        values (256, 16000, '3.5"', 7200, 'SATA 3.0 (6Gbps)', 30);
 
 insert into component_source (id, component_id, name, link)
-values (86, 30, 'shop.by', 'https://shop.by/zhestkie_diski/seagate_exos_x16_12tb_st12000nm001g/#shop');
+       values (86, 30, 'shop.by', 'https://shop.by/zhestkie_diski/seagate_exos_x16_12tb_st12000nm001g/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (87, 30, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-seagate-exos-x16-512e-12tb-st12000nm001g/');
+       values (87, 30, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/zhyestkie-diski/zhestkiy-disk-seagate-exos-x16-512e-12tb-st12000nm001g/');
 
 insert into component_source (id, component_id, name, link)
-values (88, 30, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/zh_stkie_diski/zhestkiy-disk-seagate-exos-x16-12tb-st12000nm001g/');
+       values (88, 30, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/zh_stkie_diski/zhestkiy-disk-seagate-exos-x16-12tb-st12000nm001g/');
 
 insert into component (id, model, producer, price)
        values (31, 'FURY Beast', 'Kingston', 218.40);
@@ -418,10 +418,10 @@ insert into ram (capacity, freq, type, id)
        values (16, 3200.0, 'DDR4 DIMM', 31);
 
 insert into component_source (id, component_id, name, link)
-values (89, 31, 'shop.by', 'https://shop.by/pamyat/kingston_fury_beast_2x16gb_ddr5_pc5_38400_kf548c38bbk2_32/#shop');
+       values (89, 31, 'shop.by', 'https://shop.by/pamyat/kingston_fury_beast_2x16gb_ddr5_pc5_38400_kf548c38bbk2_32/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (90, 31, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/kingston-fury-beast-2x16gb-ddr5-pc5-38400-kf548c38bbk2-32/');
+       values (90, 31, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/kingston-fury-beast-2x16gb-ddr5-pc5-38400-kf548c38bbk2-32/');
 
 insert into component (id, model, producer, price)
        values (32, 'Ballistix', 'Crucial', 238.0);
@@ -429,13 +429,13 @@ insert into ram (capacity, freq, type, id)
        values (16, 3200.0, 'DDR4 DIMM', 32);
 
 insert into component_source (id, component_id, name, link)
-values (91, 32, 'shop.by', 'https://shop.by/pamyat/crucial_ballistix_sport_lt_bls4g4d26bfsb/#shop');
+       values (91, 32, 'shop.by', 'https://shop.by/pamyat/crucial_ballistix_sport_lt_bls4g4d26bfsb/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (92, 32, 'marchenko.by', 'https://marchenko.by/p167841603-operativnaya-pamyat-crucial.html');
+       values (92, 32, 'marchenko.by', 'https://marchenko.by/p167841603-operativnaya-pamyat-crucial.html');
 
 insert into component_source (id, component_id, name, link)
-values (93, 32, 'm-pk.by', 'https://www.m-pk.by/dram/crucial/bls4g4d26bfsb?utm_source=shopby&utm_medium=cpc&utm_campaign=shopmanager_by&utm_term=1290625');
+       values (93, 32, 'm-pk.by', 'https://www.m-pk.by/dram/crucial/bls4g4d26bfsb?utm_source=shopby&utm_medium=cpc&utm_campaign=shopmanager_by&utm_term=1290625');
 
 insert into component (id, model, producer, price)
        values (33, 'Fury', 'HyperX', 280.58);
@@ -443,16 +443,16 @@ insert into ram (capacity, freq, type, id)
        values (16, 3200.0, 'DDR4 DIMM', 33);
 
 insert into component_source (id, component_id, name, link)
-values (94, 33, 'shop.by', 'https://shop.by/pamyat/hyperx_fury_rgb_hx426c16fb3a_16/#shop');
+       values (94, 33, 'shop.by', 'https://shop.by/pamyat/hyperx_fury_rgb_hx426c16fb3a_16/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (94, 33, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/operativnaya-pamyat/operativnaya-pamyat-ddr4-2666-16gb-hyperx-fury-hx426c16fb3a-16/');
+       values (94, 33, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/operativnaya-pamyat/operativnaya-pamyat-ddr4-2666-16gb-hyperx-fury-hx426c16fb3a-16/');
 
 insert into component_source (id, component_id, name, link)
-values (95, 33, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/hyperx-fury-rgb-16gb-ddr4-pc4-21300-hx426c16fb3a16/');
+       values (95, 33, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/hyperx-fury-rgb-16gb-ddr4-pc4-21300-hx426c16fb3a16/');
 
 insert into component_source (id, component_id, name, link)
-values (96, 33, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/moduli_pamyati/id-215593/');
+       values (96, 33, 'itmarket.by', 'https://itmarket.by/komplektuyuschie-i-aksessuary/Komplektuyuschie/moduli_pamyati/id-215593/');
 
 insert into component (id, model, producer, price)
        values (34, 'Viper', 'Patriot', 201.73);
@@ -460,13 +460,13 @@ insert into ram (capacity, freq, type, id)
        values (16, 1600.0, 'DDR3 DIMM', 34);
 
 insert into component_source (id, component_id, name, link)
-values (97, 34, 'shop.by', 'https://shop.by/pamyat/patriot_viper_steel_pvs416g300c6k/#shop');
+       values (97, 34, 'shop.by', 'https://shop.by/pamyat/patriot_viper_steel_pvs416g300c6k/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (98, 34, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/patriot-viper-steel-series-2x8gb-ddr4-pc4-24000-pvs416g300c6k/');
+       values (98, 34, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/patriot-viper-steel-series-2x8gb-ddr4-pc4-24000-pvs416g300c6k/');
 
 insert into component_source (id, component_id, name, link)
-values (99, 34, '234.by', 'https://234.by/operativnaja-pamjat-patriot-viper-steel-series-2x8gb-ddr4-pc4-24000-pvs416g300c6k.html?utm_source=shop_by');
+       values (99, 34, '234.by', 'https://234.by/operativnaja-pamjat-patriot-viper-steel-series-2x8gb-ddr4-pc4-24000-pvs416g300c6k.html?utm_source=shop_by');
 
 insert into component (id, model, producer, price)
        values (35, 'Aegis', 'G.Skill', 110.66);
@@ -474,13 +474,13 @@ insert into ram (capacity, freq, type, id)
        values (8, 3200.0, 'DDR4 DIMM', 35);
 
 insert into component_source (id, component_id, name, link)
-values (100, 35, 'shop.by', 'https://shop.by/pamyat/g_skill_aegis_f4_3200c16d_16gis/#shop');
+       values (100, 35, 'shop.by', 'https://shop.by/pamyat/g_skill_aegis_f4_3200c16d_16gis/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (101, 35, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/operativnaya-pamyat/operativnaya-pamyat-ddr4-3200-16gb-2x8gb-g-skill-aegis-f4-3200c16d-16gis/');
+       values (101, 35, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/operativnaya-pamyat/operativnaya-pamyat-ddr4-3200-16gb-2x8gb-g-skill-aegis-f4-3200c16d-16gis/');
 
 insert into component_source (id, component_id, name, link)
-values (102, 35, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/g-skill-aegis-2x8gb-ddr4-pc4-25600-f4-3200c16d-16gis/');
+       values (102, 35, 'amd.by', 'https://www.amd.by/ram-operativnaya-pamyat/g-skill-aegis-2x8gb-ddr4-pc4-25600-f4-3200c16d-16gis/');
 
 insert into component (id, model, producer, price)
        values (36, 'Proton', 'Chieftec', 201.00);
@@ -488,13 +488,13 @@ insert into power_unit (certificate, power, id)
        values ('bronze', 850.0, 36);
 
 insert into component_source (id, component_id, name, link)
-values (103, 36, 'shop.by', 'https://shop.by/kompyuternye_bloki_pitaniya/chieftec_proton_bdf_750c/#shop');
+       values (103, 36, 'shop.by', 'https://shop.by/kompyuternye_bloki_pitaniya/chieftec_proton_bdf_750c/#shop');
 
 insert into component_source (id, component_id, name, link)
-values (104, 36, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/bloki-pitaniya/blok-pitaniya-chieftec-750w-bdf-750c/');
+       values (104, 36, 'socket.by', 'https://www.socket.by/kompyutery/komplektuyushchie-dlya-pk/bloki-pitaniya/blok-pitaniya-chieftec-750w-bdf-750c/');
 
 insert into component_source (id, component_id, name, link)
-values (105, 36, '234.by', 'https://234.by/chieftec-proton-bdf-750c.html?utm_source=shop_by');
+       values (105, 36, '234.by', 'https://234.by/chieftec-proton-bdf-750c.html?utm_source=shop_by');
 
 insert into component (id, model, producer, price)
        values (37, 'GigaMax', 'Zalman', 166.23);
