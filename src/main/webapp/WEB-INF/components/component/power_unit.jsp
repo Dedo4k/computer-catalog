@@ -73,7 +73,7 @@
         </div>
         <div class="col-8">
             <h2>${power_unit.producer} ${power_unit.model}</h2>
-            <p>${power_unit.certificate}, ${power_unit.power}</p>
+            <p>${power_unit.certificate}, ${power_unit.power}, ${power_unit.efficiency}, ${power_unit.pfc}, ${power_unit.standard}, ${power_unit.depth}, ${power_unit.height}, ${power_unit.width}</p>
             <h5 class="btn btn-warning">${power_unit.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -95,6 +95,30 @@
         <tr>
             <td><spring:message code="label.powerunit.power"/></td>
             <td>${power_unit.power}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.powerunit.efficiency"/></td>
+            <td>${power_unit.efficiency}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.powerunit.pfc"/></td>
+            <td>${power_unit.pfc}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.powerunit.standard"/></td>
+            <td>${power_unit.standard}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.powerunit.depth"/></td>
+            <td>${power_unit.depth}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.powerunit.height"/></td>
+            <td>${power_unit.height}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.powerunit.width"/></td>
+            <td>${power_unit.width}</td>
         </tr>
         </tbody>
     </table>

@@ -72,7 +72,7 @@
         </div>
         <div class="col-8">
             <h2>${ccase.producer} ${ccase.model}</h2>
-            <p>${ccase.caseType}, ${ccase.colour}, ${ccase.material}, ${ccase.sectionNumber}</p>
+            <p>${ccase.caseType}, ${ccase.colour}, ${ccase.material}, ${ccase.sectionNumber}, ${ccase.maxPowerUnitWidth} ,${ccase.maxGraphicsCardWidth}</p>
             <h5 class="btn btn-warning">${ccase.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -92,6 +92,10 @@
             <td>${ccase.caseType}</td>
         </tr>
         <tr>
+            <td><spring:message code="label.case.commother"/></td>
+            <td>${ccase.compatible_motherboards}</td>
+        </tr>
+        <tr>
             <td><spring:message code="label.case.colour"/></td>
             <td>${ccase.colour}</td>
         </tr>
@@ -102,6 +106,27 @@
         <tr>
             <td><spring:message code="label.case.sectionnumber"/></td>
             <td>${ccase.sectionNumber}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.case.maxpowerunitwidth"/></td>
+            <td>${ccase.maxPowerUnitWidth}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.case.maxgraphicscardwidth"/></td>
+            <td>${ccase.maxGraphicsCardWidth}</td>
+        </tr>
+
+        <tr>
+            <td><spring:message code="label.case.height"/></td>
+            <td>${ccase.height}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.case.width"/></td>
+            <td>${ccase.width}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.case.weight"/></td>
+            <td>${ccase.weight}</td>
         </tr>
         </tbody>
     </table>

@@ -73,7 +73,7 @@
         </div>
         <div class="col-8">
             <h2>${hdd.producer} ${hdd.model}</h2>
-            <p>${hdd.bufferSize}, ${hdd.capacity}, ${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed}</p>
+            <p>${hdd.bufferSize}, ${hdd.capacity}, ${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed}, ${hdd.thickness}</p>
             <h5 class="btn btn-warning">${hdd.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -107,6 +107,10 @@
         <tr>
             <td><spring:message code="label.hdd.rotationspeed"/></td>
             <td>${hdd.rotationSpeed}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.hdd.thickness"/></td>
+            <td>${hdd.thickness}</td>
         </tr>
         </tbody>
     </table>
