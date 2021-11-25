@@ -66,6 +66,7 @@
     String[] cap = request.getParameterValues("capacity");
     String[] minFreqs = request.getParameterValues("minFreq");
     String[] maxFreqs = request.getParameterValues("maxFreq");
+    String[] modl = request.getParameterValues("module_set");
     String minFreq = null;
     String maxFreq = null;
     if (prod != null) {
@@ -76,6 +77,9 @@
     }
     if (cap != null) {
         pageContext.setAttribute("cap", Arrays.asList(cap));
+    }
+    if (modl != null) {
+        pageContext.setAttribute("modl", Arrays.asList(modl));
     }
     if (minFreqs == null || minFreqs[0].equals("")) {
         minFreq = "";
@@ -167,6 +171,32 @@
                                         </c:if>
                                         <span class="form-check-label">
                                                 ${capacity}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ram.modules"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${module_set}" var="module">
+                                    <label class="form-check">
+                                        <c:if test="${modl.contains(module.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="module_set"
+                                                   value="${module}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!modl.contains(module.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="module_set"
+                                                   value="${module}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${module}
                                         </span>
                                     </label>
                                 </c:forEach>

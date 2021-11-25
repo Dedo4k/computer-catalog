@@ -70,6 +70,10 @@
     String[] maxRSs = request.getParameterValues("max_rotation_speed");
     String minRS = null;
     String maxRS = null;
+    String[] minThs = request.getParameterValues("min_thickness");
+    String[] maxThs = request.getParameterValues("max_thickness");
+    String minTh = null;
+    String maxTh = null;
     if (prod != null) {
         pageContext.setAttribute("prod", Arrays.asList(prod));
     }
@@ -97,6 +101,18 @@
     }
     pageContext.setAttribute("minRS", minRS);
     pageContext.setAttribute("maxRS", maxRS);
+    if (minThs == null || minThs[0].equals("")) {
+        minTh = "";
+    } else {
+        minTh = minThs[0];
+    }
+    if (maxThs == null || maxThs[0].equals("")) {
+        maxTh = "";
+    } else {
+        maxTh = maxThs[0];
+    }
+    pageContext.setAttribute("minTh", minTh);
+    pageContext.setAttribute("maxTh", maxTh);
 %>
 <div class="container align-items-center mt-5">
     <div class="row">
@@ -249,6 +265,30 @@
                                     </span>
                                     <label class="col-5">
                                         <input type="text" name="max_rotation_speed" placeholder="Max" class="w-100" value="${maxRS}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.hdd.thickness"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_thickness" placeholder="Min" class="w-100" value="${minTh}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_thickness" placeholder="Max" class="w-100" value="${maxTh}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>

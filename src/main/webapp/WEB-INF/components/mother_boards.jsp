@@ -67,7 +67,16 @@
     String[] mem_slt = request.getParameterValues("memory_slots");
     String[] video_mem_type = request.getParameterValues("video_memory_type");
     String[] m_tw = request.getParameterValues("m_two");
-
+    String[] pci_ver = request.getParameterValues("pci_version");
+    String[] chip = request.getParameterValues("chipset");
+    String[] minLengths = request.getParameterValues("min_length");
+    String[] maxLengths = request.getParameterValues("max_length");
+    String minLength = null;
+    String maxLength = null;
+    String[] minWidths = request.getParameterValues("min_width");
+    String[] maxWidths = request.getParameterValues("max_width");
+    String minWidth = null;
+    String maxWidth = null;
     if (prod != null) {
         pageContext.setAttribute("prod", Arrays.asList(prod));
     }
@@ -86,6 +95,36 @@
     if (m_tw != null) {
         pageContext.setAttribute("m_tw", Arrays.asList(m_tw));
     }
+    if (pci_ver != null) {
+        pageContext.setAttribute("pci_ver", Arrays.asList(pci_ver));
+    }
+    if (chip != null) {
+        pageContext.setAttribute("chip", Arrays.asList(chip));
+    }
+    if (minLengths == null || minLengths[0].equals("")) {
+        minLength = "";
+    } else {
+        minLength = minLengths[0];
+    }
+    if (maxLengths == null || maxLengths[0].equals("")) {
+        maxLength = "";
+    } else {
+        maxLength = maxLengths[0];
+    }
+    pageContext.setAttribute("minLength", minLength);
+    pageContext.setAttribute("maxLength", maxLength);
+    if (minWidths == null || minWidths[0].equals("")) {
+        minWidth = "";
+    } else {
+        minWidth = minWidths[0];
+    }
+    if (maxWidths == null || maxWidths[0].equals("")) {
+        maxWidth = "";
+    } else {
+        maxWidth = maxWidths[0];
+    }
+    pageContext.setAttribute("minWidth", minWidth);
+    pageContext.setAttribute("maxWidth", maxWidth);
 %>
 <div class="container align-items-center mt-5">
     <div class="row">
@@ -173,6 +212,58 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
+                            <h6 class="title"><spring:message code="label.motherboard.pciversion"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${pci_versions_set}" var="pci_version">
+                                    <label class="form-check">
+                                        <c:if test="${pci_ver.contains(pci_version)}">
+                                            <input class="form-check-input" type="checkbox" name="pci_version"
+                                                   value="${pci_version}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!pci_ver.contains(pci_version)}">
+                                            <input class="form-check-input" type="checkbox" name="pci_version"
+                                                   value="${pci_version}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${pci_version}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.motherboard.chipset"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${chipsets_set}" var="chipset">
+                                    <label class="form-check">
+                                        <c:if test="${chip.contains(chipset)}">
+                                            <input class="form-check-input" type="checkbox" name="chipset"
+                                                   value="${chipset}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!chip.contains(chipset)}">
+                                            <input class="form-check-input" type="checkbox" name="chipset"
+                                                   value="${chipset}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${chipset}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
                             <h6 class="title"><spring:message code="label.motherboard.memorytype"/></h6>
                         </header>
                         <div class="filter-content">
@@ -245,6 +336,54 @@
                                         </span>
                                     </label>
                                 </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.motherboard.length"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_length" placeholder="Min" class="w-100" value="${minLength}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_length" placeholder="Max" class="w-100" value="${maxLength}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.motherboard.width"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_width" placeholder="Min" class="w-100" value="${minWidth}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_width" placeholder="Max" class="w-100" value="${maxWidth}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
                             </div>
                         </div>
                     </article>

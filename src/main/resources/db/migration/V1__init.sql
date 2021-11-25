@@ -83,13 +83,13 @@ create table mother_board
 create table power_unit
 (
     certificate varchar(255)     not null,
-    depth       varchar(255)     not null,
-    efficiency  varchar(255)     not null,
-    height      varchar(255)     not null,
+    depth       double precision not null,
+    efficiency  double precision not null,
+    height      double precision not null,
     pfc         varchar(255)     not null,
     power       double precision not null,
     standard    varchar(255)     not null,
-    width       varchar(255)     not null,
+    width       double precision not null,
     id          bigint           not null,
     primary key (id)
 ) engine = InnoDB;

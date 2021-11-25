@@ -25,19 +25,19 @@ public class PowerUnit extends Component {
     private String pfc;
 
     @Column(name = "efficiency", nullable = false)
-    private String efficiency;
+    private double efficiency;
 
     @Column(name = " standard", nullable = false)
     private String standard;
 
     @Column(name = "height", nullable = false)
-    private String height;
+    private double height;
 
     @Column(name = "width", nullable = false)
-    private String width;
+    private double width;
 
     @Column(name = "depth", nullable = false)
-    private String depth;
+    private double depth;
 
     @Override
     public String toString() {

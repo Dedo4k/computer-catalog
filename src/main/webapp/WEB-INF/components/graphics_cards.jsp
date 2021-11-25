@@ -65,8 +65,16 @@
     String[] gpu_mdl = request.getParameterValues("gpu_model");
     String[] gpu_prod = request.getParameterValues("gpu_producer");
     String[] video_mem = request.getParameterValues("video_memory");
+    String[] gpu_int = request.getParameterValues("gpu_interface");
     String[] video_mem_type = request.getParameterValues("video_memory_type");
-
+    String[] minLengths = request.getParameterValues("min_length");
+    String[] maxLengths = request.getParameterValues("max_length");
+    String minLength = null;
+    String maxLength = null;
+    String[] minHeights = request.getParameterValues("min_height");
+    String[] maxHeights = request.getParameterValues("max_height");
+    String minHeight = null;
+    String maxHeight = null;
     if (prod != null) {
         pageContext.setAttribute("prod", Arrays.asList(prod));
     }
@@ -76,12 +84,39 @@
     if (gpu_prod != null) {
         pageContext.setAttribute("gpu_prod", Arrays.asList(gpu_prod));
     }
+    if (gpu_int != null) {
+        pageContext.setAttribute("gpu_int", Arrays.asList(gpu_int));
+    }
     if (video_mem != null) {
         pageContext.setAttribute("video_mem", Arrays.asList(video_mem));
     }
     if (video_mem_type != null) {
         pageContext.setAttribute("video_mem_type", Arrays.asList(video_mem_type));
     }
+    if (minLengths == null || minLengths[0].equals("")) {
+        minLength = "";
+    } else {
+        minLength = minLengths[0];
+    }
+    if (maxLengths == null || maxLengths[0].equals("")) {
+        maxLength = "";
+    } else {
+        maxLength = maxLengths[0];
+    }
+    pageContext.setAttribute("minLength", minLength);
+    pageContext.setAttribute("maxLength", maxLength);
+    if (minHeights == null || minHeights[0].equals("")) {
+        minHeight = "";
+    } else {
+        minHeight = minHeights[0];
+    }
+    if (maxHeights == null || maxHeights[0].equals("")) {
+        maxHeight = "";
+    } else {
+        maxHeight = maxHeights[0];
+    }
+    pageContext.setAttribute("minHeight", minHeight);
+    pageContext.setAttribute("maxHeight", maxHeight);
 %>
 <div class="container align-items-center mt-5">
 
@@ -168,6 +203,32 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
+                            <h6 class="title"><spring:message code="label.graphics.gpuinterface"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${gpu_interfaces_set}" var="gpu_interface">
+                                    <label class="form-check">
+                                        <c:if test="${gpu_int.contains(gpu_interface)}">
+                                            <input class="form-check-input" type="checkbox" name="gpu_interface"
+                                                   value="${gpu_interface}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!gpu_int.contains(gpu_interface)}">
+                                            <input class="form-check-input" type="checkbox" name="gpu_interface"
+                                                   value="${gpu_interface}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${gpu_interface}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
                             <h6 class="title"><spring:message code="label.graphics.videomemory"/></h6>
                         </header>
                         <div class="filter-content">
@@ -214,6 +275,54 @@
                                         </span>
                                     </label>
                                 </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.graphics.length"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_length" placeholder="Min" class="w-100" value="${minLength}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_length" placeholder="Max" class="w-100" value="${maxLength}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.graphics.height"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_height" placeholder="Min" class="w-100" value="${minHeight}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_height" placeholder="Max" class="w-100" value="${maxHeight}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
                             </div>
                         </div>
                     </article>
