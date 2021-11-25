@@ -112,6 +112,14 @@
             <td><spring:message code="label.ssd.interface"/></td>
             <td>${ssd.ssdInterface}</td>
         </tr>
+        <tr>
+            <td><spring:message code="label.ssd.microchip"/></td>
+            <td>${ssd.microchipType}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.ssd.recsource"/></td>
+            <td>${ssd.recordingResource}</td>
+        </tr>
         </tbody>
     </table>
 
