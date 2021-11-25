@@ -97,6 +97,10 @@
             <td>${mother_board.formFactor}</td>
         </tr>
         <tr>
+            <td><spring:message code="label.motherboard.chipset"/></td>
+            <td>${mother_board.chipset}</td>
+        </tr>
+        <tr>
             <td><spring:message code="label.motherboard.mtwo"/></td>
             <td>${mother_board.MTwo}</td>
         </tr>

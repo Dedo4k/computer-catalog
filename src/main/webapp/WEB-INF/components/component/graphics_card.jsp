@@ -97,12 +97,28 @@
             <td>${graphics_card.gpuModel}</td>
         </tr>
         <tr>
+            <td><spring:message code="label.graphics.gpuinterface"/></td>
+            <td>${graphics_card.gpuInterface}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.graphics.recpower"/></td>
+            <td>${graphics_card.recommendedPower}</td>
+        </tr>
+        <tr>
             <td><spring:message code="label.graphics.videomemory"/></td>
             <td>${graphics_card.videoMemory}</td>
         </tr>
         <tr>
             <td><spring:message code="label.graphics.videomemorytype"/></td>
             <td>${graphics_card.videoMemoryType}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.graphics.height"/></td>
+            <td>${graphics_card.height}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.graphics.length"/></td>
+            <td>${graphics_card.length}</td>
         </tr>
         </tbody>
     </table>

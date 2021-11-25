@@ -72,7 +72,7 @@
         </div>
         <div class="col-8">
             <h2>${processor.producer} ${processor.core}-${processor.model}</h2>
-            <p>${processor.socket}, ${processor.minFreq}/${processor.maxFreq}</p>
+            <p>${processor.core}, ${processor.crystalName}, ${processor.coreNumber}, ${processor.socket}, ${processor.thermalPower}, ${processor.minFreq}/${processor.maxFreq}</p>
             <h5 class="btn btn-warning">${processor.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -89,8 +89,20 @@
             <td>${processor.core}</td>
         </tr>
         <tr>
+            <td><spring:message code="label.processor.corenum"/></td>
+            <td>${processor.coreNumber}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.processor.crystalname"/></td>
+            <td>${processor.crystalName}</td>
+        </tr>
+        <tr>
             <td><spring:message code="label.processor.socket"/></td>
             <td>${processor.socket}</td>
+        </tr>
+        <tr>
+            <td><spring:message code="label.processor.thermalpower"/></td>
+            <td>${processor.thermalPower}</td>
         </tr>
         <tr>
             <td><spring:message code="label.processor.minfreq"/></td>
