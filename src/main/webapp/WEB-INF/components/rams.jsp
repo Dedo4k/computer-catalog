@@ -247,7 +247,9 @@
                                 <div class="card-body">
                                     <a href="/catalog/ram/${ram.id}" class="text-decoration-none"><h5
                                             class="card-title">${ram.toString()}</h5></a>
-                                    <p class="card-text">${ram.info()}</p>
+                                    <p class="card-text"><spring:message code="label.ram.capacity"/> : ${ram.capacity} <spring:message code="label.values.gbait"/>,
+                                        <spring:message code="label.ram.freq"/> : ${ram.freq} <spring:message code="label.values.mherz"/>, <spring:message code="label.ram.modules"/> : ${ram.moduleSet},
+                                        <spring:message code="label.ram.type"/> : ${ram.type}</p>
                                     <h5 class="btn btn-warning">${ram.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>
