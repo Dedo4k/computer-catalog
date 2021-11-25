@@ -73,7 +73,7 @@
         </div>
         <div class="col-8">
             <h2>${graphics_card.producer} ${graphics_card.gpuProducer} ${graphics_card.gpuModel} ${graphics_card.model}</h2>
-            <p>${graphics_card.videoMemory} <spring:message code="label.values.gbait"/>, ${graphics_card.videoMemoryType}</p>
+            <p>${graphics_card.gpuProducer} ${graphics_card.gpuModel}, ${graphics_card.videoMemory} <spring:message code="label.values.gbait"/>, ${graphics_card.videoMemoryType}, <spring:message code="label.graphics.gpuinterface"/>: ${graphics_card.gpuInterface}</p>
             <h5 class="btn btn-warning">${graphics_card.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>

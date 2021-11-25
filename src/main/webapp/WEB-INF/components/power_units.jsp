@@ -397,9 +397,9 @@
                                 <div class="card-body">
                                     <a href="/catalog/power_unit/${power_unit.id}" class="text-decoration-none"><h5
                                             class="card-title">${power_unit.toString()}</h5></a>
-                                    <p class="card-text"><spring:message code="label.powerunit.pfc"/> ${power_unit.pfc},
-                                        <spring:message code="label.powerunit.efficiency"/> ${power_unit.efficiency}%,
-                                        <spring:message code="label.powerunit.certificate"/> ${power_unit.certificate},
+                                    <p class="card-text"><spring:message code="label.powerunit.pfc"/>: ${power_unit.pfc},
+                                        <spring:message code="label.powerunit.efficiency"/>: ${power_unit.efficiency}%,
+                                        <spring:message code="label.powerunit.certificate"/>: ${power_unit.certificate},
                                             ${power_unit.power} <spring:message code="label.values.watt"/></p>
                                     <h5 class="btn btn-warning">${power_unit.price} <spring:message
                                             code="label.currency.byn"/></h5>

@@ -77,7 +77,7 @@ insert into component_source (id, component_id, name, link)
 insert into component (id, model, producer, price)
        values (6, 'DUAL', 'Palit', 2399.00);
 insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, gpu_interface, height, length, recommented_power, id)
-       values ('GeForce RTX 3060', 'NVIDEA', 12, 'GDDR6', 'PCI Express 4.0 x16', 119, 245, 550, 6);
+       values ('GeForce RTX 3060', 'NVIDIA', 12, 'GDDR6', 'PCI Express 4.0 x16', 119, 245, 550, 6);
 
 insert into component_source (id, component_id, name, link)
        values (18, 6, 'shop.by', 'https://shop.by/videokarty/palit_geforce_rtx_3060_dual_12gb_gddr6_ne63060019k9_190ad/#shop');
@@ -97,7 +97,7 @@ insert into component_source (id, component_id, name, link)
 insert into component (id, model, producer, price)
        values (7, 'D6 WINDFORCE OC', 'Gigabyte', 1030.19);
 insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, gpu_interface, height, length, recommented_power, id)
-       values ('GeForce GTX 1650', 'NVIDEA', 4, 'GDDR6', 'PCI Express 3.0 x16', 112, 191, 300, 7);
+       values ('GeForce GTX 1650', 'NVIDIA', 4, 'GDDR6', 'PCI Express 3.0 x16', 112, 191, 300, 7);
 
 insert into component_source (id, component_id, name, link)
        values (23, 7, 'shop.by', 'https://shop.by/videokarty/gigabyte_gv_n1650oc_4gd/#shop');
@@ -111,7 +111,7 @@ insert into component_source (id, component_id, name, link)
 insert into component (id, model, producer, price)
        values (8, 'V2 OC Edition', 'ASUS ROG Strix', 2899.00);
 insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, gpu_interface, height, length, recommented_power, id)
-       values ('GeForce RTX 3060 Ti', 'NVIDEA', 8, 'GDDR6', 'PCI Express 4.0 x16', 140, 318, 750, 8);
+       values ('GeForce RTX 3060 Ti', 'NVIDIA', 8, 'GDDR6', 'PCI Express 4.0 x16', 140, 318, 750, 8);
 
 insert into component_source (id, component_id, name, link)
        values (26, 8, 'shop.by', 'https://shop.by/videokarty/asus_rog_strix_geforce_rtx_3060_ti_v2_oc_edition_8gb_gddr6_lhr/#shop');
@@ -122,7 +122,7 @@ insert into component_source (id, component_id, name, link)
 insert into component (id, model, producer, price)
        values (9, 'Ventus XS OC', 'MSI', 2050.00);
 insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, gpu_interface, height, length, recommented_power, id)
-       values ('GeForce GTX 1660 Super', 'NVIDEA', 6, 'GDDR6', 'PCI Express 3.0 x16', 128, 204, 450, 9);
+       values ('GeForce GTX 1660 Super', 'NVIDIA', 6, 'GDDR6', 'PCI Express 3.0 x16', 128, 204, 450, 9);
 
 insert into component_source (id, component_id, name, link)
        values (28, 9, 'shop.by', 'https://shop.by/videokarty/msi_gtx_1660_super_ventus_xs_oc/#shop');
@@ -136,7 +136,7 @@ insert into component_source (id, component_id, name, link)
 insert into component (id, model, producer, price)
        values (10, 'TUF Gaming OC Edition', 'ASUS', 5990.00);
 insert into graphics_card (gpu_model, gpu_producer, video_memory, video_memory_type, gpu_interface, height, length, recommented_power, id)
-       values ('GeForce RTX 3080 Ti', 'NVIDEA', 12, 'GDDR6X', 'PCI Express 4.0 x16', 126, 299, 850, 10);
+       values ('GeForce RTX 3080 Ti', 'NVIDIA', 12, 'GDDR6X', 'PCI Express 4.0 x16', 126, 299, 850, 10);
 
 insert into component_source (id, component_id, name, link)
        values (31, 10, 'shop.by', 'https://shop.by/videokarty/asus_tuf_gaming_geforce_rtx_3080_ti_12gb_gddr6x/#shop');

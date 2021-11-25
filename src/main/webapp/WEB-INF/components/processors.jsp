@@ -181,11 +181,13 @@
                                 <c:forEach items="${core_numbers_set}" var="core_number">
                                     <label class="form-check">
                                         <c:if test="${cor_num.contains(core_number.toString())}">
-                                            <input class="form-check-input" type="checkbox" name="core_number" value="${core_number}"
+                                            <input class="form-check-input" type="checkbox" name="core_number"
+                                                   value="${core_number}"
                                                    checked>
                                         </c:if>
                                         <c:if test="${!cor_num.contains(core_number.toString())}">
-                                            <input class="form-check-input" type="checkbox" name="core_number" value="${core_number}">
+                                            <input class="form-check-input" type="checkbox" name="core_number"
+                                                   value="${core_number}">
                                         </c:if>
                                         <span class="form-check-label">
                                                 ${core_number}
@@ -250,19 +252,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.processor.freq"/></h6>
+                            <h6 class="title"><spring:message code="label.processor.freq"/>, <spring:message
+                                    code="label.values.mherz"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="minFreq" placeholder="Min" class="w-100" value="<%=minFreq%>">
+                                        <input type="text" name="minFreq" placeholder="Min" class="w-100"
+                                               value="<%=minFreq%>">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="maxFreq" placeholder="Max" class="w-100" value="<%=maxFreq%>">
+                                        <input type="text" name="maxFreq" placeholder="Max" class="w-100"
+                                               value="<%=maxFreq%>">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -274,19 +279,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.processor.thermalpower"/></h6>
+                            <h6 class="title"><spring:message code="label.processor.thermalpower"/>, <spring:message
+                                    code="label.values.watt"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_thermal_power" placeholder="Min" class="w-100" value="${min_th_p}">
+                                        <input type="text" name="min_thermal_power" placeholder="Min" class="w-100"
+                                               value="${min_th_p}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_thermal_power" placeholder="Max" class="w-100" value="${max_th_p}">
+                                        <input type="text" name="max_thermal_power" placeholder="Max" class="w-100"
+                                               value="${max_th_p}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -315,10 +323,15 @@
                                 <div class="card-body">
                                     <a href="/catalog/processor/${processor.id}" class="text-decoration-none"><h5
                                             class="card-title">${processor.toString()}</h5></a>
-                                    < class="card-text"><spring:message code="label.processor.core"/> : ${processor.core},
-                                    <spring:message code="label.processor.crystalname"/> : ${processor.crystalName}, <spring:message code="label.processor.corenum"/> : ${processor.coreNumber},
-                                    <spring:message code="label.processor.socket"/> : ${processor.socket}, <spring:message code="label.processor.thermalpower"/> : ${processor.thermalPower} <spring:message code="label.values.watt"/>,
-                                    <spring:message code="label.processor.minfreq"/> : ${processor.minFreq} <spring:message code="label.values.mherz"/>/<spring:message code="label.processor.maxfreq"/> : ${processor.maxFreq} <spring:message code="label.values.mherz"/>></p>
+                                    <p class="card-text">${processor.core}, ${processor.crystalName}, <spring:message
+                                            code="label.processor.corenum"/>: ${processor.coreNumber},
+                                        <spring:message code="label.processor.socket"/>: ${processor.socket},
+                                        <spring:message code="label.processor.thermalpower"/>: ${processor.thermalPower}
+                                        <spring:message code="label.values.watt"/>,
+                                        <spring:message code="label.processor.minfreq"/>: ${processor.minFreq}
+                                        <spring:message code="label.values.mherz"/>, <spring:message
+                                                code="label.processor.maxfreq"/>: ${processor.maxFreq} <spring:message
+                                                code="label.values.mherz"/></p>
                                     <h5 class="btn btn-warning">${processor.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

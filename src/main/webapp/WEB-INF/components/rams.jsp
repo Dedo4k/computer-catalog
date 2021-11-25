@@ -154,7 +154,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ram.capacity"/></h6>
+                            <h6 class="title"><spring:message code="label.ram.capacity"/>, <spring:message code="label.values.gbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -206,7 +206,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ram.freq"/></h6>
+                            <h6 class="title"><spring:message code="label.ram.freq"/>, <spring:message code="label.values.mherz"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -247,9 +247,9 @@
                                 <div class="card-body">
                                     <a href="/catalog/ram/${ram.id}" class="text-decoration-none"><h5
                                             class="card-title">${ram.toString()}</h5></a>
-                                    <p class="card-text"><spring:message code="label.ram.capacity"/> : ${ram.capacity} <spring:message code="label.values.gbait"/>,
-                                        <spring:message code="label.ram.freq"/> : ${ram.freq} <spring:message code="label.values.mherz"/>, <spring:message code="label.ram.modules"/> : ${ram.moduleSet},
-                                        <spring:message code="label.ram.type"/> : ${ram.type}</p>
+                                    <p class="card-text"><spring:message code="label.ram.capacity"/>: ${ram.capacity} <spring:message code="label.values.gbait"/>,
+                                        <spring:message code="label.ram.freq"/>: ${ram.freq} <spring:message code="label.values.mherz"/>, <spring:message code="label.ram.modules"/>: ${ram.moduleSet},
+                                        <spring:message code="label.ram.type"/>: ${ram.type}</p>
                                     <h5 class="btn btn-warning">${ram.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

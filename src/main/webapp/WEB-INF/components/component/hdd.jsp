@@ -91,7 +91,7 @@
         </tr>
         <tr>
             <td><spring:message code="label.hdd.buffersize"/></td>
-            <td>${hdd.bufferSize} <spring:message code="label.values.gbait"/></td>
+            <td>${hdd.bufferSize} <spring:message code="label.values.mbait"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.hdd.capacity"/></td>

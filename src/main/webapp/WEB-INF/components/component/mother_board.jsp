@@ -73,7 +73,7 @@
         </div>
         <div class="col-8">
             <h2>${mother_board.producer} ${mother_board.model}</h2>
-            <p><spring:message code="label.motherboard.pciversion"/> ${mother_board.PCIVersion}, ${mother_board.formFactor}, ${mother_board.chipset}, ${mother_board.MTwo}, <spring:message code="label.motherboard.memoryslots"/> ${mother_board.memorySlots},
+            <p><spring:message code="label.motherboard.pciversion"/> ${mother_board.PCIVersion}, ${mother_board.formFactor}, ${mother_board.chipset}, <spring:message code="label.motherboard.mtwo"/>: ${mother_board.MTwo}, <spring:message code="label.motherboard.memoryslots"/>: ${mother_board.memorySlots},
                 ${mother_board.memoryType}, ${mother_board.socket}</p>
             <h5 class="btn btn-warning">${mother_board.price} <spring:message code="label.currency.byn"/></h5>
         </div>

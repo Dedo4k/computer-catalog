@@ -73,9 +73,9 @@
         </div>
         <div class="col-8">
             <h2>${power_unit.producer} ${power_unit.model}</h2>
-            <p><spring:message code="label.powerunit.certificate"/> ${power_unit.certificate}, ${power_unit.power} <spring:message code="label.values.watt"/>,
-                ${power_unit.efficiency}%, ${power_unit.pfc} PFC,
-                <spring:message code="label.powerunit.standard"/> ${power_unit.standard}</p>
+            <p><spring:message code="label.powerunit.certificate"/>: ${power_unit.certificate}, ${power_unit.power} <spring:message code="label.values.watt"/>,
+                <spring:message code="label.powerunit.efficiency"/>: ${power_unit.efficiency}%, <spring:message code="label.powerunit.pfc"/>: ${power_unit.pfc},
+                <spring:message code="label.powerunit.standard"/>: ${power_unit.standard}</p>
             <h5 class="btn btn-warning">${power_unit.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>

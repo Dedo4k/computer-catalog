@@ -72,7 +72,7 @@
         </div>
         <div class="col-8">
             <h2>${ccase.producer} ${ccase.model}</h2>
-            <p>${ccase.caseType}, ${ccase.colour}, ${ccase.material}, <spring:message code="label.case.sectionnumber"/>: ${ccase.sectionNumber}</p>
+            <p><spring:message code="label.case.casetype"/>: ${ccase.caseType}, ${ccase.colour}, ${ccase.material}, <spring:message code="label.case.sectionnumber"/>: ${ccase.sectionNumber}</p>
             <h5 class="btn btn-warning">${ccase.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -129,7 +129,7 @@
         </tr>
         <tr>
             <td><spring:message code="label.case.weight"/></td>
-            <td>${ccase.weight} <spring:message code="label.values.milim"/></td>
+            <td>${ccase.weight} <spring:message code="label.values.kilog"/></td>
         </tr>
         </tbody>
     </table>
