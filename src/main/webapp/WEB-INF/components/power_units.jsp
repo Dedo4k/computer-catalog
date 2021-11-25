@@ -180,7 +180,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.power"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.power"/>, <spring:message code="label.values.watt"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -284,7 +284,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.efficiency"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.efficiency"/>, %</h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -308,7 +308,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.width"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.width"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -332,7 +332,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.height"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.height"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -356,7 +356,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.depth"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.depth"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -397,7 +397,10 @@
                                 <div class="card-body">
                                     <a href="/catalog/power_unit/${power_unit.id}" class="text-decoration-none"><h5
                                             class="card-title">${power_unit.toString()}</h5></a>
-                                    <p class="card-text">${power_unit.info()}</p>
+                                    <p class="card-text"><spring:message code="label.powerunit.pfc"/> ${power_unit.pfc},
+                                        <spring:message code="label.powerunit.efficiency"/> ${power_unit.efficiency}%,
+                                        <spring:message code="label.powerunit.certificate"/> ${power_unit.certificate},
+                                            ${power_unit.power} <spring:message code="label.values.watt"/></p>
                                     <h5 class="btn btn-warning">${power_unit.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

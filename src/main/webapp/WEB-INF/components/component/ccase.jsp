@@ -113,23 +113,23 @@
         </tr>
         <tr>
             <td><spring:message code="label.case.maxgraphicscardwidth"/></td>
-            <td>${ccase.maxGraphicsCardWidth}</td>
+            <td>${ccase.maxGraphicsCardWidth} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.case.width"/></td>
-            <td>${ccase.width}</td>
+            <td>${ccase.width} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.case.height"/></td>
-            <td>${ccase.height}</td>
+            <td>${ccase.height} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.case.depth"/></td>
-            <td>${ccase.depth}</td>
+            <td>${ccase.depth} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.case.weight"/></td>
-            <td>${ccase.weight}</td>
+            <td>${ccase.weight} <spring:message code="label.values.milim"/></td>
         </tr>
         </tbody>
     </table>

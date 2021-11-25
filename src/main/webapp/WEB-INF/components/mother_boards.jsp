@@ -342,7 +342,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.motherboard.length"/></h6>
+                            <h6 class="title"><spring:message code="label.motherboard.length"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -366,7 +366,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.motherboard.width"/></h6>
+                            <h6 class="title"><spring:message code="label.motherboard.width"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -409,7 +409,9 @@
                                     <a href="/catalog/mother_board/${mother_board.id}" class="text-decoration-none">
                                         <h5
                                                 class="card-title">${mother_board.toString()}</h5></a>
-                                    <p class="card-text">${mother_board.info()}</p>
+                                    <p class="card-text">${mother_board.formFactor}, <spring:message code="label.motherboard.socket"/> ${mother_board.socket},
+                                        <spring:message code="label.motherboard.chipset"/> ${mother_board.chipset},
+                                        <spring:message code="label.motherboard.memorytype"/> ${mother_board.memoryType}</p>
                                     <h5 class="btn btn-warning">${mother_board.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

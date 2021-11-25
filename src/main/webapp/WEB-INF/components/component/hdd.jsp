@@ -73,7 +73,8 @@
         </div>
         <div class="col-8">
             <h2>${hdd.producer} ${hdd.model}</h2>
-            <p>${hdd.bufferSize}, ${hdd.capacity}, ${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed}, ${hdd.thickness}</p>
+            <p> ${hdd.capacity} <spring:message code="label.values.gbait"/>,
+                ${hdd.formFactor} , ${hdd.hddInterface}, ${hdd.rotationSpeed} <spring:message code="label.values.rotspeed"/></p>
             <h5 class="btn btn-warning">${hdd.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -90,11 +91,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.hdd.buffersize"/></td>
-            <td>${hdd.bufferSize}</td>
+            <td>${hdd.bufferSize} <spring:message code="label.values.gbait"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.hdd.capacity"/></td>
-            <td>${hdd.capacity}</td>
+            <td>${hdd.capacity} <spring:message code="label.values.gbait"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.hdd.formfactor"/></td>
@@ -106,11 +107,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.hdd.rotationspeed"/></td>
-            <td>${hdd.rotationSpeed}</td>
+            <td>${hdd.rotationSpeed} <spring:message code="label.values.rotspeed"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.hdd.thickness"/></td>
-            <td>${hdd.thickness}</td>
+            <td>${hdd.thickness} <spring:message code="label.values.milim"/></td>
         </tr>
         </tbody>
     </table>

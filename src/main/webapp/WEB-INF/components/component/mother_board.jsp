@@ -73,7 +73,8 @@
         </div>
         <div class="col-8">
             <h2>${mother_board.producer} ${mother_board.model}</h2>
-            <p>${mother_board.PCIVersion}, ${mother_board.formFactor}, ${mother_board.chipset}, ${mother_board.MTwo}, ${mother_board.memorySlots}, ${mother_board.memoryType}, ${mother_board.socket}, ${mother_board.length}/${mother_board.width}</p>
+            <p><spring:message code="label.motherboard.pciversion"/> ${mother_board.PCIVersion}, ${mother_board.formFactor}, ${mother_board.chipset}, ${mother_board.MTwo}, <spring:message code="label.motherboard.memoryslots"/> ${mother_board.memorySlots},
+                ${mother_board.memoryType}, ${mother_board.socket}</p>
             <h5 class="btn btn-warning">${mother_board.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -118,11 +119,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.motherboard.length"/></td>
-            <td>${mother_board.length}</td>
+            <td>${mother_board.length} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.motherboard.width"/></td>
-            <td>${mother_board.width}</td>
+            <td>${mother_board.width} <spring:message code="label.values.milim"/></td>
         </tr>
         </tbody>
     </table>
