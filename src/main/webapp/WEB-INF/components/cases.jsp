@@ -66,6 +66,22 @@
     String[] colr = request.getParameterValues("colour");
     String[] mat = request.getParameterValues("material");
     String[] sct = request.getParameterValues("section");
+    String[] minWs = request.getParameterValues("min_width");
+    String[] maxWs = request.getParameterValues("max_width");
+    String minW = null;
+    String maxW = null;
+    String[] minHs = request.getParameterValues("min_height");
+    String[] maxHs = request.getParameterValues("max_height");
+    String minH = null;
+    String maxH = null;
+    String[] minDs = request.getParameterValues("min_depth");
+    String[] maxDs = request.getParameterValues("max_depth");
+    String minD = null;
+    String maxD = null;
+    String[] minWes = request.getParameterValues("min_weight");
+    String[] maxWes = request.getParameterValues("max_weight");
+    String minWe = null;
+    String maxWe = null;
     if (prod != null) {
         pageContext.setAttribute("prod", Arrays.asList(prod));
     }
@@ -81,6 +97,54 @@
     if (sct != null) {
         pageContext.setAttribute("sct", Arrays.asList(sct));
     }
+    if (minWs == null || minWs[0].equals("")) {
+        minW = "";
+    } else {
+        minW = minWs[0];
+    }
+    if (maxWs == null || maxWs[0].equals("")) {
+        maxW = "";
+    } else {
+        maxW = maxWs[0];
+    }
+    pageContext.setAttribute("minW", minW);
+    pageContext.setAttribute("maxW", maxW);
+    if (minHs == null || minHs[0].equals("")) {
+        minH = "";
+    } else {
+        minH = minHs[0];
+    }
+    if (maxHs == null || maxHs[0].equals("")) {
+        maxH = "";
+    } else {
+        maxH = maxHs[0];
+    }
+    pageContext.setAttribute("minH", minH);
+    pageContext.setAttribute("maxH", maxH);
+    if (minDs == null || minDs[0].equals("")) {
+        minD = "";
+    } else {
+        minD = minDs[0];
+    }
+    if (maxDs == null || maxDs[0].equals("")) {
+        maxD = "";
+    } else {
+        maxD = maxDs[0];
+    }
+    pageContext.setAttribute("minD", minD);
+    pageContext.setAttribute("maxD", maxD);
+    if (minWes == null || minWes[0].equals("")) {
+        minWe = "";
+    } else {
+        minWe = minWes[0];
+    }
+    if (maxWes == null || maxWes[0].equals("")) {
+        maxWe = "";
+    } else {
+        maxWe = maxWes[0];
+    }
+    pageContext.setAttribute("minWe", minWe);
+    pageContext.setAttribute("maxWe", maxWe);
 %>
 <div class="container align-items-center mt-5">
     <div class="row">
@@ -214,6 +278,102 @@
                                         </span>
                                     </label>
                                 </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.case.width"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_width" placeholder="Min" class="w-100" value="${minW}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_width" placeholder="Max" class="w-100" value="${maxW}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.case.height"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_height" placeholder="Min" class="w-100" value="${minH}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_height" placeholder="Max" class="w-100" value="${maxH}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.case.depth"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_depth" placeholder="Min" class="w-100" value="${minD}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_depth" placeholder="Max" class="w-100" value="${maxD}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.case.weight"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_weight" placeholder="Min" class="w-100" value="${minWe}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_weight" placeholder="Max" class="w-100" value="${maxWe}">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
                             </div>
                         </div>
                     </article>

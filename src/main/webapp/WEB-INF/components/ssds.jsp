@@ -65,6 +65,8 @@
     String[] form_fct = request.getParameterValues("form_factor");
     String[] cap = request.getParameterValues("capacity");
     String[] ssd_int = request.getParameterValues("ssd_interface");
+    String[] ctrl = request.getParameterValues("controller");
+    String[] chip = request.getParameterValues("microchip");
     String[] minWrSs = request.getParameterValues("min_writing_speed");
     String[] maxWrSs = request.getParameterValues("max_writing_speed");
     String minWrS = null;
@@ -84,6 +86,12 @@
     }
     if (ssd_int != null) {
         pageContext.setAttribute("ssd_int", Arrays.asList(ssd_int));
+    }
+    if (ctrl != null) {
+        pageContext.setAttribute("ctrl", Arrays.asList(ctrl));
+    }
+    if (chip != null) {
+        pageContext.setAttribute("chip", Arrays.asList(chip));
     }
     if (minWrSs == null || minWrSs[0].equals("")) {
         minWrS = "";
@@ -196,7 +204,59 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ram.capacity"/></h6>
+                            <h6 class="title"><spring:message code="label.ssd.controller"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${controllers_set}" var="controller">
+                                    <label class="form-check">
+                                        <c:if test="${ctrl.contains(controller)}">
+                                            <input class="form-check-input" type="checkbox" name="controller"
+                                                   value="${controller}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!ctrl.contains(controller)}">
+                                            <input class="form-check-input" type="checkbox" name="controller"
+                                                   value="${controller}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${controller}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ssd.microchip"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${microchips_set}" var="microchip">
+                                    <label class="form-check">
+                                        <c:if test="${chip.contains(microchip)}">
+                                            <input class="form-check-input" type="checkbox" name="microchip"
+                                                   value="${microchip}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!chip.contains(microchip)}">
+                                            <input class="form-check-input" type="checkbox" name="microchip"
+                                                   value="${microchip}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${microchip}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.ssd.capacity"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">

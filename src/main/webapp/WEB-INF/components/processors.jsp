@@ -66,10 +66,16 @@
     String[] prod = request.getParameterValues("producer");
     String[] cor = request.getParameterValues("core");
     String[] sock = request.getParameterValues("socket");
+    String[] cor_num = request.getParameterValues("core_number");
+    String[] cr_name = request.getParameterValues("crystal_name");
     String[] minFreqs = request.getParameterValues("minFreq");
     String[] maxFreqs = request.getParameterValues("maxFreq");
     String minFreq = null;
     String maxFreq = null;
+    String[] min_th_ps = request.getParameterValues("min_thermal_power");
+    String[] max_th_ps = request.getParameterValues("max_thermal_power");
+    String min_th_p = null;
+    String max_th_p = null;
     if (prod != null) {
         pageContext.setAttribute("prod", Arrays.asList(prod));
     }
@@ -78,6 +84,12 @@
     }
     if (sock != null) {
         pageContext.setAttribute("sock", Arrays.asList(sock));
+    }
+    if (cor_num != null) {
+        pageContext.setAttribute("cor_num", Arrays.asList(cor_num));
+    }
+    if (cr_name != null) {
+        pageContext.setAttribute("cr_name", Arrays.asList(cr_name));
     }
     if (minFreqs == null || minFreqs[0].equals("")) {
         minFreq = "";
@@ -91,6 +103,18 @@
     }
     pageContext.setAttribute("minFreq", Arrays.asList(minFreq));
     pageContext.setAttribute("maxFreq", Arrays.asList(maxFreq));
+    if (min_th_ps == null || min_th_ps[0].equals("")) {
+        min_th_p = "";
+    } else {
+        min_th_p = min_th_ps[0];
+    }
+    if (max_th_ps == null || max_th_ps[0].equals("")) {
+        max_th_p = "";
+    } else {
+        max_th_p = max_th_ps[0];
+    }
+    pageContext.setAttribute("min_th_p", min_th_p);
+    pageContext.setAttribute("max_th_p", max_th_p);
 %>
 <div class="container align-items-center mt-5">
     <div class="row">
@@ -150,6 +174,56 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
+                            <h6 class="title"><spring:message code="label.processor.corenum"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${core_numbers_set}" var="core_number">
+                                    <label class="form-check">
+                                        <c:if test="${cor_num.contains(core_number.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="core_number" value="${core_number}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!cor_num.contains(core_number.toString())}">
+                                            <input class="form-check-input" type="checkbox" name="core_number" value="${core_number}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${core_number}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.processor.crystalname"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <c:forEach items="${crystal_names_set}" var="crystal_name">
+                                    <label class="form-check">
+                                        <c:if test="${cr_name.contains(crystal_name)}">
+                                            <input class="form-check-input" type="checkbox" name="crystal_name"
+                                                   value="${crystal_name}"
+                                                   checked>
+                                        </c:if>
+                                        <c:if test="${!cr_name.contains(crystal_name)}">
+                                            <input class="form-check-input" type="checkbox" name="crystal_name"
+                                                   value="${crystal_name}">
+                                        </c:if>
+                                        <span class="form-check-label">
+                                                ${crystal_name}
+                                        </span>
+                                    </label>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
                             <h6 class="title"><spring:message code="label.processor.socket"/></h6>
                         </header>
                         <div class="filter-content">
@@ -189,6 +263,30 @@
                                     </span>
                                     <label class="col-5">
                                         <input type="text" name="maxFreq" placeholder="Max" class="w-100" value="<%=maxFreq%>">
+                                    </label>
+                                    <c:if test="${error != null}">
+                                        <h5 style="color: #b02a37">${error}</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title"><spring:message code="label.processor.thermalpower"/></h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <label class="col-5">
+                                        <input type="text" name="min_thermal_power" placeholder="Min" class="w-100" value="${min_th_p}">
+                                    </label>
+                                    <span class="col-2">
+                                        &#8212
+                                    </span>
+                                    <label class="col-5">
+                                        <input type="text" name="max_thermal_power" placeholder="Max" class="w-100" value="${max_th_p}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>

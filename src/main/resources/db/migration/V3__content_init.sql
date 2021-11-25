@@ -150,7 +150,7 @@ insert into component_source (id, component_id, name, link)
 insert into component (id, model, producer, price)
        values (11, 'B450M S2H', 'Gigabyte', 166.02);
 insert into mother_board (pci_version, chipset, form_factor, length, m_two, memory_slots, memory_type, socket, width, id)
-       values ('3.0 and 2.0','AMD B450', 'mAtx', 205,1, 2, 'DDR4', 'AM4', 244, 11);
+       values ('3.0 and 2.0','AMD B450', 'mAtx', 244, 1, 2, 'DDR4', 'AM4', 205, 11);
 
 insert into component_source (id, component_id, name, link)
        values (34, 11, 'shop.by', 'https://shop.by/materinskie_platy/gigabyte_b450m_s2h_rev_1_0/#shop');

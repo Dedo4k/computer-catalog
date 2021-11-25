@@ -29,7 +29,7 @@ public class Ram extends Component{
 
     @Override
     public String toString() {
-        return getProducer() + " " + getModel() + " " + capacity + "Gb";
+        return getProducer() + " " + getModel() + " " + moduleSet + "x" + capacity + "Gb";
     }
 
     @Override
