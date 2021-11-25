@@ -19,3 +19,16 @@
         margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
     }
 }
+
+.my-carousel{
+    padding: 0;
+}
+
+.my-carousel .carousel-inner{
+    display: flex;
+    max-height: 900px;
+}
+
+.my-carousel .carousel-inner img{
+    object-fit: cover;
+}
