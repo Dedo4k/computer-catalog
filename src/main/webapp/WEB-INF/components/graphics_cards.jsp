@@ -229,7 +229,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.graphics.videomemory"/></h6>
+                            <h6 class="title"><spring:message code="label.graphics.videomemory"/>, <spring:message code="label.values.gbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -281,7 +281,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.graphics.length"/></h6>
+                            <h6 class="title"><spring:message code="label.graphics.length"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -305,7 +305,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.graphics.height"/></h6>
+                            <h6 class="title"><spring:message code="label.graphics.height"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -347,7 +347,7 @@
                                     <a href="/catalog/graphics_card/${graphics_card.id}" class="text-decoration-none">
                                         <h5
                                                 class="card-title">${graphics_card.toString()}</h5></a>
-                                    <p class="card-text">${graphics_card.info()}</p>
+                                    <p class="card-text">${graphics_card.gpuProducer} ${graphics_card.gpuModel}, <spring:message code="label.graphics.gpuinterface"/>: ${graphics_card.gpuInterface}, <spring:message code="label.graphics.videomemory"/>: ${graphics_card.videoMemory} <spring:message code="label.values.gbait"/> ${graphics_card.videoMemoryType} </p>
                                     <h5 class="btn btn-warning">${graphics_card.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>
