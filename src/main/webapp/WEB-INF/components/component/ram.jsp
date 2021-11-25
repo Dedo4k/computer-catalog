@@ -73,7 +73,7 @@
         </div>
         <div class="col-8">
             <h2>${ram.producer} ${ram.model}</h2>
-            <p>${ram.capacity}, ${ram.freq}, ${ram.moduleSet}, ${ram.type}</p>
+            <p>${ram.capacity} <spring:message code="label.values.gbait"/>, ${ram.freq} <spring:message code="label.values.mherz"/>, ${ram.moduleSet}, ${ram.type}</p>
             <h5 class="btn btn-warning">${ram.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -90,11 +90,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.ram.capacity"/></td>
-            <td>${ram.capacity}</td>
+            <td>${ram.capacity} <spring:message code="label.values.gbait"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.ram.freq"/></td>
-            <td>${ram.freq}</td>
+            <td>${ram.freq} <spring:message code="label.values.mherz"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.ram.modules"/></td>

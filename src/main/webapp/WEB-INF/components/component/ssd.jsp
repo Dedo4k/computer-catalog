@@ -73,7 +73,7 @@
         </div>
         <div class="col-8">
             <h2>${ssd.producer} ${ssd.model}</h2>
-            <p>${ssd.capacity}, ${ssd.controller}, ${ssd.formFactor}, ${ssd.readingSpeed}/${ssd.writingSpeed}, ${ssd.ssdInterface}</p>
+            <p>${ssd.capacity} <spring:message code="label.values.gbait"/>, ${ssd.controller}, ${ssd.formFactor}, ${ssd.readingSpeed} <spring:message code="label.values.rwspeed"/>/${ssd.writingSpeed} <spring:message code="label.values.rwspeed"/>, ${ssd.ssdInterface}</p>
             <h5 class="btn btn-warning">${ssd.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -90,7 +90,7 @@
         </tr>
         <tr>
             <td><spring:message code="label.ssd.capacity"/></td>
-            <td>${ssd.capacity}</td>
+            <td>${ssd.capacity} <spring:message code="label.values.gbait"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.ssd.controller"/></td>
@@ -102,11 +102,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.ssd.readingspeed"/></td>
-            <td>${ssd.readingSpeed}</td>
+            <td>${ssd.readingSpeed} <spring:message code="label.values.rwspeed"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.ssd.writingspeed"/></td>
-            <td>${ssd.writingSpeed}</td>
+            <td>${ssd.writingSpeed} <spring:message code="label.values.rwspeed"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.ssd.interface"/></td>

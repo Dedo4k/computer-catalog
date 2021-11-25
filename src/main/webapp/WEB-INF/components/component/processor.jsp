@@ -72,7 +72,7 @@
         </div>
         <div class="col-8">
             <h2>${processor.producer} ${processor.core}-${processor.model}</h2>
-            <p>${processor.core}, ${processor.crystalName}, ${processor.coreNumber}, ${processor.socket}, ${processor.thermalPower}, ${processor.minFreq}/${processor.maxFreq}</p>
+            <p>${processor.core}, ${processor.crystalName}, ${processor.coreNumber}, ${processor.socket}, ${processor.thermalPower} <spring:message code="label.values.watt"/>, ${processor.minFreq} <spring:message code="label.values.mherz"/>/${processor.maxFreq} <spring:message code="label.values.mherz"/></p>
             <h5 class="btn btn-warning">${processor.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -102,15 +102,15 @@
         </tr>
         <tr>
             <td><spring:message code="label.processor.thermalpower"/></td>
-            <td>${processor.thermalPower}</td>
+            <td>${processor.thermalPower} <spring:message code="label.values.watt"/> </td>
         </tr>
         <tr>
             <td><spring:message code="label.processor.minfreq"/></td>
-            <td>${processor.minFreq}</td>
+            <td>${processor.minFreq} <spring:message code="label.values.mherz"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.processor.maxfreq"/></td>
-            <td>${processor.maxFreq}</td>
+            <td>${processor.maxFreq} <spring:message code="label.values.mherz"/></td>
         </tr>
         </tbody>
     </table>
