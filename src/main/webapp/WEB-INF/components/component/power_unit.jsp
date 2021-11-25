@@ -73,7 +73,9 @@
         </div>
         <div class="col-8">
             <h2>${power_unit.producer} ${power_unit.model}</h2>
-            <p>${power_unit.certificate}, ${power_unit.power}, ${power_unit.efficiency}, ${power_unit.pfc}, ${power_unit.standard}, ${power_unit.depth}, ${power_unit.height}, ${power_unit.width}</p>
+            <p><spring:message code="label.powerunit.certificate"/> ${power_unit.certificate}, ${power_unit.power} <spring:message code="label.values.watt"/>,
+                ${power_unit.efficiency}%, ${power_unit.pfc} PFC,
+                <spring:message code="label.powerunit.standard"/> ${power_unit.standard}</p>
             <h5 class="btn btn-warning">${power_unit.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -94,11 +96,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.powerunit.power"/></td>
-            <td>${power_unit.power}</td>
+            <td>${power_unit.power} <spring:message code="label.values.watt"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.powerunit.efficiency"/></td>
-            <td>${power_unit.efficiency}</td>
+            <td>${power_unit.efficiency}%</td>
         </tr>
         <tr>
             <td><spring:message code="label.powerunit.pfc"/></td>
@@ -110,15 +112,15 @@
         </tr>
         <tr>
             <td><spring:message code="label.powerunit.depth"/></td>
-            <td>${power_unit.depth}</td>
+            <td>${power_unit.depth} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.powerunit.height"/></td>
-            <td>${power_unit.height}</td>
+            <td>${power_unit.height} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.powerunit.width"/></td>
-            <td>${power_unit.width}</td>
+            <td>${power_unit.width} <spring:message code="label.values.milim"/></td>
         </tr>
         </tbody>
     </table>

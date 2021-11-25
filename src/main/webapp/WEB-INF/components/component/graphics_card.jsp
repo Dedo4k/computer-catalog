@@ -73,7 +73,7 @@
         </div>
         <div class="col-8">
             <h2>${graphics_card.producer} ${graphics_card.gpuProducer} ${graphics_card.gpuModel} ${graphics_card.model}</h2>
-            <p>${graphics_card.videoMemory}, ${graphics_card.videoMemoryType}</p>
+            <p>${graphics_card.videoMemory} <spring:message code="label.values.gbait"/>, ${graphics_card.videoMemoryType}</p>
             <h5 class="btn btn-warning">${graphics_card.price} <spring:message code="label.currency.byn"/></h5>
         </div>
     </div>
@@ -102,11 +102,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.graphics.recpower"/></td>
-            <td>${graphics_card.recommendedPower}</td>
+            <td>${graphics_card.recommendedPower}<spring:message code="label.values.watt"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.graphics.videomemory"/></td>
-            <td>${graphics_card.videoMemory}</td>
+            <td>${graphics_card.videoMemory} <spring:message code="label.values.gbait"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.graphics.videomemorytype"/></td>
@@ -114,11 +114,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.graphics.height"/></td>
-            <td>${graphics_card.height}</td>
+            <td>${graphics_card.height}<spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.graphics.length"/></td>
-            <td>${graphics_card.length}</td>
+            <td>${graphics_card.length}<spring:message code="label.values.milim"/></td>
         </tr>
         </tbody>
     </table>
