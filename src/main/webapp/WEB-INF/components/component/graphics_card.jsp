@@ -102,7 +102,7 @@
         </tr>
         <tr>
             <td><spring:message code="label.graphics.recpower"/></td>
-            <td>${graphics_card.recommendedPower}<spring:message code="label.values.watt"/></td>
+            <td>${graphics_card.recommendedPower} <spring:message code="label.values.watt"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.graphics.videomemory"/></td>
@@ -114,11 +114,11 @@
         </tr>
         <tr>
             <td><spring:message code="label.graphics.height"/></td>
-            <td>${graphics_card.height}<spring:message code="label.values.milim"/></td>
+            <td>${graphics_card.height} <spring:message code="label.values.milim"/></td>
         </tr>
         <tr>
             <td><spring:message code="label.graphics.length"/></td>
-            <td>${graphics_card.length}<spring:message code="label.values.milim"/></td>
+            <td>${graphics_card.length} <spring:message code="label.values.milim"/></td>
         </tr>
         </tbody>
     </table>
