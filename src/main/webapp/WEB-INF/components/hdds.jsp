@@ -200,7 +200,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.capacity"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.capacity"/>, <spring:message code="label.values.gbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -226,7 +226,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.buffersize"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.buffersize"/>, <spring:message code="label.values.mbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -252,7 +252,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.rotationspeed"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.rotationspeed"/>, <spring:message code="label.values.rotspeed"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -276,7 +276,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.thickness"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.thickness"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -317,7 +317,7 @@
                                 <div class="card-body">
                                     <a href="/catalog/hdd/${hdd.id}" class="text-decoration-none"><h5
                                             class="card-title">${hdd.toString()}</h5></a>
-                                    <p class="card-text">${hdd.info()}</p>
+                                    <p class="card-text">${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed} <spring:message code="label.values.rotspeed"/>, <spring:message code="label.hdd.buffersize"/>: ${hdd.bufferSize} <spring:message code="label.values.mbait"/></p>
                                     <h5 class="btn btn-warning">${hdd.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

@@ -284,7 +284,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.width"/></h6>
+                            <h6 class="title"><spring:message code="label.case.width"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -308,7 +308,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.height"/></h6>
+                            <h6 class="title"><spring:message code="label.case.height"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -332,7 +332,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.depth"/></h6>
+                            <h6 class="title"><spring:message code="label.case.depth"/>, <spring:message code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -356,7 +356,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.weight"/></h6>
+                            <h6 class="title"><spring:message code="label.case.weight"/>, <spring:message code="label.values.kilog"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -397,7 +397,7 @@
                                 <div class="card-body">
                                     <a href="/catalog/ccase/${ccase.id}" class="text-decoration-none"><h5
                                             class="card-title">${ccase.toString()}</h5></a>
-                                    <p class="card-text">${ccase.info()}</p>
+                                    <p class="card-text"><spring:message code="label.case.casetype"/>: ${ccase.caseType}, <spring:message code="label.case.material"/>: ${ccase.material}, <spring:message code="label.case.colour"/>: ${ccase.colour}, <spring:message code="label.case.sectionnumber"/>: ${ccase.sectionNumber}, <spring:message code="label.case.commother"/>: ${ccase.compatible_motherboards} </p>
                                     <h5 class="btn btn-warning">${ccase.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

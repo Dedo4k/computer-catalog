@@ -256,7 +256,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ssd.capacity"/></h6>
+                            <h6 class="title"><spring:message code="label.ssd.capacity"/>, <spring:message code="label.values.gbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -282,7 +282,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ssd.readingspeed"/></h6>
+                            <h6 class="title"><spring:message code="label.ssd.readingspeed"/>, <spring:message code="label.values.rwspeed"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -306,7 +306,7 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ssd.writingspeed"/></h6>
+                            <h6 class="title"><spring:message code="label.ssd.writingspeed"/>, <spring:message code="label.values.rwspeed"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -347,7 +347,7 @@
                                 <div class="card-body">
                                     <a href="/catalog/ssd/${ssd.id}" class="text-decoration-none"><h5
                                             class="card-title">${ssd.toString()}</h5></a>
-                                    <p class="card-text">${ssd.info()}</p>
+                                    <p class="card-text">${ssd.formFactor}, ${ssd.ssdInterface}, <spring:message code="label.ssd.microchip"/>: ${ssd.microchipType}, <spring:message code="label.ssd.readingspeed"/>: ${ssd.readingSpeed} <spring:message code="label.values.rwspeed"/> , <spring:message code="label.ssd.writingspeed"/>: ${ssd.writingSpeed} <spring:message code="label.values.rwspeed"/> </p>
                                     <h5 class="btn btn-warning">${ssd.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>
