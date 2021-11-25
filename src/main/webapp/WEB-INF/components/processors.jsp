@@ -315,7 +315,10 @@
                                 <div class="card-body">
                                     <a href="/catalog/processor/${processor.id}" class="text-decoration-none"><h5
                                             class="card-title">${processor.toString()}</h5></a>
-                                    <p class="card-text">${processor.info()}</p>
+                                    < class="card-text"><spring:message code="label.processor.core"/> : ${processor.core},
+                                    <spring:message code="label.processor.crystalname"/> : ${processor.crystalName}, <spring:message code="label.processor.corenum"/> : ${processor.coreNumber},
+                                    <spring:message code="label.processor.socket"/> : ${processor.socket}, <spring:message code="label.processor.thermalpower"/> : ${processor.thermalPower} <spring:message code="label.values.watt"/>,
+                                    <spring:message code="label.processor.minfreq"/> : ${processor.minFreq} <spring:message code="label.values.mherz"/>/<spring:message code="label.processor.maxfreq"/> : ${processor.maxFreq} <spring:message code="label.values.mherz"/>></p>
                                     <h5 class="btn btn-warning">${processor.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>
