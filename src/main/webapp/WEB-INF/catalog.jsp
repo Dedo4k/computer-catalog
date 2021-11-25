@@ -62,59 +62,75 @@
 <div class="container align-items-center mt-5">
     <div class="row">
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/processors.jpg"/>" alt="processors">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/processors"/>" class="btn btn-primary align-bottom"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/processors.jpg"/>" alt="processors">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/processors"/>" class="btn btn-primary align-bottom w-100"><spring:message
                         code="label.components.processors"/></a>
             </div>
         </div>
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/graphics.jpg"/>" alt="graphic cards">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/graphics_cards"/>" class="btn btn-primary"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/graphics.jpg"/>" alt="graphic cards">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/graphics_cards"/>" class="btn btn-primary w-100"><spring:message
                         code="label.components.graphiccards"/> </a>
             </div>
         </div>
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/mother_board.jpg"/>" alt="mother board">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/mother_boards"/>" class="btn btn-primary"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/mother_board.jpg"/>" alt="mother board">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/mother_boards"/>" class="btn btn-primary w-100"><spring:message
                         code="label.components.motherboards"/> </a>
             </div>
         </div>
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/ram.jpg"/>" alt="ram">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/rams"/>" class="btn btn-primary"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/ram.jpg"/>" alt="ram">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/rams"/>" class="btn btn-primary w-100"><spring:message
                         code="label.components.rams"/> </a>
             </div>
         </div>
 
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/ssd.jpg"/>" alt="ssd">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/ssds"/>" class="btn btn-primary"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/ssd.jpg"/>" alt="ssd">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/ssds"/>" class="btn btn-primary w-100"><spring:message
                         code="label.components.ssds"/> </a>
             </div>
         </div>
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/hdd.jpg"/>" alt="hdd">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/hdds"/>" class="btn btn-primary"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/hdd.jpg"/>" alt="hdd">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/hdds"/>" class="btn btn-primary w-100"><spring:message
                         code="label.components.hdds"/> </a>
             </div>
         </div>
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/power.jpg"/>" alt="power">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/power_units"/>" class="btn btn-primary"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/power.jpg"/>" alt="power">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/power_units"/>" class="btn btn-primary w-100"><spring:message
                         code="label.components.powerunits"/> </a>
             </div>
         </div>
         <div class="card col-3 m-4">
-            <img class="card-img-top" src="<c:url value="/img/case.jpg"/>" alt="case">
-            <div class="card-body">
-                <a href="<c:url value="/catalog/cases"/>" class="btn btn-primary"><spring:message
+            <div class="h-75">
+                <img class="card-img-top w-100" src="<c:url value="/img/case.jpg"/>" alt="case">
+            </div>
+            <div class="card-body h-25">
+                <a href="<c:url value="/catalog/cases"/>" class="btn btn-primary w-100"><spring:message
                         code="label.components.cases"/> </a>
             </div>
         </div>
