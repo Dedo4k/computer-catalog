@@ -78,6 +78,7 @@
 <div class="container align-items-center mt-5">
     <div class="row">
         <a href="<c:url value="/admin/add"/>" class="btn btn-primary mt-3">New admin</a>
+        <a href="<c:url value="/admin/content"/>" class="btn btn-primary mt-3">Content</a>
     </div>
     <table class="table table-bordered table-striped table-hover align-middle">
         <caption class="caption-top text-center"><h1>Admins</h1></caption>

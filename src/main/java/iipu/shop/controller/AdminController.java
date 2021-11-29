@@ -3,19 +3,23 @@ package iipu.shop.controller;
 import iipu.shop.enumeration.ExceptionMessage;
 import iipu.shop.enumeration.UserRole;
 import iipu.shop.model.User;
+import iipu.shop.model.component.Component;
+import iipu.shop.model.component.Processor;
+import iipu.shop.repository.ComponentRepository;
 import iipu.shop.repository.UserRepository;
+import iipu.shop.service.ComponentServiceImpl;
 import iipu.shop.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -23,12 +27,16 @@ public class AdminController {
     private final UserRepository userRepository;
     private final UserServiceImpl userService;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final ComponentServiceImpl componentService;
+    private final ComponentRepository componentRepository;
 
     @Autowired
-    public AdminController(UserRepository userRepository, UserServiceImpl userService, BCryptPasswordEncoder passwordEncoder) {
+    public AdminController(UserRepository userRepository, UserServiceImpl userService, BCryptPasswordEncoder passwordEncoder, ComponentServiceImpl componentService, ComponentRepository componentRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.componentService = componentService;
+        this.componentRepository = componentRepository;
     }
 
     @GetMapping("/admin")
@@ -41,6 +49,73 @@ public class AdminController {
     @GetMapping("/admin/add")
     public String addAdmin(@ModelAttribute("user") User user) {
         return "admin_create";
+    }
+
+    @GetMapping("/admin/content")
+    public String content(@RequestParam(value = "type", required = false) String type, Model model) {
+        if (type != null) {
+            componentService.getViewForComponents(type, model);
+        } else {
+            componentService.getViewForComponents("processors", model);
+        }
+        List<String> types = Arrays.asList("processors", "graphics_cards", "rams", "hdds", "ssds", "mother_boards", "power_units", "cases");
+        model.addAttribute("types", types);
+        return "content";
+    }
+
+    @GetMapping("/admin/content/new")
+    public String newComponent(@RequestParam(value = "type") String type, Model model) {
+        return componentService.getViewForComponentToAdd(type, model);
+    }
+
+    @PostMapping("/admin/{component}/new")
+    public String addComponent(@PathVariable String component,
+                               String producer, String model, String price,
+                               String core, int coreNumber, String crystalName, String socket, String thermalPower, String minFreq, String maxFreq,
+                               @RequestParam(value = "imageFile", required = false) MultipartFile imageFile,
+                               Model modell) {
+        Component newComponent = null;
+        switch (component) {
+            case "processor": {
+                Processor processor = new Processor();
+                processor.setProducer(producer);
+                processor.setModel(model);
+                try {
+                    processor.setPrice(Double.parseDouble(price));
+                } catch (NumberFormatException ex) {
+                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
+                    return "redirect:/admin/content/new";
+                }
+                processor.setCore(core);
+                processor.setCoreNumber(coreNumber);
+                processor.setSocket(socket);
+                processor.setCrystalName(crystalName);
+                try {
+                    processor.setThermalPower(Integer.parseInt(thermalPower));
+                } catch (NumberFormatException ex) {
+                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
+                    return "redirect:/admin/content/new";
+                }
+                try {
+                    processor.setMinFreq(Double.parseDouble(minFreq));
+                } catch (NumberFormatException ex) {
+                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
+                    return "redirect:/admin/content/new";
+                }
+                try {
+                    processor.setMaxFreq(Double.parseDouble(maxFreq));
+                } catch (NumberFormatException ex) {
+                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
+                    return "redirect:/admin/content/new";
+                }
+                newComponent = processor;
+                break;
+            }
+        }
+        if (newComponent != null) {
+            componentRepository.save(newComponent);
+        }
+        return "redirect:/admin/content";
     }
 
     @PostMapping("/admin/add")
@@ -67,7 +142,6 @@ public class AdminController {
         userRepository.save(user);
         return "redirect:/admin";
     }
-
 
     @PostMapping("/admin/change_status/{user_id}")
     public String changeStatus(@PathVariable long user_id) {

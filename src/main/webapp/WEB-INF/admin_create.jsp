@@ -18,7 +18,7 @@
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
                         <form:form id="sign-up" action="/admin/add" modelAttribute="user" method="post">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
 
                             <h3 class="mb-5">Create admin</h3>
 

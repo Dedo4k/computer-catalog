@@ -173,6 +173,50 @@ public class ComponentServiceImpl implements ComponentService {
         return "components/" + component;
     }
 
+    @Transactional
+    @Override
+    public String getViewForComponentToAdd(String components, Model model) {
+        String component = null;
+        switch (components) {
+            case "rams": {
+                component = "ram";
+                break;
+            }
+            case "hdds": {
+                component = "hdd";
+                break;
+            }
+            case "ssds": {
+                component = "sdd";
+                break;
+            }
+            case "cases": {
+                component = "ccase";
+                break;
+            }
+            case "processors": {
+                component = "processor";
+                break;
+            }
+            case "power_units": {
+                component = "power_unit";
+                break;
+            }
+            case "mother_boards": {
+                component = "mother_board";
+                break;
+            }
+            case "graphics_cards": {
+                component = "graphics_card";
+                break;
+            }
+            default: {
+                return "redirect:/admin/content";
+            }
+        }
+        return "components/component/new/" + component + "_new";
+    }
+
     @Override
     public String getViewForComponentById(String component, Long id, Model model) {
         switch (component) {
