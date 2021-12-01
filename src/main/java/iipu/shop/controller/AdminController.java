@@ -180,10 +180,12 @@ public class AdminController {
             ssdToUpdate.setPrice(ssd.getPrice());
             ssdToUpdate.setReadingSpeed(ssd.getReadingSpeed());
             ssdToUpdate.setWritingSpeed(ssd.getWritingSpeed());
-            try {
-                ssdToUpdate.setImage(imageFile.getBytes());
-            } catch (IOException exception) {
-                exception.printStackTrace();
+            if (!imageFile.isEmpty()) {
+                try {
+                    ssdToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
             }
             componentRepository.save(ssdToUpdate);
         }
@@ -198,10 +200,12 @@ public class AdminController {
             hddToUpdate.setBufferSize(hdd.getBufferSize());
             hddToUpdate.setRotationSpeed(hdd.getRotationSpeed());
             hddToUpdate.setThickness(hdd.getThickness());
-            try {
-                hddToUpdate.setImage(imageFile.getBytes());
-            } catch (IOException exception) {
-                exception.printStackTrace();
+            if (!imageFile.isEmpty()) {
+                try {
+                    hddToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
             }
             componentRepository.save(hddToUpdate);
         }
@@ -240,10 +244,12 @@ public class AdminController {
             powerUnitToUpdate.setEfficiency(powerUnit.getEfficiency());
             powerUnitToUpdate.setStandard(powerUnit.getStandard());
             powerUnitToUpdate.setWidth(powerUnit.getWidth());
-            try {
-                powerUnitToUpdate.setImage(imageFile.getBytes());
-            } catch (IOException exception) {
-                exception.printStackTrace();
+            if (!imageFile.isEmpty()) {
+                try {
+                    powerUnitToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
             }
             componentRepository.save(powerUnitToUpdate);
         }
@@ -263,10 +269,12 @@ public class AdminController {
             computerCaseToUpdate.setSectionNumber(computerCase.getSectionNumber());
             computerCaseToUpdate.setWidth(computerCase.getWidth());
             computerCaseToUpdate.setWeight(computerCase.getWeight());
-            try {
-                computerCaseToUpdate.setImage(imageFile.getBytes());
-            } catch (IOException exception) {
-                exception.printStackTrace();
+            if (!imageFile.isEmpty()) {
+                try {
+                    computerCaseToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
             }
             componentRepository.save(computerCaseToUpdate);
         }
