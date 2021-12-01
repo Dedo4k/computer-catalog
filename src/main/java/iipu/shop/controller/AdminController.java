@@ -4,12 +4,8 @@ import iipu.shop.enumeration.ExceptionMessage;
 import iipu.shop.enumeration.UserRole;
 import iipu.shop.model.User;
 import iipu.shop.model.component.*;
-import iipu.shop.repository.ComponentRepository;
-import iipu.shop.repository.GraphicsCardRepository;
-import iipu.shop.repository.ProcessorRepository;
-import iipu.shop.repository.UserRepository;
+import iipu.shop.repository.*;
 import iipu.shop.service.ComponentServiceImpl;
-import iipu.shop.service.ImageService;
 import iipu.shop.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,6 +30,7 @@ public class AdminController {
     private final ComponentRepository componentRepository;
     private final ProcessorRepository processorRepository;
     private final GraphicsCardRepository graphicsCardRepository;
+    private final RamRepository ramRepository;
 
     @Autowired
     public AdminController(UserRepository userRepository,
@@ -42,7 +39,7 @@ public class AdminController {
                            ComponentServiceImpl componentService,
                            ComponentRepository componentRepository,
                            ProcessorRepository processorRepository,
-                           GraphicsCardRepository graphicsCardRepository) {
+                           GraphicsCardRepository graphicsCardRepository, RamRepository ramRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
@@ -50,6 +47,7 @@ public class AdminController {
         this.componentRepository = componentRepository;
         this.processorRepository = processorRepository;
         this.graphicsCardRepository = graphicsCardRepository;
+        this.ramRepository = ramRepository;
     }
 
     @GetMapping("/admin")
@@ -135,9 +133,7 @@ public class AdminController {
             graphicsCardToUpdate.setLength(graphicsCard.getLength());
             if (!imageFile.isEmpty()) {
                 try {
-
                     graphicsCardToUpdate.setImage(imageFile.getBytes());
-
                 } catch (IOException exception) {
                     exception.printStackTrace();
                 }
@@ -145,6 +141,21 @@ public class AdminController {
             componentRepository.save(graphicsCardToUpdate);
         }
         if (ram.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            Ram ramToUpdate = ramRepository.getById(id);
+            ramToUpdate.setModel(ram.getModel());
+            ramToUpdate.setPrice(ram.getPrice());
+            ramToUpdate.setProducer(ram.getProducer());
+            ramToUpdate.setCapacity(ram.getCapacity());
+            ramToUpdate.setFreq(ram.getFreq());
+            ramToUpdate.setModuleSet(ram.getModuleSet());
+            ramToUpdate.setType(ram.getType());
+            if (!imageFile.isEmpty()) {
+                try {
+                    ramToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
             componentRepository.save(ram);
         }
         if (ssd.getClass().getSimpleName().equalsIgnoreCase(component)) {
@@ -198,21 +209,63 @@ public class AdminController {
             componentRepository.save(graphicsCard);
         }
         if (ram.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    ram.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
             componentRepository.save(ram);
         }
         if (ssd.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    ssd.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
             componentRepository.save(ssd);
         }
         if (hdd.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    hdd.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
             componentRepository.save(hdd);
         }
         if (motherBoard.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    motherBoard.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
             componentRepository.save(motherBoard);
         }
         if (powerUnit.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    powerUnit.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
             componentRepository.save(powerUnit);
         }
         if (computerCase.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    computerCase.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
             componentRepository.save(computerCase);
         }
         return "redirect:/admin/content?type=" + component + 's';
