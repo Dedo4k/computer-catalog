@@ -29,8 +29,13 @@ public class AdminController {
     private final ComponentServiceImpl componentService;
     private final ComponentRepository componentRepository;
     private final ProcessorRepository processorRepository;
+    private final SsdRepository ssdRepository;
+    private final HddRepository hddRepository;
     private final GraphicsCardRepository graphicsCardRepository;
     private final RamRepository ramRepository;
+    private final MotherBoardRepository motherBoardRepository;
+    private final PowerUnitRepository powerUnitRepository;
+    private final ComputerCaseRepository computerCaseRepository;
 
     @Autowired
     public AdminController(UserRepository userRepository,
@@ -39,15 +44,20 @@ public class AdminController {
                            ComponentServiceImpl componentService,
                            ComponentRepository componentRepository,
                            ProcessorRepository processorRepository,
-                           GraphicsCardRepository graphicsCardRepository, RamRepository ramRepository) {
+                           SsdRepository ssdRepository, HddRepository hddRepository, GraphicsCardRepository graphicsCardRepository, RamRepository ramRepository, MotherBoardRepository motherBoardRepository, PowerUnitRepository powerUnitRepository, ComputerCaseRepository computerCaseRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.componentService = componentService;
         this.componentRepository = componentRepository;
         this.processorRepository = processorRepository;
+        this.ssdRepository = ssdRepository;
+        this.hddRepository = hddRepository;
         this.graphicsCardRepository = graphicsCardRepository;
         this.ramRepository = ramRepository;
+        this.motherBoardRepository = motherBoardRepository;
+        this.powerUnitRepository = powerUnitRepository;
+        this.computerCaseRepository = computerCaseRepository;
     }
 
     @GetMapping("/admin")
@@ -156,22 +166,117 @@ public class AdminController {
                     exception.printStackTrace();
                 }
             }
-            componentRepository.save(ram);
+            componentRepository.save(ramToUpdate);
         }
         if (ssd.getClass().getSimpleName().equalsIgnoreCase(component)) {
-            componentRepository.save(ssd);
+            Ssd ssdToUpdate = ssdRepository.getById(id);
+            ssdToUpdate.setController(ssd.getController());
+            ssdToUpdate.setSsdInterface(ssd.getSsdInterface());
+            ssdToUpdate.setMicrochipType(ssdToUpdate.getMicrochipType());
+            ssdToUpdate.setModel(ssd.getModel());
+            ssdToUpdate.setFormFactor(ssd.getFormFactor());
+            ssdToUpdate.setProducer(ssd.getProducer());
+            ssdToUpdate.setCapacity(ssd.getCapacity());
+            ssdToUpdate.setPrice(ssd.getPrice());
+            ssdToUpdate.setReadingSpeed(ssd.getReadingSpeed());
+            ssdToUpdate.setWritingSpeed(ssd.getWritingSpeed());
+            if (!imageFile.isEmpty()) {
+                try {
+                    ssdToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(ssdToUpdate);
         }
         if (hdd.getClass().getSimpleName().equalsIgnoreCase(component)) {
-            componentRepository.save(hdd);
+            Hdd hddToUpdate = hddRepository.getById(id);
+            hddToUpdate.setCapacity(hdd.getCapacity());
+            hddToUpdate.setFormFactor(hdd.getFormFactor());
+            hddToUpdate.setModel(hdd.getModel());
+            hddToUpdate.setPrice(hdd.getPrice());
+            hddToUpdate.setProducer(hdd.getProducer());
+            hddToUpdate.setHddInterface(hdd.getHddInterface());
+            hddToUpdate.setBufferSize(hdd.getBufferSize());
+            hddToUpdate.setRotationSpeed(hdd.getRotationSpeed());
+            hddToUpdate.setThickness(hdd.getThickness());
+            if (!imageFile.isEmpty()) {
+                try {
+                    hddToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(hddToUpdate);
         }
         if (motherBoard.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
-            componentRepository.save(motherBoard);
+            MotherBoard motherBoardToUpdate = motherBoardRepository.getById(id);
+            motherBoardToUpdate.setFormFactor(motherBoard.getFormFactor());
+            motherBoardToUpdate.setLength(motherBoard.getLength());
+            motherBoardToUpdate.setModel(motherBoard.getModel());
+            motherBoardToUpdate.setSocket(motherBoard.getSocket());
+            motherBoardToUpdate.setPrice(motherBoard.getPrice());
+            motherBoardToUpdate.setProducer(motherBoard.getProducer());
+            motherBoardToUpdate.setChipset(motherBoard.getChipset());
+            motherBoardToUpdate.setMemorySlots(motherBoard.getMemorySlots());
+            motherBoardToUpdate.setWidth(motherBoard.getWidth());
+            motherBoardToUpdate.setMemoryType(motherBoard.getMemoryType());
+            motherBoardToUpdate.setMTwo(motherBoard.getMTwo());
+            if (!imageFile.isEmpty()) {
+                try {
+                    motherBoardToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(motherBoardToUpdate);
         }
         if (powerUnit.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
-            componentRepository.save(powerUnit);
+            PowerUnit powerUnitToUpdate = powerUnitRepository.getById(id);
+            powerUnitToUpdate.setPfc(powerUnit.getPfc());
+            powerUnitToUpdate.setPower(powerUnit.getPower());
+            powerUnitToUpdate.setHeight(powerUnit.getHeight());
+            powerUnitToUpdate.setModel(powerUnit.getModel());
+            powerUnitToUpdate.setPrice(powerUnit.getPrice());
+            powerUnitToUpdate.setProducer(powerUnit.getProducer());
+            powerUnitToUpdate.setCertificate(powerUnit.getCertificate());
+            powerUnitToUpdate.setDepth(powerUnit.getDepth());
+            powerUnitToUpdate.setEfficiency(powerUnit.getEfficiency());
+            powerUnitToUpdate.setStandard(powerUnit.getStandard());
+            powerUnitToUpdate.setWidth(powerUnit.getWidth());
+            if (!imageFile.isEmpty()) {
+                try {
+                    powerUnitToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(powerUnitToUpdate);
         }
         if (computerCase.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
-            componentRepository.save(computerCase);
+            ComputerCase computerCaseToUpdate = computerCaseRepository.getById(id);
+            computerCaseToUpdate.setCaseType(computerCase.getCaseType());
+            computerCaseToUpdate.setDepth(computerCase.getDepth());
+            computerCaseToUpdate.setHeight(computerCase.getHeight());
+            computerCaseToUpdate.setColour(computerCase.getColour());
+            computerCaseToUpdate.setModel(computerCase.getModel());
+            computerCaseToUpdate.setPrice(computerCase.getPrice());
+            computerCaseToUpdate.setProducer(computerCase.getProducer());
+            computerCaseToUpdate.setCompatible_motherboards(computerCase.getCompatible_motherboards());
+            computerCaseToUpdate.setMaterial(computerCase.getMaterial());
+            computerCaseToUpdate.setMaxGraphicsCardWidth(computerCase.getMaxGraphicsCardWidth());
+            computerCaseToUpdate.setMaxPowerUnitWidth(computerCase.getMaxPowerUnitWidth());
+            computerCaseToUpdate.setSectionNumber(computerCase.getSectionNumber());
+            computerCaseToUpdate.setWidth(computerCase.getWidth());
+            computerCaseToUpdate.setWeight(computerCase.getWeight());
+            if (!imageFile.isEmpty()) {
+                try {
+                    computerCaseToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(computerCaseToUpdate);
         }
         return "redirect:/admin/content?type=" + component + 's';
     }
