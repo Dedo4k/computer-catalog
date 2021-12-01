@@ -147,14 +147,14 @@
                                 <label for="inputMinFreq" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.minfreq"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="minFreq" id="inputMinFreq" placeholder="processor min frequency">
+                                    <input type="number" class="form-control" name="minFreq" id="inputMinFreq" placeholder="processor min frequency">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputMaxFreq" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.maxfreq"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="maxFreq" id="inputMaxFreq" placeholder="processor max frequency">
+                                    <input type="number" class="form-control" name="maxFreq" id="inputMaxFreq" placeholder="processor max frequency" step="any">
                                 </div>
                             </div>
                             <div class="mb-3 row">
