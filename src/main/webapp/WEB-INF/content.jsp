@@ -171,6 +171,39 @@
             </div>
         </div>
     </c:forEach>
+    <c:forEach items="${rams}" var="ram">
+        <div class="row">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/ram/${ram.id}" class="text-decoration-none"><h5
+                                    class="card-title">${ram.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${ram.price} <spring:message
+                                    code="label.currency.byn"/></h5>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/ram/${ram.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/ram/${ram.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <p class="card-text"><spring:message code="label.ram.capacity"/>: ${ram.capacity} <spring:message code="label.values.gbait"/>,
+                        <spring:message code="label.ram.freq"/>: ${ram.freq} <spring:message code="label.values.mherz"/>, <spring:message code="label.ram.modules"/>: ${ram.moduleSet},
+                        <spring:message code="label.ram.type"/>: ${ram.type}</p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
 </div>
 </body>
 </html>
