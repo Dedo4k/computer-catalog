@@ -259,6 +259,48 @@ public class ComponentServiceImpl implements ComponentService {
         return "components/component/" + component;
     }
 
+    @Override
+    public String getViewForComponentToEdit(String component, long id, Model model) {
+        switch (component) {
+            case "ram": {
+                model.addAttribute("ram", ramRepository.getById(id));
+                break;
+            }
+            case "hdd": {
+                model.addAttribute("hdd", hddRepository.getById(id));
+                break;
+            }
+            case "ssd": {
+                model.addAttribute("ssd", ssdRepository.getById(id));
+                break;
+            }
+            case "ccase": {
+                model.addAttribute("ccase", computerCaseRepository.getById(id));
+                break;
+            }
+            case "processor": {
+                model.addAttribute("processor", processorRepository.getById(id));
+                break;
+            }
+            case "power_unit": {
+                model.addAttribute("power_unit", powerUnitRepository.getById(id));
+                break;
+            }
+            case "mother_board": {
+                model.addAttribute("mother_board", motherBoardRepository.getById(id));
+                break;
+            }
+            case "graphics_card": {
+                model.addAttribute("graphics_card", graphicsCardRepository.getById(id));
+                break;
+            }
+            default: {
+                return "redirect:/admin/content";
+            }
+        }
+        return "components/component/edit/" + component + "_edit";
+    }
+
     public String filter(String component, Map<String, String[]> map, Model model) {
         Set<String> keys = map.keySet();
         List<Component> filteredComponent = new ArrayList<>();

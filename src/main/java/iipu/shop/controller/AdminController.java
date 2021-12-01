@@ -3,11 +3,13 @@ package iipu.shop.controller;
 import iipu.shop.enumeration.ExceptionMessage;
 import iipu.shop.enumeration.UserRole;
 import iipu.shop.model.User;
-import iipu.shop.model.component.Component;
-import iipu.shop.model.component.Processor;
+import iipu.shop.model.component.*;
 import iipu.shop.repository.ComponentRepository;
+import iipu.shop.repository.GraphicsCardRepository;
+import iipu.shop.repository.ProcessorRepository;
 import iipu.shop.repository.UserRepository;
 import iipu.shop.service.ComponentServiceImpl;
+import iipu.shop.service.ImageService;
 import iipu.shop.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,14 +32,24 @@ public class AdminController {
     private final BCryptPasswordEncoder passwordEncoder;
     private final ComponentServiceImpl componentService;
     private final ComponentRepository componentRepository;
+    private final ProcessorRepository processorRepository;
+    private final GraphicsCardRepository graphicsCardRepository;
 
     @Autowired
-    public AdminController(UserRepository userRepository, UserServiceImpl userService, BCryptPasswordEncoder passwordEncoder, ComponentServiceImpl componentService, ComponentRepository componentRepository) {
+    public AdminController(UserRepository userRepository,
+                           UserServiceImpl userService,
+                           BCryptPasswordEncoder passwordEncoder,
+                           ComponentServiceImpl componentService,
+                           ComponentRepository componentRepository,
+                           ProcessorRepository processorRepository,
+                           GraphicsCardRepository graphicsCardRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.componentService = componentService;
         this.componentRepository = componentRepository;
+        this.processorRepository = processorRepository;
+        this.graphicsCardRepository = graphicsCardRepository;
     }
 
     @GetMapping("/admin")
@@ -68,54 +81,147 @@ public class AdminController {
         return componentService.getViewForComponentToAdd(type, model);
     }
 
+    @GetMapping("/admin/{component}/{id}/edit")
+    public String editComponent(@PathVariable String component, @PathVariable long id, Model model) {
+        return componentService.getViewForComponentToEdit(component, id, model);
+    }
+
+    @PostMapping("/admin/{component}/{id}/edit")
+    public String saveUpdate(@PathVariable String component,
+                             Processor processor,
+                             GraphicsCard graphicsCard,
+                             Ram ram,
+                             Ssd ssd,
+                             Hdd hdd,
+                             PowerUnit powerUnit,
+                             MotherBoard motherBoard,
+                             ComputerCase computerCase,
+                             @RequestParam("imageFile") MultipartFile imageFile,
+                             @PathVariable long id,
+                             Model model) {
+        if (processor.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            Processor processorToUpdate = processorRepository.getById(id);
+            processorToUpdate.setSocket(processor.getSocket());
+            processorToUpdate.setPrice(processor.getPrice());
+            processorToUpdate.setThermalPower(processor.getThermalPower());
+            processorToUpdate.setMaxFreq(processor.getMaxFreq());
+            processorToUpdate.setMinFreq(processor.getMinFreq());
+            processorToUpdate.setCrystalName(processor.getCrystalName());
+            processorToUpdate.setCore(processor.getCore());
+            processorToUpdate.setProducer(processor.getProducer());
+            processorToUpdate.setModel(processor.getModel());
+            processorToUpdate.setCoreNumber(processor.getCoreNumber());
+            if (!imageFile.isEmpty()) {
+                try {
+                    processorToUpdate.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(processorToUpdate);
+        }
+        if (graphicsCard.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            GraphicsCard graphicsCardToUpdate = graphicsCardRepository.getById(id);
+            graphicsCardToUpdate.setProducer(graphicsCard.getProducer());
+            graphicsCardToUpdate.setModel(graphicsCard.getModel());
+            graphicsCardToUpdate.setPrice(graphicsCard.getPrice());
+            graphicsCardToUpdate.setVideoMemoryType(graphicsCard.getVideoMemoryType());
+            graphicsCardToUpdate.setVideoMemory(graphicsCard.getVideoMemory());
+            graphicsCardToUpdate.setGpuProducer(graphicsCard.getGpuProducer());
+            graphicsCardToUpdate.setGpuModel(graphicsCard.getGpuModel());
+            graphicsCardToUpdate.setGpuInterface(graphicsCard.getGpuInterface());
+            graphicsCardToUpdate.setRecommendedPower(graphicsCard.getRecommendedPower());
+            graphicsCardToUpdate.setHeight(graphicsCard.getHeight());
+            graphicsCardToUpdate.setLength(graphicsCard.getLength());
+            if (!imageFile.isEmpty()) {
+                try {
+
+                    graphicsCardToUpdate.setImage(imageFile.getBytes());
+
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(graphicsCardToUpdate);
+        }
+        if (ram.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            componentRepository.save(ram);
+        }
+        if (ssd.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            componentRepository.save(ssd);
+        }
+        if (hdd.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            componentRepository.save(hdd);
+        }
+        if (motherBoard.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            componentRepository.save(motherBoard);
+        }
+        if (powerUnit.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            componentRepository.save(powerUnit);
+        }
+        if (computerCase.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            componentRepository.save(computerCase);
+        }
+        return "redirect:/admin/content?type=" + component + 's';
+    }
+
     @PostMapping("/admin/{component}/new")
     public String addComponent(@PathVariable String component,
-                               String producer, String model, String price,
-                               String core, int coreNumber, String crystalName, String socket, String thermalPower, String minFreq, String maxFreq,
+                               Processor processor,
+                               GraphicsCard graphicsCard,
+                               Ram ram,
+                               Ssd ssd,
+                               Hdd hdd,
+                               MotherBoard motherBoard,
+                               PowerUnit powerUnit,
+                               ComputerCase computerCase,
                                @RequestParam(value = "imageFile", required = false) MultipartFile imageFile,
-                               Model modell) {
-        Component newComponent = null;
-        switch (component) {
-            case "processor": {
-                Processor processor = new Processor();
-                processor.setProducer(producer);
-                processor.setModel(model);
+                               Model model) {
+        if (processor.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            if (!imageFile.isEmpty()) {
                 try {
-                    processor.setPrice(Double.parseDouble(price));
-                } catch (NumberFormatException ex) {
-                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
-                    return "redirect:/admin/content/new";
+                    processor.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
                 }
-                processor.setCore(core);
-                processor.setCoreNumber(coreNumber);
-                processor.setSocket(socket);
-                processor.setCrystalName(crystalName);
-                try {
-                    processor.setThermalPower(Integer.parseInt(thermalPower));
-                } catch (NumberFormatException ex) {
-                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
-                    return "redirect:/admin/content/new";
-                }
-                try {
-                    processor.setMinFreq(Double.parseDouble(minFreq));
-                } catch (NumberFormatException ex) {
-                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
-                    return "redirect:/admin/content/new";
-                }
-                try {
-                    processor.setMaxFreq(Double.parseDouble(maxFreq));
-                } catch (NumberFormatException ex) {
-                    modell.addAttribute("error", ExceptionMessage.NOT_DOUBLE_INPUT.toString());
-                    return "redirect:/admin/content/new";
-                }
-                newComponent = processor;
-                break;
             }
+            componentRepository.save(processor);
         }
-        if (newComponent != null) {
-            componentRepository.save(newComponent);
+        if (graphicsCard.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            if (!imageFile.isEmpty()) {
+                try {
+                    graphicsCard.setImage(imageFile.getBytes());
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+            componentRepository.save(graphicsCard);
         }
-        return "redirect:/admin/content";
+        if (ram.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            componentRepository.save(ram);
+        }
+        if (ssd.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            componentRepository.save(ssd);
+        }
+        if (hdd.getClass().getSimpleName().equalsIgnoreCase(component)) {
+            componentRepository.save(hdd);
+        }
+        if (motherBoard.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            componentRepository.save(motherBoard);
+        }
+        if (powerUnit.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            componentRepository.save(powerUnit);
+        }
+        if (computerCase.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+            componentRepository.save(computerCase);
+        }
+        return "redirect:/admin/content?type=" + component + 's';
+    }
+
+    @PostMapping("/admin/{component}/{id}/delete")
+    public String deleteComponent(@PathVariable String component, @PathVariable long id) {
+        componentRepository.deleteById(id);
+        return "redirect:/admin/content?type=" + component + 's';
     }
 
     @PostMapping("/admin/add")

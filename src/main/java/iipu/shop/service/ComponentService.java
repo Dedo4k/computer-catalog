@@ -9,4 +9,6 @@ public interface ComponentService {
     String getViewForComponentToAdd(String components, Model model);
 
     String getViewForComponentById(String component, Long id, Model model);
+
+    String getViewForComponentToEdit(String component, long id, Model model);
 }

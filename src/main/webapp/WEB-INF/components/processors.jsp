@@ -316,9 +316,16 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/processors.jpg"/>" alt="processor">
-                            </div>
+                            <c:if test="${processor.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/processors.jpg"/>" class="w-100" alt="processor"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${processor.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${processor.encodeImage}"/>" class="w-100" alt="processor"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/processor/${processor.id}" class="text-decoration-none"><h5

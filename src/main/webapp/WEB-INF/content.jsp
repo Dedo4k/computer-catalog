@@ -48,7 +48,7 @@
                             <li><a class="dropdown-item" href="<c:url value="/user/${user_id}"/>"><spring:message
                                     code="label.page.account"/></a></li>
                             <sec:authorize access="hasAuthority('ADMIN')">
-                                <li><a class="dropdown-item" href="<c:url value=""/>"><spring:message
+                                <li><a class="dropdown-item" href="<c:url value="/admin"/>"><spring:message
                                         code="label.page.settings"/></a></li>
                             </sec:authorize>
                             <li>
@@ -112,12 +112,14 @@
                                     code="label.currency.byn"/></h5>
                         </div>
                         <div class="col-1">
-                            <form action="/admin/component/${processor.id}/delete" method="post">
+                            <form action="/admin/processor/${processor.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <input type="submit" class="btn btn-primary w-100" value="Edit">
                             </form>
                         </div>
                         <div class="col-1">
-                            <form action="/admin/component/${processor.id}/delete" method="post">
+                            <form action="/admin/processor/${processor.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <input type="submit" class="btn btn-danger w-100" value="Delete">
                             </form>
                         </div>
@@ -137,24 +139,34 @@
     </c:forEach>
     <c:forEach items="${graphics_cards}" var="graphics_card">
         <div class="row">
-            <div class="card m-4">
-                <div class="row">
-                    <div class="col-3">
-                        <img class="card-img-top" src="<c:url value="/img/graphics.jpg"/>" alt="processor">
-                    </div>
-                    <div class="col-9">
-                        <div class="card-body">
-                            <a href="/catalog/graphics_card/${graphics_card.id}" class="text-decoration-none">
-                                <h5
-                                        class="card-title">${graphics_card.toString()}</h5></a>
-                            <p class="card-text">${graphics_card.gpuProducer} ${graphics_card.gpuModel}, <spring:message
-                                    code="label.graphics.gpuinterface"/>: ${graphics_card.gpuInterface}, <spring:message
-                                    code="label.graphics.videomemory"/>: ${graphics_card.videoMemory} <spring:message
-                                    code="label.values.gbait"/> ${graphics_card.videoMemoryType} </p>
-                            <h5 class="btn btn-warning">${graphics_card.price} <spring:message
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/graphics_card/${graphics_card.id}" class="text-decoration-none"><h5
+                                    class="card-title">${graphics_card.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${graphics_card.price} <spring:message
                                     code="label.currency.byn"/></h5>
                         </div>
+                        <div class="col-1">
+                            <form action="/admin/graphics_card/${graphics_card.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/graphics_card/${graphics_card.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
                     </div>
+                    <p class="card-text">${graphics_card.gpuProducer} ${graphics_card.gpuModel}, <spring:message
+                            code="label.graphics.gpuinterface"/>: ${graphics_card.gpuInterface}, <spring:message
+                            code="label.graphics.videomemory"/>: ${graphics_card.videoMemory} <spring:message
+                            code="label.values.gbait"/> ${graphics_card.videoMemoryType} </p>
                 </div>
             </div>
         </div>

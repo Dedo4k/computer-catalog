@@ -68,9 +68,16 @@
 
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/graphics.jpg"/>" class="w-100" alt="graphics">
-        </div>
+        <c:if test="${graphics_card.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/graphics.jpg"/>" class="w-100" alt="graphics_card"/>
+            </div>
+        </c:if>
+        <c:if test="${graphics_card.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${graphics_card.encodeImage}"/>" class="w-100" alt="graphics_card"/>
+            </div>
+        </c:if>
         <div class="col-8">
             <h2>${graphics_card.producer} ${graphics_card.gpuProducer} ${graphics_card.gpuModel} ${graphics_card.model}</h2>
             <p>${graphics_card.gpuProducer} ${graphics_card.gpuModel}, ${graphics_card.videoMemory} <spring:message code="label.values.gbait"/>, ${graphics_card.videoMemoryType}, <spring:message code="label.graphics.gpuinterface"/>: ${graphics_card.gpuInterface}</p>

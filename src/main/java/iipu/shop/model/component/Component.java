@@ -8,6 +8,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Data
@@ -31,6 +32,10 @@ public class Component {
     @Column(name = "price", nullable = false)
     private double price;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
     @OneToMany(mappedBy = "component", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
@@ -44,5 +49,9 @@ public class Component {
 
     public String info() {
         return null;
+    }
+
+    public String getEncodeImage() {
+        return image != null ? Base64.getEncoder().encodeToString(image): null;
     }
 }

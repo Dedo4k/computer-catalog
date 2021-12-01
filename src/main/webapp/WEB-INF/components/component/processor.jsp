@@ -1,3 +1,5 @@
+<%@ page import="com.sun.org.apache.xerces.internal.impl.dv.util.Base64" %>
+<%@ page import="iipu.shop.model.component.Processor" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -64,12 +66,19 @@
         </div>
     </div>
 </nav>
-
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/processors.jpg"/>" alt="processor">
-        </div>
+        <c:if test="${processor.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/processors.jpg"/>" class="w-100" alt="processor"/>
+            </div>
+        </c:if>
+        <c:if test="${processor.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${processor.encodeImage}"/>" class="w-100" alt="processor"/>
+            </div>
+        </c:if>
+
         <div class="col-8">
             <h2>${processor.producer} ${processor.core}-${processor.model}</h2>
             <p>${processor.core}, ${processor.crystalName}, ${processor.coreNumber}, ${processor.socket}, ${processor.thermalPower} <spring:message code="label.values.watt"/>, ${processor.minFreq} <spring:message code="label.values.mherz"/>/${processor.maxFreq} <spring:message code="label.values.mherz"/></p>

@@ -12,7 +12,7 @@ spring:
     generate-ddl: false
 
   datasource:
-    url: jdbc:mysql://localhost:3306/computer_shop?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/computer_shop?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&max_allowed_packet=20M
     username: root
     password: 2662600
     driverClassName: com.mysql.cj.jdbc.Driver
