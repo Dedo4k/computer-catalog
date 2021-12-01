@@ -339,9 +339,16 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/graphics.jpg"/>" alt="processor">
-                            </div>
+                            <c:if test="${graphics_card.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/graphics.jpg"/>" class="w-100" alt="graphics_card"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${graphics_card.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${graphics_card.encodeImage}"/>" class="w-100" alt="graphics_card"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/graphics_card/${graphics_card.id}" class="text-decoration-none">

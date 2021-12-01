@@ -4,6 +4,7 @@ import iipu.shop.enumeration.ExceptionMessage;
 import iipu.shop.model.Review;
 import iipu.shop.model.User;
 import iipu.shop.model.component.Component;
+import iipu.shop.model.component.Processor;
 import iipu.shop.repository.*;
 import iipu.shop.service.ComponentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,12 @@ public class CatalogController {
         this.computerCaseRepository = computerCaseRepository;
         this.componentService = componentService;
         this.reviewRepository = reviewRepository;
+    }
+
+    @GetMapping("/sss")
+    public String sss(Model model){
+        model.addAttribute("processor", new Processor());
+        return "components/component/processor";
     }
 
     @GetMapping("/catalog")

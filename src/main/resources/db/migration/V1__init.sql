@@ -1,9 +1,12 @@
+SET GLOBAL max_allowed_packet = 1024 * 1024 * 20;
+
 create table component
 (
     id       bigint           not null auto_increment,
     model    varchar(255)     not null,
     price    double precision not null,
     producer varchar(255)     not null,
+    image    longblob,
     primary key (id)
 ) engine = InnoDB;
 
