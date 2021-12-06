@@ -284,19 +284,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.width"/>, <spring:message code="label.values.milim"/></h6>
+                            <h6 class="title"><spring:message code="label.case.width"/>, <spring:message
+                                    code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_width" placeholder="Min" class="w-100" value="${minW}">
+                                        <input type="text" name="min_width" placeholder="Min" class="w-100"
+                                               value="${minW}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_width" placeholder="Max" class="w-100" value="${maxW}">
+                                        <input type="text" name="max_width" placeholder="Max" class="w-100"
+                                               value="${maxW}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -308,19 +311,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.height"/>, <spring:message code="label.values.milim"/></h6>
+                            <h6 class="title"><spring:message code="label.case.height"/>, <spring:message
+                                    code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_height" placeholder="Min" class="w-100" value="${minH}">
+                                        <input type="text" name="min_height" placeholder="Min" class="w-100"
+                                               value="${minH}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_height" placeholder="Max" class="w-100" value="${maxH}">
+                                        <input type="text" name="max_height" placeholder="Max" class="w-100"
+                                               value="${maxH}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -332,19 +338,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.depth"/>, <spring:message code="label.values.milim"/></h6>
+                            <h6 class="title"><spring:message code="label.case.depth"/>, <spring:message
+                                    code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_depth" placeholder="Min" class="w-100" value="${minD}">
+                                        <input type="text" name="min_depth" placeholder="Min" class="w-100"
+                                               value="${minD}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_depth" placeholder="Max" class="w-100" value="${maxD}">
+                                        <input type="text" name="max_depth" placeholder="Max" class="w-100"
+                                               value="${maxD}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -356,19 +365,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.case.weight"/>, <spring:message code="label.values.kilog"/></h6>
+                            <h6 class="title"><spring:message code="label.case.weight"/>, <spring:message
+                                    code="label.values.kilog"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_weight" placeholder="Min" class="w-100" value="${minWe}">
+                                        <input type="text" name="min_weight" placeholder="Min" class="w-100"
+                                               value="${minWe}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_weight" placeholder="Max" class="w-100" value="${maxWe}">
+                                        <input type="text" name="max_weight" placeholder="Max" class="w-100"
+                                               value="${maxWe}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -390,14 +402,26 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/case.jpg"/>" alt="processor">
-                            </div>
+                            <c:if test="${ccase.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/case.jpg"/>" class="w-100" alt="case"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${ccase.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${ccase.encodeImage}"/>" style="max-height: 463px;" class="w-auto" alt="case"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/ccase/${ccase.id}" class="text-decoration-none"><h5
                                             class="card-title">${ccase.toString()}</h5></a>
-                                    <p class="card-text"><spring:message code="label.case.casetype"/>: ${ccase.caseType}, <spring:message code="label.case.material"/>: ${ccase.material}, <spring:message code="label.case.colour"/>: ${ccase.colour}, <spring:message code="label.case.sectionnumber"/>: ${ccase.sectionNumber}, <spring:message code="label.case.commother"/>: ${ccase.compatible_motherboards} </p>
+                                    <p class="card-text"><spring:message code="label.case.casetype"/>: ${ccase.caseType},
+                                        <spring:message code="label.case.material"/>: ${ccase.material}, <spring:message
+                                                code="label.case.colour"/>: ${ccase.colour}, <spring:message
+                                                code="label.case.sectionnumber"/>: ${ccase.sectionNumber},
+                                        <spring:message
+                                                code="label.case.commother"/>: ${ccase.compatible_motherboards} </p>
                                     <h5 class="btn btn-warning">${ccase.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

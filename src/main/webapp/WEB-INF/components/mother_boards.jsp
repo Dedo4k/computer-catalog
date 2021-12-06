@@ -400,10 +400,16 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/mother_board.jpg"/>"
-                                     alt="processor">
-                            </div>
+                            <c:if test="${mother_board.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/mother_board.jpg"/>" class="w-100" alt="motherboard"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${mother_board.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${mother_board.encodeImage}"/>" class="w-100" alt="motherboard"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/mother_board/${mother_board.id}" class="text-decoration-none">

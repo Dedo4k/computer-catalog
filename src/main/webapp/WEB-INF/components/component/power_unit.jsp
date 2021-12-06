@@ -68,9 +68,16 @@
 
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/power.jpg"/>" class="w-100" alt="mother_board">
-        </div>
+        <c:if test="${power_unit.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/power.jpg"/>" class="w-100" alt="power"/>
+            </div>
+        </c:if>
+        <c:if test="${power_unit.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${power_unit.encodeImage}"/>" class="w-100" alt="power"/>
+            </div>
+        </c:if>
         <div class="col-8">
             <h2>${power_unit.producer} ${power_unit.model}</h2>
             <p><spring:message code="label.powerunit.certificate"/>: ${power_unit.certificate}, ${power_unit.power} <spring:message code="label.values.watt"/>,

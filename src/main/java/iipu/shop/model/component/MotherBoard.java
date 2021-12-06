@@ -37,10 +37,10 @@ public class MotherBoard extends Component {
     private String chipset;
 
     @Column(name = "length", nullable = false)
-    private int length;
+    private double length;
 
     @Column(name = "width", nullable = false)
-    private int width;
+    private double width;
 
     @Override
     public String toString() {

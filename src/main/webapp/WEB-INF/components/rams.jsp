@@ -240,9 +240,16 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/ram.jpg"/>" alt="processor">
-                            </div>
+                            <c:if test="${ram.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/ram.jpg"/>" class="w-100" alt="ram"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${ram.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${ram.encodeImage}"/>" class="w-100" alt="ram"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/ram/${ram.id}" class="text-decoration-none"><h5

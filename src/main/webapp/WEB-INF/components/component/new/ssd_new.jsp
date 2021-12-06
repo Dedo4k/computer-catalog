@@ -82,11 +82,11 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
-                        <form id="add-component" action="<c:url value="/admin/graphics_card/${graphics_card.id}/edit"/>"
-                              method="post" enctype="multipart/form-data">
+                        <form id="add-component" action="<c:url value="/admin/ssd/new"/>" method="post"
+                              enctype="multipart/form-data">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                            <h3 class="mb-5">Edit graphics card</h3>
+                            <h3 class="mb-5">Add new ssd</h3>
 
                             <div class="errors mb-5">
                                 <c:if test="${error != null}">
@@ -99,7 +99,7 @@
                                     <spring:message code="label.component.producer"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="producer" id="inputProducer"
-                                           placeholder="graphics card producer" value="${graphics_card.producer}" required>
+                                           placeholder="SSD producer" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -107,80 +107,78 @@
                                     <spring:message code="label.component.model"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="model" id="inputModel"
-                                           placeholder="graphics card model" value="${graphics_card.model}" required>
+                                           placeholder="SSD model" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCore" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpuproducer"/></label>
+                                    <spring:message code="label.ssd.capacity"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuProducer" id="inputCore"
-                                           placeholder="gpu producer" value="${graphics_card.gpuProducer}" required>
+                                    <input type="number" class="form-control" name="capacity" id="inputCore"
+                                           placeholder="SSD capacity" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCoreNum" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpumodel"/></label>
+                                    <spring:message code="label.ssd.controller"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuModel" id="inputCoreNum"
-                                           placeholder="gpu model" value="${graphics_card.gpuModel}" required>
+                                    <input type="text" class="form-control" name="controller" id="inputCoreNum"
+                                           placeholder="SSD controller" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputSocket" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpuinterface"/></label>
+                                    <spring:message code="label.ssd.interface"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuInterface" id="inputSocket"
-                                           placeholder="gpu interface" value="${graphics_card.gpuInterface}" required>
+                                    <input type="text" class="form-control" name="ssdInterface" id="inputSocket"
+                                           placeholder="SSD interface" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCrystalName" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.videomemory"/></label>
+                                    <spring:message code="label.ssd.microchip"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="videoMemory" id="inputCrystalName"
-                                           placeholder="gpu videomemory" value="${graphics_card.videoMemory}" required>
+                                    <input type="text" class="form-control" name="microchipType" id="inputCrystalName"
+                                           placeholder="SSD microchip" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputThermalPower" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.videomemorytype"/></label>
+                                <label for="inputCrystalName1" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.ssd.formfactor"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="videoMemoryType"
-                                           id="inputThermalPower" placeholder="gpu videomemory type"
-                                           value="${graphics_card.videoMemoryType}" required>
+                                    <input type="text" class="form-control" name="formFactor" id="inputCrystalName1"
+                                           placeholder="SSD microchip" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputMinFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.recpower"/></label>
+                                <label for="inputCrystalName2" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.ssd.writingspeed"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="recommendedPower" id="inputMinFreq"
-                                           placeholder="graphics card recommended power"
-                                           value="${graphics_card.recommendedPower}" required>
+                                    <input type="number" class="form-control" name="writingSpeed" id="inputCrystalName2"
+                                           placeholder="SSD writing speed" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputMaxFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.height"/></label>
+                                <label for="inputCrystalName3" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.ssd.readingspeed"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="height" id="inputMaxFreq"
-                                           placeholder="graphics card height" value="${graphics_card.height}" required>
+                                    <input type="number" class="form-control" name="readingSpeed" id="inputCrystalName3"
+                                           placeholder="SSD reading speed" value="${ssd.readingSpeed}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputssMaxFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.length"/></label>
+                                <label for="inputCrystalName4" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.ssd.recsource"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="length" id="inputssMaxFreq"
-                                           placeholder="graphics card length" value="${graphics_card.length}" required>
+                                    <input type="text" class="form-control" name="recordingResource" id="inputCrystalName4"
+                                           placeholder="SSD recording source" value="${ssd.recordingResource}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPrice" class="col-sm-3 col-form-label">Price</label>
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" name="price" id="inputPrice"
-                                           placeholder="graphics card price" value="${graphics_card.price}" step="any" required>
+                                           placeholder="SSD price" step="any" value="${ssd.price}" required>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -191,7 +189,7 @@
 
                         </form>
 
-                        <button form="add-component" class="btn btn-primary btn-lg btn-block" type="submit">Edit
+                        <button form="add-component" class="btn btn-primary btn-lg btn-block" type="submit">Add
                         </button>
 
                     </div>

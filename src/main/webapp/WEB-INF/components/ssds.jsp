@@ -256,7 +256,8 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ssd.capacity"/>, <spring:message code="label.values.gbait"/></h6>
+                            <h6 class="title"><spring:message code="label.ssd.capacity"/>, <spring:message
+                                    code="label.values.gbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -282,19 +283,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ssd.readingspeed"/>, <spring:message code="label.values.rwspeed"/></h6>
+                            <h6 class="title"><spring:message code="label.ssd.readingspeed"/>, <spring:message
+                                    code="label.values.rwspeed"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_reading_speed" placeholder="Min" class="w-100" value="${minRS}">
+                                        <input type="text" name="min_reading_speed" placeholder="Min" class="w-100"
+                                               value="${minRS}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_reading_speed" placeholder="Max" class="w-100" value="${maxRS}">
+                                        <input type="text" name="max_reading_speed" placeholder="Max" class="w-100"
+                                               value="${maxRS}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -306,19 +310,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.ssd.writingspeed"/>, <spring:message code="label.values.rwspeed"/></h6>
+                            <h6 class="title"><spring:message code="label.ssd.writingspeed"/>, <spring:message
+                                    code="label.values.rwspeed"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_writing_speed" placeholder="Min" class="w-100" value="${minWrS}">
+                                        <input type="text" name="min_writing_speed" placeholder="Min" class="w-100"
+                                               value="${minWrS}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_writing_speed" placeholder="Max" class="w-100" value="${maxWrS}">
+                                        <input type="text" name="max_writing_speed" placeholder="Max" class="w-100"
+                                               value="${maxWrS}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -340,14 +347,26 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/ssd.jpg"/>" alt="processor">
-                            </div>
+                            <c:if test="${ssd.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/ssd.jpg"/>" class="w-100" alt="ssd"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${ssd.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${ssd.encodeImage}"/>" class="w-100" alt="ss"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/ssd/${ssd.id}" class="text-decoration-none"><h5
                                             class="card-title">${ssd.toString()}</h5></a>
-                                    <p class="card-text">${ssd.formFactor}, ${ssd.ssdInterface}, <spring:message code="label.ssd.microchip"/>: ${ssd.microchipType}, <spring:message code="label.ssd.readingspeed"/>: ${ssd.readingSpeed} <spring:message code="label.values.rwspeed"/> , <spring:message code="label.ssd.writingspeed"/>: ${ssd.writingSpeed} <spring:message code="label.values.rwspeed"/> </p>
+                                    <p class="card-text">${ssd.formFactor}, ${ssd.ssdInterface}, <spring:message
+                                            code="label.ssd.microchip"/>: ${ssd.microchipType}, <spring:message
+                                            code="label.ssd.readingspeed"/>: ${ssd.readingSpeed} <spring:message
+                                            code="label.values.rwspeed"/> , <spring:message
+                                            code="label.ssd.writingspeed"/>: ${ssd.writingSpeed} <spring:message
+                                            code="label.values.rwspeed"/></p>
                                     <h5 class="btn btn-warning">${ssd.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

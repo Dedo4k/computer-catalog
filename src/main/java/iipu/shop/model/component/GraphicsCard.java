@@ -34,10 +34,10 @@ public class GraphicsCard extends Component{
     private double recommendedPower;
 
     @Column(name = "length", nullable = false)
-    private int length;
+    private double length;
 
     @Column(name = "height", nullable = false)
-    private int height;
+    private double height;
 
     @Override
     public String toString() {

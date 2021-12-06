@@ -253,7 +253,7 @@ public class AdminController {
             }
             componentRepository.save(powerUnitToUpdate);
         }
-        if (computerCase.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+        if (computerCase.getClass().getSimpleName().equalsIgnoreCase("computercase") && component.equalsIgnoreCase("case")) {
             ComputerCase computerCaseToUpdate = computerCaseRepository.getById(id);
             computerCaseToUpdate.setCaseType(computerCase.getCaseType());
             computerCaseToUpdate.setDepth(computerCase.getDepth());
@@ -363,7 +363,7 @@ public class AdminController {
             }
             componentRepository.save(powerUnit);
         }
-        if (computerCase.getClass().getSimpleName().equalsIgnoreCase(component.replace("_", ""))) {
+        if (computerCase.getClass().getSimpleName().equalsIgnoreCase("computercase") && component.equalsIgnoreCase("case")) {
             if (!imageFile.isEmpty()) {
                 try {
                     computerCase.setImage(imageFile.getBytes());

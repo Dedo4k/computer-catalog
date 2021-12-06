@@ -82,7 +82,8 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
-                        <form id="add-component" action="<c:url value="/admin/processor/${processor.id}/edit"/>" method="post" enctype="multipart/form-data">
+                        <form id="add-component" action="<c:url value="/admin/processor/${processor.id}/edit"/>"
+                              method="post" enctype="multipart/form-data">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                             <h3 class="mb-5">Edit processor</h3>
@@ -98,79 +99,94 @@
                                     <spring:message code="label.component.producer"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="producer" id="inputProducer"
-                                           placeholder="processor producer" value="${processor.producer}">
+                                           placeholder="processor producer" value="${processor.producer}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputModel" class="col-sm-3 col-form-label">
                                     <spring:message code="label.component.model"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="model" id="inputModel" placeholder="processor model" value="${processor.model}">
+                                    <input type="text" class="form-control" name="model" id="inputModel"
+                                           placeholder="processor model" value="${processor.model}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCore" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.core"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="core" id="inputCore" placeholder="processor core" value="${processor.core}">
+                                    <input type="text" class="form-control" name="core" id="inputCore"
+                                           placeholder="processor core" value="${processor.core}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCoreNum" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.corenum"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="coreNumber" id="inputCoreNum" placeholder="processor core number" value="${processor.coreNumber}">
+                                    <input type="number" class="form-control" name="coreNumber" id="inputCoreNum"
+                                           placeholder="processor core number" value="${processor.coreNumber}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputSocket" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.socket"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="socket" id="inputSocket" placeholder="processor socket" value="${processor.socket}">
+                                    <input type="text" class="form-control" name="socket" id="inputSocket"
+                                           placeholder="processor socket" value="${processor.socket}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCrystalName" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.crystalname"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="crystalName" id="inputCrystalName" placeholder="processor crystal name" value="${processor.crystalName}">
+                                    <input type="text" class="form-control" name="crystalName" id="inputCrystalName"
+                                           placeholder="processor crystal name" value="${processor.crystalName}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputThermalPower" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.thermalpower"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="thermalPower" id="inputThermalPower" placeholder="processor thermal power" value="${processor.thermalPower}">
+                                    <input type="number" class="form-control" name="thermalPower" id="inputThermalPower"
+                                           placeholder="processor thermal power" step="any" value="${processor.thermalPower}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputMinFreq" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.minfreq"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="minFreq" id="inputMinFreq" placeholder="processor min frequency" value="${processor.minFreq}">
+                                    <input type="number" class="form-control" name="minFreq" id="inputMinFreq"
+                                           placeholder="processor min frequency" step="any" value="${processor.minFreq}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputMaxFreq" class="col-sm-3 col-form-label">
                                     <spring:message code="label.processor.maxfreq"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="maxFreq" id="inputMaxFreq" placeholder="processor max frequency" value="${processor.maxFreq}">
+                                    <input type="number" class="form-control" name="maxFreq" id="inputMaxFreq"
+                                           placeholder="processor max frequency" step="any" value="${processor.maxFreq}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPrice" class="col-sm-3 col-form-label">Price</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="price" id="inputPrice" placeholder="processor price" value="${processor.price}">
+                                    <input type="number" class="form-control" name="price" id="inputPrice"
+                                           placeholder="processor price" step="any" value="${processor.price}" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="formFileSm" class="form-label"></label>
-                                <input class="form-control form-control-sm" name="imageFile" id="formFileSm" type="file">
+                                <input class="form-control form-control-sm" name="imageFile" id="formFileSm"
+                                       type="file">
                             </div>
 
                         </form>
 
-                        <button form="add-component" class="btn btn-primary btn-lg btn-block" type="submit">Edit</button>
+                        <button form="add-component" class="btn btn-primary btn-lg btn-block" type="submit">Edit
+                        </button>
 
                     </div>
                 </div>

@@ -68,9 +68,16 @@
 
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/ram.jpg"/>" class="w-100" alt="mother_board">
-        </div>
+        <c:if test="${ram.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/ram.jpg"/>" class="w-100" alt="ram"/>
+            </div>
+        </c:if>
+        <c:if test="${ram.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${ram.encodeImage}"/>" class="w-100" alt="ram"/>
+            </div>
+        </c:if>
         <div class="col-8">
             <h2>${ram.producer} ${ram.model} ${ram.moduleSet}x${ram.capacity}</h2>
             <p>${ram.moduleSet}x${ram.capacity} <spring:message code="label.values.gbait"/>, ${ram.freq} <spring:message code="label.values.mherz"/>, ${ram.moduleSet}, ${ram.type}</p>

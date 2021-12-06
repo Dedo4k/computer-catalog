@@ -82,11 +82,11 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
-                        <form id="add-component" action="<c:url value="/admin/graphics_card/${graphics_card.id}/edit"/>"
-                              method="post" enctype="multipart/form-data">
+                        <form id="add-component" action="<c:url value="/admin/case/${ccase.id}/edit"/>" method="post"
+                              enctype="multipart/form-data">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                            <h3 class="mb-5">Edit graphics card</h3>
+                            <h3 class="mb-5">Edit computer case</h3>
 
                             <div class="errors mb-5">
                                 <c:if test="${error != null}">
@@ -99,7 +99,7 @@
                                     <spring:message code="label.component.producer"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="producer" id="inputProducer"
-                                           placeholder="graphics card producer" value="${graphics_card.producer}" required>
+                                           placeholder="computer case producer" value="${ccase.producer}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -107,80 +107,112 @@
                                     <spring:message code="label.component.model"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="model" id="inputModel"
-                                           placeholder="graphics card model" value="${graphics_card.model}" required>
+                                           placeholder="computer case model" value="${ccase.model}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCore" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpuproducer"/></label>
+                                    <spring:message code="label.case.casetype"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuProducer" id="inputCore"
-                                           placeholder="gpu producer" value="${graphics_card.gpuProducer}" required>
+                                    <input type="text" class="form-control" name="caseType" id="inputCore"
+                                           placeholder="computer case type" value="${ccase.caseType}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCoreNum" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpumodel"/></label>
+                                    <spring:message code="label.case.colour"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuModel" id="inputCoreNum"
-                                           placeholder="gpu model" value="${graphics_card.gpuModel}" required>
+                                    <input type="text" class="form-control" name="colour" id="inputCoreNum"
+                                           placeholder="computer case colour" value="${ccase.colour}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputSocket" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpuinterface"/></label>
+                                    <spring:message code="label.case.material"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuInterface" id="inputSocket"
-                                           placeholder="gpu interface" value="${graphics_card.gpuInterface}" required>
+                                    <input type="text" class="form-control" name="material" id="inputSocket"
+                                           placeholder="computer case material" value="${ccase.material}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCrystalName" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.videomemory"/></label>
+                                    <spring:message code="label.case.sectionnumber"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="videoMemory" id="inputCrystalName"
-                                           placeholder="gpu videomemory" value="${graphics_card.videoMemory}" required>
+                                    <input type="number" class="form-control" name="sectionNumber" id="inputCrystalName"
+                                           placeholder="computer case section number" value="${ccase.sectionNumber}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputThermalPower" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.videomemorytype"/></label>
+                                <label for="inputCrystalName1" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.case.commother"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="videoMemoryType"
-                                           id="inputThermalPower" placeholder="gpu videomemory type"
-                                           value="${graphics_card.videoMemoryType}" required>
+                                    <input type="text" class="form-control" name="compatible_motherboards"
+                                           id="inputCrystalName1"
+                                           placeholder="computer case compatible motherboards"
+                                           value="${ccase.compatible_motherboards}" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputMinFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.recpower"/></label>
+                                <label for="inputCrystalName5" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.case.maxgraphicscardwidth"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="recommendedPower" id="inputMinFreq"
-                                           placeholder="graphics card recommended power"
-                                           value="${graphics_card.recommendedPower}" required>
+                                    <input type="number" class="form-control" name="maxGraphicsCardWidth" id="inputCrystalName5"
+                                           placeholder="graphics card max width" step="any" value="${ccase.maxGraphicsCardWidth}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputMaxFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.height"/></label>
+                                <label for="inputCrystalName6" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.case.maxpowerunitwidth"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="height" id="inputMaxFreq"
-                                           placeholder="graphics card height" value="${graphics_card.height}" required>
+                                    <input type="number" class="form-control" name="maxPowerUnitWidth" id="inputCrystalName6"
+                                           placeholder="power unit max width" step="any" value="${ccase.maxPowerUnitWidth}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputssMaxFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.length"/></label>
+                                <label for="inputCrystalName2" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.case.height"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="length" id="inputssMaxFreq"
-                                           placeholder="graphics card length" value="${graphics_card.length}" required>
+                                    <input type="number" class="form-control" name="height" id="inputCrystalName2"
+                                           placeholder="computer case height" step="any" value="${ccase.height}"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputCrystalName3" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.case.width"/></label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" name="width" id="inputCrystalName3"
+                                           placeholder="computer case width" step="any" value="${ccase.width}"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputCrystalName4" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.case.depth"/></label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" name="depth" id="inputCrystalName4"
+                                           placeholder="computer case depth" step="any" value="${ccase.depth}"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputCrystalName7" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.case.weight"/></label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" name="weight" id="inputCrystalName7"
+                                           placeholder="computer case weight" step="any" value="${ccase.weight}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPrice" class="col-sm-3 col-form-label">Price</label>
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" name="price" id="inputPrice"
-                                           placeholder="graphics card price" value="${graphics_card.price}" step="any" required>
+                                           placeholder="computer case price" step="any" value="${ccase.price}"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3">

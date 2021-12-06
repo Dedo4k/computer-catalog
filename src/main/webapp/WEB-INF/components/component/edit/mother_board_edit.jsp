@@ -82,11 +82,12 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
-                        <form id="add-component" action="<c:url value="/admin/graphics_card/${graphics_card.id}/edit"/>"
-                              method="post" enctype="multipart/form-data">
+                        <form id="add-component" action="<c:url value="/admin/mother_board/${mother_board.id}/edit"/>"
+                              method="post"
+                              enctype="multipart/form-data">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                            <h3 class="mb-5">Edit graphics card</h3>
+                            <h3 class="mb-5">Edit motherboard</h3>
 
                             <div class="errors mb-5">
                                 <c:if test="${error != null}">
@@ -99,7 +100,8 @@
                                     <spring:message code="label.component.producer"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="producer" id="inputProducer"
-                                           placeholder="graphics card producer" value="${graphics_card.producer}" required>
+                                           value="${mother_board.producer}"
+                                           placeholder="motherboard producer" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -107,80 +109,97 @@
                                     <spring:message code="label.component.model"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="model" id="inputModel"
-                                           placeholder="graphics card model" value="${graphics_card.model}" required>
+                                           value="${mother_board.model}"
+                                           placeholder="motherboard model" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCore" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpuproducer"/></label>
+                                    <spring:message code="label.motherboard.pciversion"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuProducer" id="inputCore"
-                                           placeholder="gpu producer" value="${graphics_card.gpuProducer}" required>
+                                    <input type="text" class="form-control" name="PCIVersion" id="inputCore"
+                                           value="${mother_board.PCIVersion}"
+                                           placeholder="motherboard PCI version" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCoreNum" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpumodel"/></label>
+                                    <spring:message code="label.motherboard.socket"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuModel" id="inputCoreNum"
-                                           placeholder="gpu model" value="${graphics_card.gpuModel}" required>
+                                    <input type="text" class="form-control" name="socket" id="inputCoreNum"
+                                           value="${mother_board.socket}"
+                                           placeholder="motherboard socket" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputSocket" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.gpuinterface"/></label>
+                                    <spring:message code="label.motherboard.chipset"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuInterface" id="inputSocket"
-                                           placeholder="gpu interface" value="${graphics_card.gpuInterface}" required>
+                                    <input type="text" class="form-control" name="chipset" id="inputSocket"
+                                           value="${mother_board.chipset}"
+                                           placeholder="motherboard chipset" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCrystalName" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.videomemory"/></label>
+                                    <spring:message code="label.motherboard.formfactor"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="videoMemory" id="inputCrystalName"
-                                           placeholder="gpu videomemory" value="${graphics_card.videoMemory}" required>
+                                    <input type="text" class="form-control" name="formFactor" id="inputCrystalName"
+                                           value="${mother_board.formFactor}"
+                                           placeholder="motherboard form-factor" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputThermalPower" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.videomemorytype"/></label>
+                                    <spring:message code="label.motherboard.memorytype"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="videoMemoryType"
-                                           id="inputThermalPower" placeholder="gpu videomemory type"
-                                           value="${graphics_card.videoMemoryType}" required>
+                                    <input type="text" class="form-control" name="memoryType" id="inputThermalPower"
+                                           value="${mother_board.memoryType}"
+                                           placeholder="motherboard memory type" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputMinFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.recpower"/></label>
+                                    <spring:message code="label.motherboard.memoryslots"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="recommendedPower" id="inputMinFreq"
-                                           placeholder="graphics card recommended power"
-                                           value="${graphics_card.recommendedPower}" required>
+                                    <input type="number" class="form-control" name="memorySlots" id="inputMinFreq"
+                                           value="${mother_board.memorySlots}"
+                                           placeholder="motherboard memory slots number" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputMaxFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.height"/></label>
+                                    <spring:message code="label.motherboard.mtwo"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="height" id="inputMaxFreq"
-                                           placeholder="graphics card height" value="${graphics_card.height}" required>
+                                    <input type="number" class="form-control" name="mTwo" id="inputMaxFreq"
+                                           value="${mother_board.MTwo}"
+                                           placeholder="motherboard M.2" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputssMaxFreq" class="col-sm-3 col-form-label">
-                                    <spring:message code="label.graphics.length"/></label>
+                                <label for="inputMaxFreq1" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.motherboard.width"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="length" id="inputssMaxFreq"
-                                           placeholder="graphics card length" value="${graphics_card.length}" required>
+                                    <input type="number" class="form-control" name="width" id="inputMaxFreq1"
+                                           value="${mother_board.width}"
+                                           placeholder="motherboard width" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputMaxFreq2" class="col-sm-3 col-form-label">
+                                    <spring:message code="label.motherboard.length"/></label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" name="length" id="inputMaxFreq2"
+                                           value="${mother_board.length}"
+                                           placeholder="motherboard length" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPrice" class="col-sm-3 col-form-label">Price</label>
                                 <div class="col-sm-9">
                                     <input type="number" class="form-control" name="price" id="inputPrice"
-                                           placeholder="graphics card price" value="${graphics_card.price}" step="any" required>
+                                           value="${mother_board.price}" step="any"
+                                           placeholder="motherboard price" required>
                                 </div>
                             </div>
                             <div class="mb-3">

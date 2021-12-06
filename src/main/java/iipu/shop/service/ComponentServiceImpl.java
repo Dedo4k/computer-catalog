@@ -187,7 +187,7 @@ public class ComponentServiceImpl implements ComponentService {
                 break;
             }
             case "ssds": {
-                component = "sdd";
+                component = "ssd";
                 break;
             }
             case "cases": {

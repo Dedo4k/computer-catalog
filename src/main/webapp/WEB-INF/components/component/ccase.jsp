@@ -67,9 +67,16 @@
 
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/case.jpg"/>" class="w-100" alt="mother_board">
-        </div>
+        <c:if test="${ccase.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/case.jpg"/>" class="w-100" alt="case"/>
+            </div>
+        </c:if>
+        <c:if test="${ccase.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${ccase.encodeImage}"/>" style="max-height: 463px;" class="w-auto" alt="case"/>
+            </div>
+        </c:if>
         <div class="col-8">
             <h2>${ccase.producer} ${ccase.model}</h2>
             <p><spring:message code="label.case.casetype"/>: ${ccase.caseType}, ${ccase.colour}, ${ccase.material}, <spring:message code="label.case.sectionnumber"/>: ${ccase.sectionNumber}</p>

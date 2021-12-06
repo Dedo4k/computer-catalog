@@ -171,6 +171,215 @@
             </div>
         </div>
     </c:forEach>
+    <c:forEach items="${mother_boards}" var="mother_board">
+        <div class="row">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/mother_board/${mother_board.id}" class="text-decoration-none"><h5
+                                    class="card-title">${mother_board.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${mother_board.price} <spring:message
+                                    code="label.currency.byn"/></h5>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/mother_board/${mother_board.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/mother_board/${mother_board.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <p class="card-text">${mother_board.formFactor}, <spring:message
+                            code="label.motherboard.socket"/> ${mother_board.socket},
+                        <spring:message code="label.motherboard.chipset"/> ${mother_board.chipset},
+                        <spring:message code="label.motherboard.memorytype"/> ${mother_board.memoryType}</p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <c:forEach items="${rams}" var="ram">
+        <div class="row">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/ram/${ram.id}" class="text-decoration-none"><h5
+                                    class="card-title">${ram.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${ram.price} <spring:message
+                                    code="label.currency.byn"/></h5>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/ram/${ram.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/ram/${ram.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <p class="card-text"><spring:message code="label.ram.capacity"/>: ${ram.capacity} <spring:message
+                            code="label.values.gbait"/>,
+                        <spring:message code="label.ram.freq"/>: ${ram.freq} <spring:message code="label.values.mherz"/>,
+                        <spring:message code="label.ram.modules"/>: ${ram.moduleSet},
+                        <spring:message code="label.ram.type"/>: ${ram.type}</p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <c:forEach items="${ssds}" var="ssd">
+        <div class="row">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/ssd/${ssd.id}" class="text-decoration-none"><h5
+                                    class="card-title">${ssd.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${ssd.price} <spring:message
+                                    code="label.currency.byn"/></h5>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/ssd/${ssd.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/ssd/${ssd.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <p class="card-text">${ssd.formFactor}, ${ssd.ssdInterface}, <spring:message
+                            code="label.ssd.microchip"/>: ${ssd.microchipType}, <spring:message
+                            code="label.ssd.readingspeed"/>: ${ssd.readingSpeed} <spring:message
+                            code="label.values.rwspeed"/> , <spring:message
+                            code="label.ssd.writingspeed"/>: ${ssd.writingSpeed} <spring:message
+                            code="label.values.rwspeed"/></p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <c:forEach items="${hdds}" var="hdd">
+        <div class="row">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/hdd/${hdd.id}" class="text-decoration-none"><h5
+                                    class="card-title">${hdd.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${hdd.price} <spring:message
+                                    code="label.currency.byn"/></h5>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/hdd/${hdd.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/hdd/${hdd.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <p class="card-text">${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed}
+                        <spring:message code="label.values.rotspeed"/>, <spring:message
+                                code="label.hdd.buffersize"/>: ${hdd.bufferSize} <spring:message
+                                code="label.values.mbait"/></p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <c:forEach items="${cases}" var="ccase">
+        <div class="row">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/ccase/${ccase.id}" class="text-decoration-none"><h5
+                                    class="card-title">${ccase.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${ccase.price} <spring:message
+                                    code="label.currency.byn"/></h5>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/ccase/${ccase.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/case/${ccase.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <p class="card-text"><spring:message code="label.case.casetype"/>: ${ccase.caseType},
+                        <spring:message code="label.case.material"/>: ${ccase.material}, <spring:message
+                                code="label.case.colour"/>: ${ccase.colour}, <spring:message
+                                code="label.case.sectionnumber"/>: ${ccase.sectionNumber},
+                        <spring:message
+                                code="label.case.commother"/>: ${ccase.compatible_motherboards} </p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <c:forEach items="${power_units}" var="power_unit">
+        <div class="row">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/catalog/power_unit/${power_unit.id}" class="text-decoration-none"><h5
+                                    class="card-title">${power_unit.toString()}</h5></a>
+                        </div>
+                        <div class="col-2">
+                            <h5 class="btn btn-warning w-100">${power_unit.price} <spring:message
+                                    code="label.currency.byn"/></h5>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/power_unit/${power_unit.id}/edit" method="get">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-primary w-100" value="Edit">
+                            </form>
+                        </div>
+                        <div class="col-1">
+                            <form action="/admin/power_unit/${power_unit.id}/delete" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <input type="submit" class="btn btn-danger w-100" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <p class="card-text"><spring:message code="label.powerunit.pfc"/>: ${power_unit.pfc},
+                        <spring:message code="label.powerunit.efficiency"/>: ${power_unit.efficiency}%,
+                        <spring:message code="label.powerunit.certificate"/>: ${power_unit.certificate},
+                            ${power_unit.power} <spring:message code="label.values.watt"/></p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
 </div>
 </body>
 </html>

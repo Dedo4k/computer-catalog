@@ -68,9 +68,16 @@
 
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/hdd.jpg"/>" class="w-100" alt="mother_board">
-        </div>
+        <c:if test="${hdd.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/hdd.jpg"/>" class="w-100" alt="hdd"/>
+            </div>
+        </c:if>
+        <c:if test="${hdd.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${hdd.encodeImage}"/>" style="max-height: 463px;" class="w-auto" alt="hdd"/>
+            </div>
+        </c:if>
         <div class="col-8">
             <h2>${hdd.producer} ${hdd.model}</h2>
             <p> ${hdd.capacity} <spring:message code="label.values.gbait"/>,

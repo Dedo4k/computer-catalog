@@ -200,7 +200,8 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.capacity"/>, <spring:message code="label.values.gbait"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.capacity"/>, <spring:message
+                                    code="label.values.gbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -226,7 +227,8 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.buffersize"/>, <spring:message code="label.values.mbait"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.buffersize"/>, <spring:message
+                                    code="label.values.mbait"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -252,19 +254,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.rotationspeed"/>, <spring:message code="label.values.rotspeed"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.rotationspeed"/>, <spring:message
+                                    code="label.values.rotspeed"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_rotation_speed" placeholder="Min" class="w-100" value="${minRS}">
+                                        <input type="text" name="min_rotation_speed" placeholder="Min" class="w-100"
+                                               value="${minRS}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_rotation_speed" placeholder="Max" class="w-100" value="${maxRS}">
+                                        <input type="text" name="max_rotation_speed" placeholder="Max" class="w-100"
+                                               value="${maxRS}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -276,19 +281,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.hdd.thickness"/>, <spring:message code="label.values.milim"/></h6>
+                            <h6 class="title"><spring:message code="label.hdd.thickness"/>, <spring:message
+                                    code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_thickness" placeholder="Min" class="w-100" value="${minTh}">
+                                        <input type="text" name="min_thickness" placeholder="Min" class="w-100"
+                                               value="${minTh}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_thickness" placeholder="Max" class="w-100" value="${maxTh}">
+                                        <input type="text" name="max_thickness" placeholder="Max" class="w-100"
+                                               value="${maxTh}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -310,14 +318,24 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/hdd.jpg"/>" alt="processor">
-                            </div>
+                            <c:if test="${hdd.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/hdd.jpg"/>" class="w-100" alt="hdd"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${hdd.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${hdd.encodeImage}"/>" style="max-height: 250px;" class="w-auto" alt="hdd"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/hdd/${hdd.id}" class="text-decoration-none"><h5
                                             class="card-title">${hdd.toString()}</h5></a>
-                                    <p class="card-text">${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed} <spring:message code="label.values.rotspeed"/>, <spring:message code="label.hdd.buffersize"/>: ${hdd.bufferSize} <spring:message code="label.values.mbait"/></p>
+                                    <p class="card-text">${hdd.formFactor}, ${hdd.hddInterface}, ${hdd.rotationSpeed}
+                                        <spring:message code="label.values.rotspeed"/>, <spring:message
+                                                code="label.hdd.buffersize"/>: ${hdd.bufferSize} <spring:message
+                                                code="label.values.mbait"/></p>
                                     <h5 class="btn btn-warning">${hdd.price} <spring:message
                                             code="label.currency.byn"/></h5>
                                 </div>

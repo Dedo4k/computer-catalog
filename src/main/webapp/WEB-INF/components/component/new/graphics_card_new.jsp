@@ -82,7 +82,8 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
-                        <form id="add-component" action="<c:url value="/admin/graphics_card/new"/>" method="post" enctype="multipart/form-data">
+                        <form id="add-component" action="<c:url value="/admin/graphics_card/new"/>" method="post"
+                              enctype="multipart/form-data">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                             <h3 class="mb-5">Add new graphics card</h3>
@@ -98,81 +99,92 @@
                                     <spring:message code="label.component.producer"/></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="producer" id="inputProducer"
-                                           placeholder="graphics card producer">
+                                           placeholder="graphics card producer" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputModel" class="col-sm-3 col-form-label">
                                     <spring:message code="label.component.model"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="model" id="inputModel" placeholder="graphics card model">
+                                    <input type="text" class="form-control" name="model" id="inputModel"
+                                           placeholder="graphics card model" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCore" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.gpuproducer"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuProducer" id="inputCore" placeholder="gpu producer">
+                                    <input type="text" class="form-control" name="gpuProducer" id="inputCore"
+                                           placeholder="gpu producer" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCoreNum" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.gpumodel"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuModel" id="inputCoreNum" placeholder="gpu model">
+                                    <input type="text" class="form-control" name="gpuModel" id="inputCoreNum"
+                                           placeholder="gpu model" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputSocket" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.gpuinterface"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gpuInterface" id="inputSocket" placeholder="gpu interface">
+                                    <input type="text" class="form-control" name="gpuInterface" id="inputSocket"
+                                           placeholder="gpu interface" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCrystalName" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.videomemory"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="videoMemory" id="inputCrystalName" placeholder="gpu videomemory">
+                                    <input type="number" class="form-control" name="videoMemory" id="inputCrystalName"
+                                           placeholder="gpu videomemory" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputThermalPower" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.videomemorytype"/></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="videoMemoryType" id="inputThermalPower" placeholder="gpu videomemory type">
+                                    <input type="text" class="form-control" name="videoMemoryType"
+                                           id="inputThermalPower" placeholder="gpu videomemory type" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputMinFreq" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.recpower"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="recommendedPower" id="inputMinFreq" placeholder="graphics card recommended power">
+                                    <input type="number" class="form-control" name="recommendedPower" id="inputMinFreq"
+                                           placeholder="graphics card recommended power" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputMaxFreq" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.height"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="height" id="inputMaxFreq" placeholder="graphics card height">
+                                    <input type="number" class="form-control" name="height" id="inputMaxFreq"
+                                           placeholder="graphics card height" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputssMaxFreq" class="col-sm-3 col-form-label">
                                     <spring:message code="label.graphics.length"/></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="length" id="inputssMaxFreq" placeholder="graphics card length">
+                                    <input type="number" class="form-control" name="length" id="inputssMaxFreq"
+                                           placeholder="graphics card length" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPrice" class="col-sm-3 col-form-label">Price</label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="price" id="inputPrice" placeholder="graphics card price">
+                                    <input type="number" class="form-control" name="price" id="inputPrice"
+                                           placeholder="graphics card price" step="any" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="formFileSm" class="form-label"></label>
-                                <input class="form-control form-control-sm" name="imageFile" id="formFileSm" type="file">
+                                <input class="form-control form-control-sm" name="imageFile" id="formFileSm"
+                                       type="file">
                             </div>
 
                         </form>

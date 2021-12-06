@@ -68,9 +68,16 @@
 
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/mother_board.jpg"/>" class="w-100" alt="mother_board">
-        </div>
+        <c:if test="${mother_board.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/mother_board.jpg"/>" class="w-100" alt="motherboard"/>
+            </div>
+        </c:if>
+        <c:if test="${mother_board.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${mother_board.encodeImage}"/>" class="w-100" alt="motherboard"/>
+            </div>
+        </c:if>
         <div class="col-8">
             <h2>${mother_board.producer} ${mother_board.model}</h2>
             <p><spring:message code="label.motherboard.pciversion"/> ${mother_board.PCIVersion}, ${mother_board.formFactor}, ${mother_board.chipset}, <spring:message code="label.motherboard.mtwo"/>: ${mother_board.MTwo}, <spring:message code="label.motherboard.memoryslots"/>: ${mother_board.memorySlots},

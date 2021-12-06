@@ -180,7 +180,8 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.power"/>, <spring:message code="label.values.watt"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.power"/>, <spring:message
+                                    code="label.values.watt"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -290,13 +291,15 @@
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_efficiency" placeholder="Min" class="w-100" value="${minEff}">
+                                        <input type="text" name="min_efficiency" placeholder="Min" class="w-100"
+                                               value="${minEff}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_efficiency" placeholder="Max" class="w-100" value="${maxEff}">
+                                        <input type="text" name="max_efficiency" placeholder="Max" class="w-100"
+                                               value="${maxEff}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -308,19 +311,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.width"/>, <spring:message code="label.values.milim"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.width"/>, <spring:message
+                                    code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_width" placeholder="Min" class="w-100" value="${minW}">
+                                        <input type="text" name="min_width" placeholder="Min" class="w-100"
+                                               value="${minW}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_width" placeholder="Max" class="w-100" value="${maxW}">
+                                        <input type="text" name="max_width" placeholder="Max" class="w-100"
+                                               value="${maxW}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -332,19 +338,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.height"/>, <spring:message code="label.values.milim"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.height"/>, <spring:message
+                                    code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_height" placeholder="Min" class="w-100" value="${minH}">
+                                        <input type="text" name="min_height" placeholder="Min" class="w-100"
+                                               value="${minH}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_height" placeholder="Max" class="w-100" value="${maxH}">
+                                        <input type="text" name="max_height" placeholder="Max" class="w-100"
+                                               value="${maxH}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -356,19 +365,22 @@
 
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title"><spring:message code="label.powerunit.depth"/>, <spring:message code="label.values.milim"/></h6>
+                            <h6 class="title"><spring:message code="label.powerunit.depth"/>, <spring:message
+                                    code="label.values.milim"/></h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
                                 <div class="row">
                                     <label class="col-5">
-                                        <input type="text" name="min_depth" placeholder="Min" class="w-100" value="${minD}">
+                                        <input type="text" name="min_depth" placeholder="Min" class="w-100"
+                                               value="${minD}">
                                     </label>
                                     <span class="col-2">
                                         &#8212
                                     </span>
                                     <label class="col-5">
-                                        <input type="text" name="max_depth" placeholder="Max" class="w-100" value="${maxD}">
+                                        <input type="text" name="max_depth" placeholder="Max" class="w-100"
+                                               value="${maxD}">
                                     </label>
                                     <c:if test="${error != null}">
                                         <h5 style="color: #b02a37">${error}</h5>
@@ -390,9 +402,16 @@
                 <div class="row">
                     <div class="card m-4">
                         <div class="row">
-                            <div class="col-3">
-                                <img class="card-img-top" src="<c:url value="/img/power.jpg"/>" alt="processor">
-                            </div>
+                            <c:if test="${power_unit.image == null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="/img/power.jpg"/>" class="w-100" alt="power"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${power_unit.image != null}">
+                                <div class="col-3">
+                                    <img src="<c:url value="data:image/png;base64,${power_unit.encodeImage}"/>" class="w-100" alt="power"/>
+                                </div>
+                            </c:if>
                             <div class="col-9">
                                 <div class="card-body">
                                     <a href="/catalog/power_unit/${power_unit.id}" class="text-decoration-none"><h5

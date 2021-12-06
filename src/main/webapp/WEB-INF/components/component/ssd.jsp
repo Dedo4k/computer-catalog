@@ -68,9 +68,16 @@
 
 <div class="container align-items-center mt-5">
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="<c:url value="/img/ssd.jpg"/>" class="w-100" alt="mother_board">
-        </div>
+        <c:if test="${ssd.image == null}">
+            <div class="col-4">
+                <img src="<c:url value="/img/ssd.jpg"/>" class="w-100" alt="ssd"/>
+            </div>
+        </c:if>
+        <c:if test="${ssd.image != null}">
+            <div class="col-4">
+                <img src="<c:url value="data:image/png;base64,${ssd.encodeImage}"/>" class="w-100" alt="ssd"/>
+            </div>
+        </c:if>
         <div class="col-8">
             <h2>${ssd.producer} ${ssd.model}</h2>
             <p>${ssd.capacity} <spring:message code="label.values.gbait"/>, <spring:message code="label.ssd.controller"/>: ${ssd.controller}, ${ssd.formFactor}, ${ssd.readingSpeed}/${ssd.writingSpeed} <spring:message code="label.values.rwspeed"/>, <spring:message code="label.ssd.interface"/>: ${ssd.ssdInterface}</p>

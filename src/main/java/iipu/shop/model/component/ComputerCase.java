@@ -31,19 +31,19 @@ public class ComputerCase extends Component{
     private String compatible_motherboards;
 
     @Column(name = "max_power_unit_width", nullable = false)
-    private int maxPowerUnitWidth;
+    private double maxPowerUnitWidth;
 
     @Column(name = "max_graphics_card_width", nullable = false)
-    private int maxGraphicsCardWidth;
+    private double maxGraphicsCardWidth;
 
     @Column(name = "height", nullable = false)
-    private int height;
+    private double height;
 
     @Column(name = "width", nullable = false)
-    private int width;
+    private double width;
 
     @Column(name = "depth", nullable = false)
-    private int depth;
+    private double depth;
 
     @Column(name = "weight", nullable = false)
     private double weight;
