@@ -2,6 +2,7 @@ package iipu.shop.controller;
 
 import iipu.shop.enumeration.ExceptionMessage;
 import iipu.shop.enumeration.UserRole;
+import iipu.shop.model.ComponentSource;
 import iipu.shop.model.User;
 import iipu.shop.model.component.*;
 import iipu.shop.repository.*;
@@ -36,6 +37,7 @@ public class AdminController {
     private final MotherBoardRepository motherBoardRepository;
     private final PowerUnitRepository powerUnitRepository;
     private final ComputerCaseRepository computerCaseRepository;
+    private final ComponentSourceRepository componentSourceRepository;
 
     @Autowired
     public AdminController(UserRepository userRepository,
@@ -44,7 +46,7 @@ public class AdminController {
                            ComponentServiceImpl componentService,
                            ComponentRepository componentRepository,
                            ProcessorRepository processorRepository,
-                           SsdRepository ssdRepository, HddRepository hddRepository, GraphicsCardRepository graphicsCardRepository, RamRepository ramRepository, MotherBoardRepository motherBoardRepository, PowerUnitRepository powerUnitRepository, ComputerCaseRepository computerCaseRepository) {
+                           SsdRepository ssdRepository, HddRepository hddRepository, GraphicsCardRepository graphicsCardRepository, RamRepository ramRepository, MotherBoardRepository motherBoardRepository, PowerUnitRepository powerUnitRepository, ComputerCaseRepository computerCaseRepository, ComponentSourceRepository componentSourceRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
@@ -58,6 +60,7 @@ public class AdminController {
         this.motherBoardRepository = motherBoardRepository;
         this.powerUnitRepository = powerUnitRepository;
         this.computerCaseRepository = computerCaseRepository;
+        this.componentSourceRepository = componentSourceRepository;
     }
 
     @GetMapping("/admin")
@@ -87,6 +90,13 @@ public class AdminController {
     @GetMapping("/admin/content/new")
     public String newComponent(@RequestParam(value = "type") String type, Model model) {
         return componentService.getViewForComponentToAdd(type, model);
+    }
+
+    @GetMapping("/admin/{component}/{component_id}/source/new")
+    public String newSource(@PathVariable String component, @PathVariable long component_id, Model model) {
+        model.addAttribute("type", component);
+        model.addAttribute("component", componentRepository.getById(component_id));
+        return "source";
     }
 
     @GetMapping("/admin/{component}/{id}/edit")
@@ -376,10 +386,25 @@ public class AdminController {
         return "redirect:/admin/content?type=" + component + 's';
     }
 
+    @PostMapping("/admin/{componentType}/{componentId}/source/new")
+    public String addSource(ComponentSource componentSource, @PathVariable String componentType, @PathVariable long componentId) {
+        Component  componentToUpdate = componentRepository.getById(componentId);
+        componentToUpdate.getSources().add(componentSource);
+        componentSource.setComponent(componentToUpdate);
+        componentRepository.save(componentToUpdate);
+        return "redirect:/admin/" + componentType + "/" + componentId + "/edit";
+    }
+
     @PostMapping("/admin/{component}/{id}/delete")
     public String deleteComponent(@PathVariable String component, @PathVariable long id) {
         componentRepository.deleteById(id);
         return "redirect:/admin/content?type=" + component + 's';
+    }
+
+    @PostMapping("/admin/{component}/{component_id}/source/{source_id}/delete")
+    public String deleteSource(@PathVariable String component, @PathVariable long component_id, @PathVariable long source_id) {
+        componentSourceRepository.deleteById(source_id);
+        return "redirect:/admin/" + component + "/" + component_id + "/edit";
     }
 
     @PostMapping("/admin/add")

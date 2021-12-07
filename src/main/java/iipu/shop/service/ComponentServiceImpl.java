@@ -31,7 +31,7 @@ public class ComponentServiceImpl implements ComponentService {
                                 PowerUnitRepository powerUnitRepository,
                                 MotherBoardRepository motherBoardRepository,
                                 GraphicsCardRepository graphicsCardRepository,
-                                ComputerCaseRepository computerCaseRepository) {
+                                ComputerCaseRepository computerCaseRepository, ComponentRepository componentRepository) {
         this.processorRepository = processorRepository;
         this.graphicsCardRepository = graphicsCardRepository;
         this.motherBoardRepository = motherBoardRepository;
