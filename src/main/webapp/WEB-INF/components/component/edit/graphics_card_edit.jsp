@@ -79,7 +79,7 @@
 <section class="vh-100" style="background-color: #508bfc;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="col-12">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
                         <form id="add-component" action="<c:url value="/admin/graphics_card/${graphics_card.id}/edit"/>"
@@ -190,6 +190,40 @@
                             </div>
 
                         </form>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <td colspan="2"><h3><spring:message code="label.component.stores"/></h3></td>
+                                <td>
+                                    <a href="<c:url value="/admin/graphics_card/${graphics_card.id}/source/new"/>" class="btn btn-success">New</a>
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${graphics_card.sources}" var="source">
+                                <tr>
+                                    <td>${source.name}</td>
+                                    <td><a href="${source.link}">${source.link}</a></td>
+                                    <td>
+                                        <form action="/admin/graphics_card/${graphics_card.id}/source/${source.id}/delete"
+                                              method="post">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                            <button class="btn p-0" type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                     fill="currentColor"
+                                                     class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd"
+                                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
 
                         <button form="add-component" class="btn btn-primary btn-lg btn-block" type="submit">Edit
                         </button>
