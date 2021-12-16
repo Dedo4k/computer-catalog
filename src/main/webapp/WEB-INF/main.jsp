@@ -74,7 +74,7 @@
 </nav>
 
 
-<div class="container-fluid my-carousel mt-3 pt-2 px-0">
+<div class="container-fluid my-carousel mt-3 px-0">
     <div id="carouselExampleFade" class="carousel slide carousel-fade mt-5" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-</div>
+    <div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"  data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Предыдущий</span>
@@ -106,12 +106,5 @@
     </div>
 </div>
 
-
-<%--<c:if test="${cookie['org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE'].value eq 'ru'}">--%>
-<%--    <h1 class="mt-5">Russian</h1>--%>
-<%--</c:if>--%>
-<%--<c:if test="${cookie['org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE'].value eq 'en'}">--%>
-<%--    <h1 class="mt-5">English</h1>--%>
-<%--</c:if>--%>
 </body>
 </html>
