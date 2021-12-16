@@ -47,4 +47,49 @@ public class Computer {
 
     @OneToOne(cascade = CascadeType.ALL)
     private ComputerCase computerCase;
+
+    @ManyToOne
+    private User user;
+
+    @PreRemove
+    void preRemove() {
+        user.getComputers().remove(this);
+        processor = null;
+        motherBoard = null;
+        graphicsCard = null;
+        ram = null;
+        ssd = null;
+        hdd = null;
+        powerUnit = null;
+        computerCase = null;
+    }
+
+    public double getTotalPrice() {
+        double total = 0;
+        if (processor != null) {
+            total += processor.getPrice();
+        }
+        if (graphicsCard != null) {
+            total += graphicsCard.getPrice();
+        }
+        if (motherBoard != null) {
+            total += motherBoard.getPrice();
+        }
+        if (ram != null) {
+            total += ram.getPrice();
+        }
+        if (ssd != null) {
+            total += ssd.getPrice();
+        }
+        if (hdd != null) {
+            total += hdd.getPrice();
+        }
+        if (powerUnit != null) {
+            total += powerUnit.getPrice();
+        }
+        if (computerCase != null) {
+            total += computerCase.getPrice();
+        }
+        return Math.round(total * 100) / 100.0;
+    }
 }

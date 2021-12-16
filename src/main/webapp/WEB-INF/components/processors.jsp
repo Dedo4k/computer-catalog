@@ -323,7 +323,8 @@
                             </c:if>
                             <c:if test="${processor.image != null}">
                                 <div class="col-3">
-                                    <img src="<c:url value="data:image/png;base64,${processor.encodeImage}"/>" class="w-100" alt="processor"/>
+                                    <img src="<c:url value="data:image/png;base64,${processor.encodeImage}"/>"
+                                         class="w-100" alt="processor"/>
                                 </div>
                             </c:if>
                             <div class="col-9">
@@ -341,6 +342,13 @@
                                                 code="label.values.mherz"/></p>
                                     <h5 class="btn btn-warning">${processor.price} <spring:message
                                             code="label.currency.byn"/></h5>
+                                    <c:if test="${sessionScope.get('computer_id') ne null}">
+                                        <form action="/config/computer/${sessionScope.get('computer_id')}/processor/${processor.id}/add"
+                                              method="post">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                            <button class="btn btn-outline-success">Add to configuration</button>
+                                        </form>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>

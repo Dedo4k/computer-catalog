@@ -357,6 +357,13 @@
                                     <p class="card-text">${graphics_card.gpuProducer} ${graphics_card.gpuModel}, <spring:message code="label.graphics.gpuinterface"/>: ${graphics_card.gpuInterface}, <spring:message code="label.graphics.videomemory"/>: ${graphics_card.videoMemory} <spring:message code="label.values.gbait"/> ${graphics_card.videoMemoryType} </p>
                                     <h5 class="btn btn-warning">${graphics_card.price} <spring:message
                                             code="label.currency.byn"/></h5>
+                                    <c:if test="${sessionScope.get('computer_id') ne null}">
+                                        <form action="/config/computer/${sessionScope.get('computer_id')}/graphics_card/${graphics_card.id}/add"
+                                              method="post">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                            <button class="btn btn-outline-success">Add to configuration</button>
+                                        </form>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>

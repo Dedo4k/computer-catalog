@@ -12,16 +12,17 @@ create table component
 
 create table computer
 (
-    id               bigint not null auto_increment,
-    title            varchar(255),
+    id bigint not null auto_increment,
+    title varchar(255),
     computer_case_id bigint,
     graphics_card_id bigint,
-    hdd_id           bigint,
-    mother_board_id  bigint,
-    power_unit_id    bigint,
-    processor_id     bigint,
-    ssd_id           bigint,
-    ram_id           bigint,
+    hdd_id bigint,
+    mother_board_id bigint,
+    power_unit_id bigint,
+    processor_id bigint,
+    ram_id bigint,
+    ssd_id bigint,
+    `user_id` bigint,
     primary key (id)
 ) engine = InnoDB;
 
@@ -135,13 +136,13 @@ create table ssd
 
 create table `user`
 (
-    id         bigint       not null auto_increment,
-    active     bit          not null,
-    email      varchar(255) not null,
-    first_name varchar(255) not null,
-    last_name  varchar(255) not null,
-    password   varchar(255) not null,
-    role       varchar(255),
+    id bigint not null auto_increment,
+    active bit not null,
+    email varchar(255) not null,
+    first_name varchar(30) not null,
+    last_name varchar(30) not null,
+    password varchar(255) not null, role
+    varchar(255),
     primary key (id)
 ) engine = InnoDB;
 

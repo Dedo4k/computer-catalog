@@ -33,6 +33,7 @@ public class Review {
     @PreRemove
     private void removeReviewFromComponent() {
         component.getReviews().remove(this);
+        user.getReviews().remove(this);
     }
 
     @Override

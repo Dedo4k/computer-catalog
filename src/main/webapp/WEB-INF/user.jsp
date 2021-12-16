@@ -104,15 +104,51 @@
         </form>
     </c:if>
 </div>
-
 <div class="container align-items-center mt-5">
+    <c:if test="${!user.computers.isEmpty()}">
+        <h1>My configurations</h1>
+    </c:if>
+    <c:if test="${!user.computers.isEmpty()}">
+        <c:forEach items="${user.computers}" var="computer">
+            <div class="card mt-1">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="col-11">${computer.title}</h3>
+                        <form action="/user/${user.id}/computer/${computer.id}/delete" method="post"
+                              class="col-1">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <sec:authorize access="hasAuthority('ADMIN')">
+                                <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                            </sec:authorize>
+                            <sec:authorize access="hasAuthority('USER')">
+                                <sec:authentication property="principal.id" var="user_id"/>
+                                <c:if test="${computer.user.id eq user_id}">
+                                    <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
+                                </c:if>
+                            </sec:authorize>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>${computer.processor.toString()}, ${computer.graphicsCard.toString()},
+                            ${computer.motherBoard.toString()}, ${computer.hdd.toString()}, ${computer.ssd.toString()},
+                            ${computer.ram.toString()}, ${computer.powerUnit.toString()}, ${computer.computerCase.toString()}</p>
+                </div>
+            </div>
+        </c:forEach>
+    </c:if>
+</div>
+<div class="container align-items-center mt-5">
+    <c:if test="${!user.reviews.isEmpty()}">
+        <h1>My reviews</h1>
+    </c:if>
     <c:if test="${!user.reviews.isEmpty()}">
         <c:forEach items="${user.reviews}" var="review">
             <div class="card mt-1">
                 <div class="card-header">
                     <div class="row">
                         <h3 class="col-11">${review.component.toString()}</h3>
-                        <form action="/catalog/ccase/${ccase.id}/comment/${review.id}" method="post"
+                        <form action="/user/${user.id}/comment/${review.id}/delete" method="post"
                               class="col-1">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <sec:authorize access="hasAuthority('ADMIN')">

@@ -369,6 +369,13 @@
                                             code="label.values.rwspeed"/></p>
                                     <h5 class="btn btn-warning">${ssd.price} <spring:message
                                             code="label.currency.byn"/></h5>
+                                    <c:if test="${sessionScope.get('computer_id') ne null}">
+                                        <form action="/config/computer/${sessionScope.get('computer_id')}/ssd/${ssd.id}/add"
+                                              method="post">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                            <button class="btn btn-outline-success">Add to configuration</button>
+                                        </form>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
