@@ -54,8 +54,9 @@ public class ConfiguratorController {
     }
 
     @PostMapping("/config/computer/{id}/{component}/delete")
-    public String deleteComponent(@PathVariable String component, @PathVariable long id) {
+    public String deleteComponent(@PathVariable String component, @PathVariable long id, HttpServletRequest request) {
         computerService.deleteComponentFromComputer(id, component);
+        request.getSession().removeAttribute("computer_id");
         return "redirect:/config/computer/" + id + "/edit";
     }
 

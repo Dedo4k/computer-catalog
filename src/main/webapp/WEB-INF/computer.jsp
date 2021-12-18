@@ -1,3 +1,4 @@
+<%@ page import="com.sun.org.apache.xerces.internal.impl.dv.util.Base64" %>
 <%@ page import="iipu.shop.model.component.Processor" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -6,7 +7,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>${graphics_card.toString()}</title>
+    <title>Computer ${computer.title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="<c:url value="/css/styles.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/bootstrap.css"/>">
@@ -28,9 +29,9 @@
                 <li class="nav-item active"><a class="nav-link"
                                                href="<c:url value="/catalog"/>"><spring:message
                         code="label.page.catalog"/></a></li>
-                <li class="nav-item"><a class="nav-link"
-                                               href="<c:url value="/catalog/graphics_cards"/>"><spring:message
-                        code="label.components.graphiccards"/></a></li>
+                <li class="nav-item active"><a class="nav-link"
+                                               href="<c:url value="/config"/>"><spring:message
+                        code="label.page.config"/></a></li>
                 <li class="nav-item dropdown" id="myDropdown1">
                     <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
                        style="float: right"><spring:message code="label.lang"/></a>
@@ -65,129 +66,57 @@
         </div>
     </div>
 </nav>
-
-<div style="min-height: 77.6vh;">
-<div class="container align-items-center mt-5">
-    <div class="row pt-5">
-        <c:if test="${graphics_card.image == null}">
-            <div class="col-4">
-                <img src="<c:url value="/img/graphics.jpg"/>" class="w-100" alt="graphics_card"/>
-            </div>
-        </c:if>
-        <c:if test="${graphics_card.image != null}">
-            <div class="col-4">
-                <img src="<c:url value="data:image/png;base64,${graphics_card.encodeImage}"/>" class="w-100" alt="graphics_card"/>
-            </div>
-        </c:if>
-        <div class="col-8">
-            <h2>${graphics_card.producer} ${graphics_card.gpuProducer} ${graphics_card.gpuModel} ${graphics_card.model}</h2>
-            <p>${graphics_card.gpuProducer} ${graphics_card.gpuModel}, ${graphics_card.videoMemory} <spring:message code="label.values.gbait"/>, ${graphics_card.videoMemoryType}, <spring:message code="label.graphics.gpuinterface"/>: ${graphics_card.gpuInterface}</p>
-            <h5 class="btn btn-warning">${graphics_card.price} <spring:message code="label.currency.byn"/></h5>
-        </div>
-    </div>
-    <table class="table table-bordered align-middle mt-5">
+<div class="container align-items-center mt-5 pt-3" style="min-height: 77.6vh;">
+    <h1>Computer ${computer.title}</h1>
+    <table class="table table-bordered align-middle mt-1">
         <caption class="caption-top text-center"><h3><spring:message code="label.component.description"/></h3></caption>
         <tbody>
         <tr>
-            <td class="w-50"><spring:message code="label.component.producer"/></td>
-            <td class="w-50">${graphics_card.producer}</td>
+            <td class="">Processor</td>
+            <td class=""><a href="/catalog/processor/${computer.processor.id}">${computer.processor.toString()}</a></td>
+            <td>${computer.processor.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.component.model"/></td>
-            <td>${graphics_card.model}</td>
+            <td class="">Graphics card</td>
+            <td class=""><a href="/catalog/graphics_card/${computer.graphicsCard.id}">${computer.graphicsCard.toString()}</a></td>
+            <td>${computer.graphicsCard.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.graphics.gpuproducer"/></td>
-            <td>${graphics_card.gpuProducer}</td>
+            <td class="">Motherboard</td>
+            <td class=""><a href="/catalog/mother_board/${computer.motherBoard.id}">${computer.motherBoard.toString()}</a></td>
+            <td>${computer.motherBoard.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.graphics.gpumodel"/></td>
-            <td>${graphics_card.gpuModel}</td>
+            <td class="">RAM</td>
+            <td class=""><a href="/catalog/ram/${computer.ram.id}">${computer.ram.toString()}</a></td>
+            <td>${computer.ram.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.graphics.gpuinterface"/></td>
-            <td>${graphics_card.gpuInterface}</td>
+            <td class="">SSD</td>
+            <td class=""><a href="/catalog/ssd/${computer.ssd.id}">${computer.ssd.toString()}</a></td>
+            <td>${computer.ssd.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.graphics.recpower"/></td>
-            <td>${graphics_card.recommendedPower} <spring:message code="label.values.watt"/></td>
+            <td class="">HDD</td>
+            <td class=""><a href="/catalog/hdd/${computer.hdd.id}">${computer.hdd.toString()}</a></td>
+            <td>${computer.hdd.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.graphics.videomemory"/></td>
-            <td>${graphics_card.videoMemory} <spring:message code="label.values.gbait"/></td>
+            <td class="">Power unit</td>
+            <td class=""><a href="/catalog/power_unit/${computer.powerUnit.id}">${computer.powerUnit.toString()}</a></td>
+            <td>${computer.powerUnit.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.graphics.videomemorytype"/></td>
-            <td>${graphics_card.videoMemoryType}</td>
+            <td class="">Computer case</td>
+            <td class=""><a href="/catalog/ccase/${computer.computerCase.id}">${computer.computerCase.toString()}</a></td>
+            <td>${computer.computerCase.price} <spring:message code="label.currency.byn"/></td>
         </tr>
         <tr>
-            <td><spring:message code="label.graphics.height"/></td>
-            <td>${graphics_card.height} <spring:message code="label.values.milim"/></td>
-        </tr>
-        <tr>
-            <td><spring:message code="label.graphics.length"/></td>
-            <td>${graphics_card.length} <spring:message code="label.values.milim"/></td>
+            <td colspan="2">Total price</td>
+            <td>${computer.totalPrice} <spring:message code="label.currency.byn"/></td>
         </tr>
         </tbody>
     </table>
-
-    <table class="table table-bordered align-middle mt-5">
-        <caption class="caption-top text-center"><h3><spring:message code="label.component.stores"/></h3></caption>
-        <tbody>
-        <c:forEach items="${graphics_card.sources}" var="source">
-            <tr>
-                <td class="w-25">${source.name}</td>
-                <td class="w-75"><a href="${source.link}">${source.link}</a></td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</div>
-
-<div class="container align-items-center mt-5">
-    <form action="<c:url value="/catalog/graphics_card/${graphics_card.id}/comment"/>" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Leave your comment</label>
-            <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div class="row px-2 align-items-center">
-            <button class="btn btn-primary btn-lg btn-block col-2" type="submit">Comment</button>
-            <c:if test="${error != null}">
-                <h5 class="col-10" style="color: #b02a37">${error}</h5>
-            </c:if>
-        </div>
-    </form>
-
-    <hr class="w-100">
-
-    <c:if test="${!graphics_card.reviews.isEmpty()}">
-        <c:forEach items="${graphics_card.reviews}" var="review">
-            <div class="card mt-1">
-                <div class="card-header">
-                    <div class="row">
-                        <h3 class="col-11">${review.user.firstName} ${review.user.lastName}</h3>
-                        <form action="/catalog/graphics_card/${graphics_card.id}/comment/${review.id}" method="post" class="col-1">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <sec:authorize access="hasAuthority('ADMIN')">
-                                <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
-                            </sec:authorize>
-                            <sec:authorize access="hasAuthority('USER')">
-                                <sec:authentication property="principal.id" var="user_id"/>
-                                <c:if test="${review.user.id eq user_id}">
-                                    <button class="btn btn-primary" type="submit" style="float: right;">Delete</button>
-                                </c:if>
-                            </sec:authorize>
-                        </form>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <p>${review.text}</p>
-                </div>
-            </div>
-        </c:forEach>
-    </c:if>
-</div>
 </div>
 <footer class="bg-primary text-center text-white mt-5 w-100" style="background-color: #f1f1f1;">
     <div class="container pt-1">

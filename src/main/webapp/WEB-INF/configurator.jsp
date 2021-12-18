@@ -62,7 +62,7 @@
     </div>
 </nav>
 
-<div class="container align-items-center mt-5 pt-3 " style="min-height: 77.6%;" >
+<div class="container align-items-center mt-5 pt-3 " style="min-height: 77.6vh;">
     <div class="row align-middle align-items-center">
         <h1 class="col-9">Press NEW to create a configuration</h1>
         <form action="<c:url value="/config/computer/new"/>" class="col-3" method="post">
